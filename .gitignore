@@ -1,0 +1,26 @@
+# Archiso build output
+/work/
+/out/
+/*.iso
+
+# Locally built repository and binary packages
+/repo/
+*.pkg.tar.*
+*.src.tar.*
+
+# makepkg build artifacts; keep PKGBUILD and patches
+/packages/*/src/
+/packages/*/pkg/
+/packages/*/.git-upstream/
+/packages/*/*.tar.gz
+/packages/*/*.tar.xz
+/packages/*/*.tar.zst
+
+# Local Codex metadata
+/.agents/
+/.codex/
+
+# Editor and filesystem noise
+*~
+*.swp
+.DS_Store

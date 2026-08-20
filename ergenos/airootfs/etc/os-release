@@ -1,0 +1,7 @@
+NAME="ErgenOS"
+PRETTY_NAME="ErgenOS Linux"
+ID=ergenos
+ID_LIKE=arch
+BUILD_ID=rolling
+ANSI_COLOR="38;2;53;132;228"
+LOGO=archlinux-logo

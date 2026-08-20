@@ -1,0 +1,37 @@
+---
+componentName: ergenos
+welcomeStyleCalamares: false
+welcomeExpandingLogo: true
+windowExpanding: normal
+windowSize: 1000px,650px
+windowPlacement: center
+sidebar: widget
+navigation: widget
+
+strings:
+  productName: "ErgenOS"
+  shortProductName: "ErgenOS"
+  version: "Rolling"
+  shortVersion: "Rolling"
+  versionedName: "ErgenOS Rolling"
+  shortVersionedName: "ErgenOS"
+  bootloaderEntryName: "ErgenOS"
+  productUrl: ""
+  supportUrl: ""
+  knownIssuesUrl: ""
+  releaseNotesUrl: ""
+  donateUrl: ""
+
+images: {}
+
+style:
+  SidebarBackground: "#111827"
+  SidebarText: "#E5E7EB"
+  SidebarTextCurrent: "#FFFFFF"
+  SidebarBackgroundCurrent: "#2563EB"
+
+slideshow: []
+slideshowAPI: 2
+
+uploadServer:
+  type: none

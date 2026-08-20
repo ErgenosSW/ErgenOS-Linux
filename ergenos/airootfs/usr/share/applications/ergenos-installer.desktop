@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Install ErgenOS
+Comment=Install ErgenOS on this computer
+Exec=sudo -E calamares
+Icon=system-software-install
+Terminal=false
+Categories=System;
+Keywords=install;installer;system;
