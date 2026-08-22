@@ -1,5 +1,9 @@
 # ErgenOS
 
+<p align="center">
+  <img src="assets/ergenos-logo.png" alt="ErgenOS logo" width="320">
+</p>
+
 [![Release](https://img.shields.io/github/v/release/ErgenosSW/ErgenOS-Linux?include_prereleases&label=release)](https://github.com/ErgenosSW/ErgenOS-Linux/releases)
 [![License](https://img.shields.io/badge/license-GPL--3.0--or--later-blue)](LICENSE)
 
