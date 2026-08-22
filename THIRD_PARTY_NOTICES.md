@@ -2,6 +2,8 @@
 
 ErgenOS is an independent project assembled from free and open-source software. Components retain their original copyrights, licenses and trademarks. The ErgenOS project license does not replace the licenses of third-party components or packages included in a generated ISO image.
 
+Copyright in original ErgenOS code, configuration and artwork belongs to the ErgenOS contributors. Those original portions are licensed under GPL-3.0-or-later as stated in the repository `LICENSE` file. Files that carry their own license notice remain under that notice.
+
 ## Arch Linux and Archiso
 
 The ErgenOS build profile is derived from the Archiso releng profile.

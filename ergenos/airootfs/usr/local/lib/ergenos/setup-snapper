@@ -61,5 +61,21 @@ if ! grep -q 'grub-btrfs-overlayfs' /etc/mkinitcpio.conf; then
     sed -i '/^HOOKS=(/s/)/ grub-btrfs-overlayfs)/' /etc/mkinitcpio.conf
 fi
 
+# A hibernation image belongs to the normal writable system state. Snapshot
+# entries must not attempt to resume it; apart from being unsafe, doing so also
+# produces a misleading early-boot "unable to resume" message.
+grub_btrfs_config=/etc/default/grub-btrfs/config
+if grep -q '^#GRUB_BTRFS_SNAPSHOT_KERNEL_PARAMETERS=' "${grub_btrfs_config}"; then
+    sed -i \
+        's|^#GRUB_BTRFS_SNAPSHOT_KERNEL_PARAMETERS=.*|GRUB_BTRFS_SNAPSHOT_KERNEL_PARAMETERS="noresume"|' \
+        "${grub_btrfs_config}"
+elif grep -q '^GRUB_BTRFS_SNAPSHOT_KERNEL_PARAMETERS=' "${grub_btrfs_config}"; then
+    sed -i \
+        's|^GRUB_BTRFS_SNAPSHOT_KERNEL_PARAMETERS=.*|GRUB_BTRFS_SNAPSHOT_KERNEL_PARAMETERS="noresume"|' \
+        "${grub_btrfs_config}"
+else
+    printf '%s\n' 'GRUB_BTRFS_SNAPSHOT_KERNEL_PARAMETERS="noresume"' >> "${grub_btrfs_config}"
+fi
+
 systemctl enable snapper-cleanup.timer
 systemctl enable grub-btrfsd.service

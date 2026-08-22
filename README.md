@@ -1,9 +1,11 @@
 # ErgenOS Linux
 
+**Current release: 0.1.0 Alpha**
+
 ErgenOS is an experimental, desktop-focused Linux distribution based on Arch Linux. Its goal is to provide an approachable Arch experience with a graphical installer, sensible defaults and recovery tools ready out of the box.
 
 > [!WARNING]
-> ErgenOS is under active development. It is not ready for production systems yet. Test it in a virtual machine and keep backups of important data.
+> ErgenOS is alpha software under active development. It is not ready for production systems. Keep backups of important data and expect breaking changes.
 
 ## Highlights
 
@@ -56,44 +58,17 @@ git clone https://github.com/ErgenosSW/ErgenOS-Linux.git
 cd ErgenOS-Linux
 ```
 
-### 3. Build the local packages
-
-ErgenOS uses a local Calamares build containing the package chooser modules required by the installer. Several GNOME extensions are also built locally from their Arch packaging recipes.
-
-```bash
-mkdir -p repo
-for package_dir in \
-    packages/calamares \
-    packages/gnome-shell-extension-blur-my-shell \
-    packages/gnome-shell-extension-dash-to-dock \
-    packages/gnome-shell-extension-gtk4-desktop-icons-ng
-do
-    (
-        cd "$package_dir"
-        makepkg -s --noconfirm
-        find . -maxdepth 1 -name '*.pkg.tar.zst' ! -name '*-debug-*' \
-            -exec cp -t ../../repo/ {} +
-    )
-done
-repo-add repo/ergenos.db.tar.zst repo/*.pkg.tar.zst
-```
-
-### 4. Point the profile at the local package repository
-
-```bash
-sed -i "s|^Server = file://.*|Server = file://$PWD/repo|" ergenos/pacman.conf
-```
-
-### 5. Build ErgenOS
+### 3. Build ErgenOS
 
 Keep the temporary build directory outside the repository. This prevents indexing tools and editors from touching temporary pseudo-filesystems created by Archiso.
 
 ```bash
-sudo rm -rf /var/tmp/ergenos-work
-sudo mkarchiso -v -w /var/tmp/ergenos-work -o out ergenos
+./build.sh
 ```
 
-The resulting ISO will be placed in `out/`.
+The script builds the required local packages when needed, creates the temporary package repository and passes a generated Pacman configuration to Archiso. It uses a unique work directory under `/var/tmp`, preventing stale Archiso state from being reused. The resulting ISO is placed in `out/`.
+
+Use `./build.sh --rebuild-packages` to rebuild all local packages even when package files already exist. `ERGENOS_WORK_DIR` and `ERGENOS_OUTPUT_DIR` can override the default directories.
 
 ## Testing
 
@@ -107,9 +82,9 @@ The safest way to test ErgenOS is with QEMU/KVM and virt-manager:
 
 Always verify destructive partitioning operations carefully. The **Erase disk** option deletes all data on the selected disk.
 
-## Project status
+## Project status: Alpha
 
-The following paths have been tested in a virtual machine:
+ErgenOS 0.1.0-alpha has been tested in QEMU/KVM and on a Lenovo ThinkPad E14 Gen 2:
 
 - graphical installation with GRUB
 - GNOME login and desktop session
@@ -118,8 +93,11 @@ The following paths have been tested in a virtual machine:
 - Chaotic-AUR installation choice
 - automatic Snapper snapshots
 - booting a Btrfs snapshot from GRUB with an overlay filesystem
+- Wi-Fi, Bluetooth and Bluetooth audio
+- suspend, hibernation and laptop function keys
+- installation of an AUR package with paru
 
-Hardware installation, proprietary NVIDIA drivers, Secure Boot and broader upgrade scenarios still require further work and testing.
+Proprietary NVIDIA drivers, Secure Boot, broader hardware compatibility and long-term upgrade scenarios still require further work and testing. See [CHANGELOG.md](CHANGELOG.md) for release details.
 
 ## Contributing
 

@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+config=/etc/calamares/modules/unpackfs.conf
+source_image=
+
+for candidate in \
+    /run/archiso/copytoram/airootfs.sfs \
+    /run/archiso/bootmnt/ergenos/x86_64/airootfs.sfs
+do
+    if [[ -f "${candidate}" ]]; then
+        source_image="${candidate}"
+        break
+    fi
+done
+
+if [[ -z "${source_image}" ]]; then
+    source_image="$(find /run/archiso -maxdepth 5 -type f -name airootfs.sfs -print -quit)"
+fi
+
+if [[ -z "${source_image}" ]]; then
+    echo 'ErgenOS installer could not locate airootfs.sfs.' >&2
+    exit 1
+fi
+
+sed -i \
+    "s|^[[:space:]]*- source:.*|  - source: \"${source_image}\"|" \
+    "${config}"
+
+exec /usr/bin/calamares "$@"

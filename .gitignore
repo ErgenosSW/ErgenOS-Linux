@@ -1,6 +1,7 @@
 # Archiso build output
 /work/
 /out/
+/out-*/
 /*.iso
 
 # Locally built repository and binary packages

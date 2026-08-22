@@ -2,7 +2,7 @@
 Type=Application
 Name=Install ErgenOS
 Comment=Install ErgenOS on this computer
-Exec=sudo -E calamares
+Exec=sudo -E /usr/local/bin/ergenos-installer
 Icon=system-software-install
 Terminal=false
 Categories=System;

@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
 
+profile_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+
 iso_name="ergenos"
 iso_label="ERGENOS_$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m)"
-iso_publisher="ErgenOS <https://ergenos.local>"
+iso_publisher="ErgenOS <https://github.com/ErgenosSW/ErgenOS-Linux>"
 iso_application="ErgenOS Live/Installation Media"
-iso_version="$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)"
+iso_version="$(<"${profile_dir}/../VERSION")"
 install_dir="ergenos"
 buildmodes=('iso')
 bootmodes=('bios.syslinux'
@@ -24,8 +26,10 @@ file_permissions=(
   ["/usr/local/bin/choose-mirror"]="0:0:755"
   ["/usr/local/bin/Installation_guide"]="0:0:755"
   ["/usr/local/bin/livecd-sound"]="0:0:755"
+  ["/usr/local/bin/ergenos-installer"]="0:0:755"
   ["/usr/local/lib/ergenos/setup-snapper"]="0:0:755"
   ["/usr/local/lib/ergenos/backup-boot"]="0:0:755"
   ["/usr/local/lib/ergenos/enable-multilib"]="0:0:755"
   ["/usr/local/lib/ergenos/configure-software-source"]="0:0:755"
+  ["/usr/local/lib/ergenos/configure-resume"]="0:0:755"
 )

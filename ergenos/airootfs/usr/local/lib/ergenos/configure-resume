@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+mkinitcpio_conf=/etc/mkinitcpio.conf
+grub_defaults=/etc/default/grub
+
+# Calamares adds the resume hook only when hibernation was requested.
+grep -Eq '^HOOKS=.*(^|[[:space:]])resume([[:space:]]|\))' "${mkinitcpio_conf}" || exit 0
+
+swap_spec="$(awk '!/^[[:space:]]*#/ && $3 == "swap" { print $1; exit }' /etc/fstab)"
+[[ -n "${swap_spec}" ]] || exit 0
+
+case "${swap_spec}" in
+    UUID=*)
+        swap_uuid="${swap_spec#UUID=}"
+        ;;
+    /dev/*)
+        swap_uuid="$(blkid -s UUID -o value "${swap_spec}")"
+        ;;
+    *)
+        swap_device="$(findfs "${swap_spec}" 2>/dev/null || true)"
+        [[ -n "${swap_device}" ]] || exit 0
+        swap_uuid="$(blkid -s UUID -o value "${swap_device}")"
+        ;;
+esac
+
+[[ -n "${swap_uuid}" ]] || exit 0
+
+current="$(sed -n 's/^GRUB_CMDLINE_LINUX_DEFAULT="\(.*\)"$/\1/p' "${grub_defaults}")"
+read -r -a arguments <<< "${current}"
+filtered=()
+
+for argument in "${arguments[@]}"; do
+    [[ "${argument}" == resume=* ]] || filtered+=("${argument}")
+done
+
+filtered+=("resume=UUID=${swap_uuid}")
+replacement="${filtered[*]}"
+
+if grep -q '^GRUB_CMDLINE_LINUX_DEFAULT=' "${grub_defaults}"; then
+    sed -i \
+        "s|^GRUB_CMDLINE_LINUX_DEFAULT=.*|GRUB_CMDLINE_LINUX_DEFAULT=\"${replacement}\"|" \
+        "${grub_defaults}"
+else
+    printf '%s\n' "GRUB_CMDLINE_LINUX_DEFAULT=\"${replacement}\"" >> "${grub_defaults}"
+fi
