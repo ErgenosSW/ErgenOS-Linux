@@ -17,6 +17,8 @@ ErgenOS is an experimental, desktop-focused Linux distribution based on Arch Lin
 - Bootable Btrfs snapshots in GRUB through `grub-btrfs`
 - Flatpak and Flathub enabled by default
 - Zsh with Powerlevel10k and a preconfigured ErgenOS profile
+- ArcMenu, Dash to Dock, Blur My Shell, Caffeine and GTK4 Desktop Icons NG
+- ErgenOS artwork, login-screen branding and desktop wallpaper
 
 ## Software sources
 
@@ -54,17 +56,26 @@ git clone https://github.com/ErgenosSW/ErgenOS-Linux.git
 cd ErgenOS-Linux
 ```
 
-### 3. Build the customized Calamares package
+### 3. Build the local packages
 
-ErgenOS uses a local Calamares build containing the package chooser modules required by the installer.
+ErgenOS uses a local Calamares build containing the package chooser modules required by the installer. Several GNOME extensions are also built locally from their Arch packaging recipes.
 
 ```bash
 mkdir -p repo
-cd packages/calamares
-makepkg -s --noconfirm
-cp calamares-3.4.2-2-x86_64.pkg.tar.zst ../../repo/
-cd ../..
-repo-add repo/ergenos.db.tar.gz repo/*.pkg.tar.zst
+for package_dir in \
+    packages/calamares \
+    packages/gnome-shell-extension-blur-my-shell \
+    packages/gnome-shell-extension-dash-to-dock \
+    packages/gnome-shell-extension-gtk4-desktop-icons-ng
+do
+    (
+        cd "$package_dir"
+        makepkg -s --noconfirm
+        find . -maxdepth 1 -name '*.pkg.tar.zst' ! -name '*-debug-*' \
+            -exec cp -t ../../repo/ {} +
+    )
+done
+repo-add repo/ergenos.db.tar.zst repo/*.pkg.tar.zst
 ```
 
 ### 4. Point the profile at the local package repository
@@ -124,3 +135,7 @@ Bug reports, testing results and pull requests are welcome. When reporting an in
 ErgenOS builds on the work of Arch Linux, Archiso, Calamares, GNOME, Snapper, grub-btrfs, Flatpak and the wider free and open-source software community.
 
 Arch Linux is a trademark of its respective owner. ErgenOS is an independent project and is not affiliated with or endorsed by Arch Linux.
+
+## License
+
+Original ErgenOS work is released under the GNU General Public License v3.0 or later. Third-party components retain their own licenses. See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for details.

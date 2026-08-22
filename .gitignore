@@ -13,9 +13,15 @@
 /packages/*/src/
 /packages/*/pkg/
 /packages/*/.git-upstream/
+/packages/*/.git/
 /packages/*/*.tar.gz
 /packages/*/*.tar.xz
 /packages/*/*.tar.zst
+
+# Source checkouts created by the extension PKGBUILDs
+/packages/gnome-shell-extension-blur-my-shell/blur-my-shell/
+/packages/gnome-shell-extension-dash-to-dock/dash-to-dock/
+/packages/gnome-shell-extension-gtk4-desktop-icons-ng/desktop-icons-ng/
 
 # Local Codex metadata
 /.agents/

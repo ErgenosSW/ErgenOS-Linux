@@ -22,7 +22,10 @@ strings:
   releaseNotesUrl: ""
   donateUrl: ""
 
-images: {}
+images:
+  productIcon: "ergenos-logo.png"
+  productLogo: "ergenos-logo.png"
+  productWelcome: "ergenos-logo-text.png"
 
 style:
   SidebarBackground: "#111827"

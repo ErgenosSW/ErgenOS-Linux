@@ -14,6 +14,7 @@ broadcom-wl
 btrfs-assistant
 btrfs-progs
 calamares
+chafa
 clonezilla
 cloud-init
 cryptsetup
@@ -43,6 +44,11 @@ ghostty-terminfo
 git
 glibc-locales
 gnome
+gnome-shell-extension-arc-menu
+gnome-shell-extension-blur-my-shell
+gnome-shell-extension-caffeine
+gnome-shell-extension-dash-to-dock
+gnome-shell-extension-gtk4-desktop-icons-ng
 gnome-software
 gpart
 gpm

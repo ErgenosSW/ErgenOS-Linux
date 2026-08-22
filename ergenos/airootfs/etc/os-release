@@ -4,4 +4,4 @@ ID=ergenos
 ID_LIKE=arch
 BUILD_ID=rolling
 ANSI_COLOR="38;2;53;132;228"
-LOGO=archlinux-logo
+LOGO=ergenos-logo
