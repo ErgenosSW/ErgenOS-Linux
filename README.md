@@ -77,9 +77,19 @@ ERGENOS_OUTPUT_DIR=/path/to/output ./build.sh
 
 Archiso work directories must remain outside the repository. They contain temporary pseudo-filesystem mounts that must not be traversed by Git, indexers or backup tools.
 
-## Release artifacts
+## Download
 
-GitHub limits individual release assets to 2 GiB, so the 0.1.0 Alpha ISO is published in numbered parts. Reassemble and verify it with:
+The complete ErgenOS 0.1.0 Alpha installation image is available from [Google Drive](https://drive.google.com/file/d/1OIWWb0160muhsvHi2fkKwQrEAfSFjlA1/view?usp=sharing).
+
+Verify the downloaded image before use:
+
+```bash
+echo "e19f4098f04b4f5d5fc5ba29ff46014d394c52930aa2d8ef8dd69cef556efad4  ergenos-0.1.0-alpha-x86_64.iso" | sha256sum -c -
+```
+
+## GitHub release artifacts
+
+As an alternative to the complete image above, the [v0.1.0-alpha GitHub release](https://github.com/ErgenosSW/ErgenOS-Linux/releases/tag/v0.1.0-alpha) provides the ISO in numbered parts because GitHub limits individual release assets to 2 GiB. Reassemble and verify it with:
 
 ```bash
 cat ergenos-0.1.0-alpha-x86_64.iso.part-* > ergenos-0.1.0-alpha-x86_64.iso
@@ -91,8 +101,6 @@ Expected SHA-256 for the complete image:
 ```text
 e19f4098f04b4f5d5fc5ba29ff46014d394c52930aa2d8ef8dd69cef556efad4
 ```
-
-Release artifacts are available from [GitHub Releases](https://github.com/ErgenosSW/ErgenOS-Linux/releases).
 
 ## Validation status
 
