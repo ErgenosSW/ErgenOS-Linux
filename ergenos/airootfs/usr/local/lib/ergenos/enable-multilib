@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+pacman_conf=/etc/pacman.conf
+
+if grep -q '^\[multilib\]$' "${pacman_conf}"; then
+    exit 0
+fi
+
+if grep -q '^#\[multilib\]$' "${pacman_conf}"; then
+    sed -i '/^#\[multilib\]$/{s/^#//;n;s/^#//}' "${pacman_conf}"
+else
+    printf '\n%s\n%s\n' \
+        '[multilib]' \
+        'Include = /etc/pacman.d/mirrorlist' >> "${pacman_conf}"
+fi
+
+grep -q '^\[multilib\]$' "${pacman_conf}"

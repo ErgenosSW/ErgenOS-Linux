@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# These same-name hooks suppress snap-pac while pacstrap composes the live
+# filesystem. The installed system must use the package-provided hooks.
+rm -f /etc/pacman.d/hooks/05-snap-pac-pre.hook
+rm -f /etc/pacman.d/hooks/zz-snap-pac-post.hook
+
+if [[ "$(findmnt -n -o FSTYPE / 2>/dev/null || true)" != "btrfs" ]]; then
+    # Snapshot tooling is intentionally absent on ext4, XFS and F2FS installs.
+    # Remove the pre-transaction hook first so uninstalling Snapper cannot try
+    # to snapshot a filesystem which does not support it.
+    rm -f /usr/share/libalpm/hooks/05-snap-pac-pre.hook
+    rm -f /usr/share/libalpm/hooks/zz-snap-pac-post.hook
+    rm -f /usr/local/lib/ergenos/backup-boot
+    rm -rf /usr/local/share/ergenos/snapper
+    pacman -R --noconfirm btrfs-assistant grub-btrfs inotify-tools snap-pac snapper
+    exit 0
+fi
+
+install -d -m 0750 /etc/snapper/configs
+install -d -o root -g root -m 0750 /.snapshots
+
+cat > /etc/snapper/configs/root <<'EOF'
+SUBVOLUME="/"
+FSTYPE="btrfs"
+QGROUP=""
+SPACE_LIMIT=""
+FREE_LIMIT=""
+ALLOW_USERS=""
+ALLOW_GROUPS=""
+SYNC_ACL="no"
+BACKGROUND_COMPARISON="yes"
+NUMBER_CLEANUP="yes"
+NUMBER_MIN_AGE="1800"
+NUMBER_LIMIT="20"
+NUMBER_LIMIT_IMPORTANT="10"
+TIMELINE_CREATE="no"
+TIMELINE_CLEANUP="no"
+TIMELINE_MIN_AGE="1800"
+TIMELINE_LIMIT_HOURLY="0"
+TIMELINE_LIMIT_DAILY="0"
+TIMELINE_LIMIT_WEEKLY="0"
+TIMELINE_LIMIT_MONTHLY="0"
+TIMELINE_LIMIT_YEARLY="0"
+EMPTY_PRE_POST_CLEANUP="yes"
+EMPTY_PRE_POST_MIN_AGE="1800"
+EOF
+
+printf '%s\n' 'SNAPPER_CONFIGS="root"' > /etc/conf.d/snapper
+chown root:root /etc/snapper/configs/root /etc/conf.d/snapper
+chmod 0600 /etc/snapper/configs/root
+
+install -d -m 0755 /etc/pacman.d/hooks
+install -m 0644 /usr/local/share/ergenos/snapper/01-ergenos-bootbackup-pre.hook /etc/pacman.d/hooks/
+install -m 0644 /usr/local/share/ergenos/snapper/95-ergenos-bootbackup-post.hook /etc/pacman.d/hooks/
+rm -rf /usr/local/share/ergenos/snapper
+
+if ! grep -q 'grub-btrfs-overlayfs' /etc/mkinitcpio.conf; then
+    sed -i '/^HOOKS=(/s/)/ grub-btrfs-overlayfs)/' /etc/mkinitcpio.conf
+fi
+
+systemctl enable snapper-cleanup.timer
+systemctl enable grub-btrfsd.service

@@ -2,6 +2,7 @@ alsa-utils
 amd-ucode
 arch-install-scripts
 archinstall
+archlinux-keyring
 b43-fwcutter
 base
 bcachefs-tools
@@ -9,6 +10,7 @@ bind
 bolt
 brltty
 broadcom-wl
+btrfs-assistant
 btrfs-progs
 calamares
 clonezilla
@@ -29,8 +31,10 @@ espeakup
 ethtool
 exfatprogs
 f2fs-tools
+fastfetch
 fatresize
 firefox
+flatpak
 foot-terminfo
 fsarchiver
 gdm
@@ -38,12 +42,15 @@ ghostty-terminfo
 git
 glibc-locales
 gnome
+gnome-software
 gpart
 gpm
 gptfdisk
 grub
+grub-btrfs
 hdparm
 hyperv
+inotify-tools
 intel-ucode
 irssi
 iw
@@ -115,6 +122,8 @@ sdparm
 sequoia-sq
 sg3_utils
 smartmontools
+snap-pac
+snapper
 sof-firmware
 squashfs-tools
 sudo

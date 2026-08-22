@@ -1,0 +1,13 @@
+[Unit]
+Description=Enable Flathub for ErgenOS
+Documentation=https://flatpak.org/setup/Arch
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/flatpak remote-add --system --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+ExecStartPost=/usr/bin/systemctl disable ergenos-flathub-setup.service
+
+[Install]
+WantedBy=multi-user.target

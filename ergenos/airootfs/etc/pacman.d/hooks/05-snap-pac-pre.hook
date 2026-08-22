@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Type = Package
+Target = __ergenos_iso_build_only__
+
+[Action]
+Description = Snap-pac disabled while composing the ErgenOS live image
+When = PreTransaction
+Exec = /usr/bin/true
+

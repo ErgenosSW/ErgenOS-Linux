@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Path
+Target = usr/lib/modules/*/vmlinuz
+
+[Action]
+Description = Backing up /boot before the kernel transaction...
+When = PreTransaction
+Depends = rsync
+Exec = /usr/local/lib/ergenos/backup-boot

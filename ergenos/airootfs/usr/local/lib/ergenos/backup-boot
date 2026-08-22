@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+[[ "$(findmnt -n -o FSTYPE / 2>/dev/null || true)" == "btrfs" ]] || exit 0
+mountpoint -q /boot || exit 0
+
+backup_mount="$(mktemp -d /run/ergenos-root.XXXXXX)"
+cleanup() {
+    if mountpoint -q "${backup_mount}"; then
+        umount "${backup_mount}"
+    fi
+    rmdir "${backup_mount}" 2>/dev/null || true
+}
+trap cleanup EXIT
+
+mount --bind / "${backup_mount}"
+install -d -m 0755 "${backup_mount}/boot"
+chattr +C "${backup_mount}/boot" 2>/dev/null || true
+btrfs property set "${backup_mount}/boot" compression none 2>/dev/null || true
+
+rsync -a --delete \
+    --exclude='/efi/' \
+    --exclude='/grub/' \
+    --exclude='/lost+found/' \
+    /boot/ "${backup_mount}/boot/"
