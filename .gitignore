@@ -7,6 +7,7 @@
 /repo/
 *.pkg.tar.*
 *.src.tar.*
+!ergenos/airootfs/usr/local/share/ergenos/packages/*.pkg.tar.zst
 
 # makepkg build artifacts; keep PKGBUILD and patches
 /packages/*/src/

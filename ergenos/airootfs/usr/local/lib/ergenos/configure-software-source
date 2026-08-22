@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+choice="${1:-}"
+
+install_aur_helper() {
+    local helper="$1"
+    local package_dir='/usr/local/share/ergenos/packages'
+
+    case "$helper" in
+        yay)
+            pacman -U --needed --noconfirm "$package_dir"/yay-bin-*.pkg.tar.zst
+            ;;
+        paru)
+            pacman -U --needed --noconfirm "$package_dir"/paru-*.pkg.tar.zst
+            ;;
+    esac
+}
+
+enable_chaotic_aur() {
+    local package_dir='/usr/local/share/ergenos/packages'
+
+    if ! pacman-conf --repo-list | grep -qx 'chaotic-aur'; then
+        pacman -U --needed --noconfirm \
+            "$package_dir/chaotic-keyring.pkg.tar.zst" \
+            "$package_dir/chaotic-mirrorlist.pkg.tar.zst"
+        printf '\n%s\n%s\n' \
+            '[chaotic-aur]' \
+            'Include = /etc/pacman.d/chaotic-mirrorlist' >> /etc/pacman.conf
+    fi
+}
+
+case "$choice" in
+    official)
+        ;;
+    yay|paru)
+        install_aur_helper "$choice"
+        ;;
+    chaotic)
+        enable_chaotic_aur
+        ;;
+    *)
+        echo "Unsupported software-source selection: $choice" >&2
+        exit 2
+        ;;
+esac
+
+rm -rf /usr/local/share/ergenos/packages
+rm -f /usr/local/lib/ergenos/configure-software-source

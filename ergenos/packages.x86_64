@@ -5,6 +5,7 @@ archinstall
 archlinux-keyring
 b43-fwcutter
 base
+base-devel
 bcachefs-tools
 bind
 bolt
