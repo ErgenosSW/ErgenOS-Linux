@@ -7,51 +7,40 @@
 [![Release](https://img.shields.io/github/v/release/ErgenosSW/ErgenOS-Linux?include_prereleases&label=release)](https://github.com/ErgenosSW/ErgenOS-Linux/releases)
 [![License](https://img.shields.io/badge/license-GPL--3.0--or--later-blue)](LICENSE)
 
-ErgenOS is an independent Arch Linux derivative focused on an integrated GNOME installation and recovery workflow. The project ships an Archiso profile, a Calamares configuration, distribution defaults and the local packages required to produce the installation image.
+ErgenOS is an independent Arch Linux based distribution built around GNOME, Btrfs recovery and a graphical installer. It uses Arch repositories and the rolling release model while adding its own installation workflow, system defaults and recovery setup.
 
-The current release is **0.1.0 Alpha**. It is intended for evaluation and development, not production deployment.
+The current release is **0.1.0 Alpha - "Somehow Booted"**. It is an early development release intended for testing and evaluation, not production use.
 
-## System composition
+## Current state
 
-| Component | Implementation |
-| --- | --- |
-| Live environment | Archiso, GNOME on Wayland |
-| Installer | Calamares |
-| Kernel | `linux-zen` |
-| Bootloader | GRUB with `os-prober` |
-| Package sources | Arch repositories, multilib, optional AUR helper or Chaotic-AUR |
-| Application distribution | Pacman and Flatpak/Flathub |
-| Btrfs integration | Snapper, `snap-pac`, `grub-btrfs`, `grub-btrfs-overlayfs` |
-| Shell | Zsh with a preconfigured Powerlevel10k profile |
+ErgenOS currently includes:
 
-The GNOME session includes ErgenOS defaults and artwork together with ArcMenu, Dash to Dock, Blur My Shell, Caffeine and GTK4 Desktop Icons NG.
+- an Archiso live environment with GNOME on Wayland
+- the `linux-zen` kernel
+- Calamares with automatic and manual partitioning
+- Btrfs, ext4, XFS and F2FS root filesystem support
+- GRUB with `os-prober`
+- Arch repositories, multilib and Flathub
+- a choice of official repositories only, `yay`, `paru` or Chaotic-AUR during installation
+- Zsh with a preconfigured Powerlevel10k profile
+- ErgenOS artwork and GNOME defaults
+- ArcMenu, Dash to Dock, Blur My Shell, Caffeine and GTK4 Desktop Icons NG
 
-## Installer behavior
+The live image uses Nouveau. Selection of proprietary NVIDIA drivers in the installer is not implemented yet.
 
-Calamares provides automatic and manual partitioning with Btrfs, ext4, XFS and F2FS root filesystem support. GRUB is installed as the system bootloader.
+## Installation and recovery
 
-The software-source page applies exactly one of the following configurations to the target system:
+Calamares installs the system and applies the software source selected by the user. The optional `yay`, `paru` and Chaotic-AUR paths require an internet connection during installation.
 
-| Selection | Target configuration |
-| --- | --- |
-| Official repositories only | Arch repositories, multilib and Flathub |
-| AUR with yay | Official configuration plus `yay` |
-| AUR with paru | Official configuration plus `paru` |
-| Chaotic-AUR | Official configuration plus the Chaotic-AUR keyring, mirror list and repository |
+Btrfs installations configure Snapper for the root filesystem. `snap-pac` creates pre and post snapshots during Pacman transactions, and `grub-btrfs` adds those snapshots to the GRUB menu.
 
-The AUR and Chaotic-AUR are external to the official Arch Linux repositories and have separate trust and maintenance models.
+A snapshot can be booted as an earlier system state. ErgenOS includes `grub-btrfs-overlayfs`, which adds a temporary writable overlay while the snapshot itself remains read-only. Normal boot entries keep hibernation support, while snapshot entries use `noresume` to avoid resuming into historical system state.
 
-## Btrfs recovery model
+This recovery setup is only enabled for Btrfs installations.
 
-For Btrfs installations, the installer creates the subvolume layout and configures Snapper for the root filesystem. Pacman transactions generate paired pre/post snapshots through `snap-pac`. `grub-btrfsd` regenerates snapshot entries for GRUB.
+## Building the ISO
 
-Snapshot entries boot through `grub-btrfs-overlayfs`: the selected snapshot is used as a read-only lower layer and runtime changes are written to a temporary overlay. Snapshot kernel entries include `noresume`, preventing hibernation resume attempts against historical system state. Normal boot entries retain the configured resume device.
-
-This integration is not installed for non-Btrfs root filesystems.
-
-## Building
-
-Build on an up-to-date Arch Linux host with `archiso`, `base-devel` and `git` installed:
+Build on an up-to-date Arch Linux system with `archiso`, `base-devel` and `git` installed:
 
 ```bash
 git clone https://github.com/ErgenosSW/ErgenOS-Linux.git
@@ -59,15 +48,9 @@ cd ErgenOS-Linux
 ./build.sh
 ```
 
-`build.sh` performs the distribution-specific build orchestration:
+The finished ISO is written to `out/`. The script builds the required local packages, creates the local package repository and uses an isolated Archiso work directory under `/var/tmp`.
 
-- builds or reuses the required local packages;
-- generates the local package repository database;
-- creates a temporary Pacman configuration with the resolved repository path;
-- allocates an isolated Archiso work directory under `/var/tmp`;
-- writes the resulting image to `out/`.
-
-Available controls:
+Useful options:
 
 ```bash
 ./build.sh --rebuild-packages
@@ -75,21 +58,19 @@ ERGENOS_WORK_DIR=/var/tmp/ergenos-work ./build.sh
 ERGENOS_OUTPUT_DIR=/path/to/output ./build.sh
 ```
 
-Archiso work directories must remain outside the repository. They contain temporary pseudo-filesystem mounts that must not be traversed by Git, indexers or backup tools.
+Keep Archiso work directories outside the repository. They contain temporary pseudo-filesystem mounts that should not be scanned by Git, indexers or backup tools.
 
 ## Download
 
-The complete ErgenOS 0.1.0 Alpha installation image is available from [Google Drive](https://drive.google.com/file/d/1OIWWb0160muhsvHi2fkKwQrEAfSFjlA1/view?usp=sharing).
+The complete ErgenOS 0.1.0 Alpha ISO is available from [Google Drive](https://drive.google.com/file/d/1OIWWb0160muhsvHi2fkKwQrEAfSFjlA1/view?usp=sharing).
 
-Verify the downloaded image before use:
+Verify it after downloading:
 
 ```bash
 echo "e19f4098f04b4f5d5fc5ba29ff46014d394c52930aa2d8ef8dd69cef556efad4  ergenos-0.1.0-alpha-x86_64.iso" | sha256sum -c -
 ```
 
-## GitHub release artifacts
-
-As an alternative to the complete image above, the [v0.1.0-alpha GitHub release](https://github.com/ErgenosSW/ErgenOS-Linux/releases/tag/v0.1.0-alpha) provides the ISO in numbered parts because GitHub limits individual release assets to 2 GiB. Reassemble and verify it with:
+The [v0.1.0-alpha GitHub release](https://github.com/ErgenosSW/ErgenOS-Linux/releases/tag/v0.1.0-alpha) also provides the ISO in numbered parts because each release asset must remain below the GitHub size limit. Reassemble and verify it with:
 
 ```bash
 cat ergenos-0.1.0-alpha-x86_64.iso.part-* > ergenos-0.1.0-alpha-x86_64.iso
@@ -102,35 +83,41 @@ Expected SHA-256 for the complete image:
 e19f4098f04b4f5d5fc5ba29ff46014d394c52930aa2d8ef8dd69cef556efad4
 ```
 
-## Validation status
+## Tested so far
 
-Version 0.1.0 Alpha has been validated with:
+Version 0.1.0 Alpha has been tested with:
 
-- UEFI installation under QEMU/KVM;
-- installation on a Lenovo ThinkPad E14 Gen 2;
-- official repositories, multilib and Flathub;
-- `yay`, `paru` and Chaotic-AUR installer paths;
-- automatic pre/post snapshots for Pacman transactions;
-- read-only snapshot boot through an overlay root;
-- snapshot-specific `noresume` and normal-system hibernation;
-- Wi-Fi, Bluetooth, Bluetooth audio, suspend and hardware function keys.
+- UEFI installation under QEMU/KVM
+- installation on a Lenovo ThinkPad E14 Gen 2
+- official repositories, multilib and Flathub
+- the `yay`, `paru` and Chaotic-AUR installer options
+- automatic Pacman snapshots
+- snapshot boot with an overlay root
+- hibernation on a normal boot and disabled resume when booting a snapshot
+- Wi-Fi, Bluetooth, Bluetooth audio, suspend and hardware function keys
+
+Hardware coverage and long-term upgrade testing are still limited.
+
+## Project direction
+
+ErgenOS is being developed as a gaming focused Arch Linux distribution that keeps the benefits of rolling release while putting more emphasis on practical stability and recovery after a problematic update.
+
+Version 0.1.0 Alpha establishes the installer, desktop and recovery foundation. A broader gaming setup is a development goal and is not part of the current release yet.
 
 ## Known limitations
 
 - Secure Boot is not supported.
-- Proprietary NVIDIA driver selection is not implemented; the live image uses Nouveau.
-- Hardware coverage and long-term upgrade testing are currently limited.
-- Optional software-source configuration requires network access during installation.
-- ErgenOS does not provide an independent binary mirror for the Arch package set.
+- Proprietary NVIDIA driver selection is not available in the installer.
+- Optional software source setup requires network access during installation.
+- ErgenOS does not maintain a separate binary mirror for Arch packages.
+- Hardware coverage and long-term upgrade testing are limited.
 
 See [CHANGELOG.md](CHANGELOG.md) for release-specific changes.
 
-## Contributing
+## Contributing and licensing
 
-Issues and pull requests should identify the ErgenOS version, firmware mode, filesystem, software-source selection and relevant Calamares or system journal output. Reproduction against the current `main` branch is preferred.
-
-## Independence and licensing
+Bug reports should include the ErgenOS version, firmware mode, root filesystem, selected software source and relevant Calamares or system journal output. Issues and pull requests are welcome.
 
 ErgenOS is not affiliated with or endorsed by Arch Linux. Arch Linux and related marks belong to their respective owners.
 
-Original ErgenOS work is licensed under GPL-3.0-or-later. Bundled and adapted third-party components retain their respective licenses and copyright notices. See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Original ErgenOS work is licensed under GPL-3.0-or-later. Bundled and adapted third-party components keep their respective licenses and copyright notices. See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
