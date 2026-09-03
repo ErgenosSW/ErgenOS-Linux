@@ -2,6 +2,17 @@
 
 All notable ErgenOS changes are documented in this file.
 
+## [0.1.1-alpha] - 2026-09-04
+
+### Added
+
+- ErgenCTL 0.1.1-alpha as the native `ergenctl` command
+
+### Fixed
+
+- Linux Zen paths in UEFI, GRUB, Syslinux, PXE and loopback boot entries
+- Broadcom driver package selection for current Arch repositories
+
 ## [0.1.0-alpha] - 2026-08-23
 
 First public alpha.

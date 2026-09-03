@@ -4,7 +4,7 @@
   <img src="assets/ergenos-logo.png" alt="ErgenOS logo" width="320">
 </p>
 
-[![Release](https://img.shields.io/github/v/release/ErgenosSW/ErgenOS-Linux?include_prereleases&label=release)](https://github.com/ErgenosSW/ErgenOS-Linux/releases)
+[![Release](https://img.shields.io/badge/release-0.1.1--alpha-orange)](https://github.com/ErgenosSW/ErgenOS-Linux/releases)
 [![License](https://img.shields.io/badge/license-GPL--3.0--or--later-blue)](LICENSE)
 
 ErgenOS is an independent Arch Linux based distribution built around GNOME, Btrfs recovery and a graphical installer. It uses Arch repositories and the rolling release model while adding its own installation workflow, system defaults and recovery setup.
@@ -64,25 +64,25 @@ Keep Archiso work directories outside the repository. They contain temporary pse
 
 ## Download
 
-The complete ErgenOS 0.1.0 Alpha ISO is available from [Google Drive](https://drive.google.com/file/d/1OIWWb0160muhsvHi2fkKwQrEAfSFjlA1/view?usp=sharing).
+The complete ErgenOS 0.1.1 Alpha ISO is available from [Google Drive](https://drive.google.com/file/d/1pFa6edmkD0YLkyLpWzXjpHCA-onA7QmG/view?usp=sharing).
 
 Verify it after downloading:
 
 ```bash
-echo "e19f4098f04b4f5d5fc5ba29ff46014d394c52930aa2d8ef8dd69cef556efad4  ergenos-0.1.0-alpha-x86_64.iso" | sha256sum -c -
+echo "cd287cffbd8594fa0c47841c95e6162aad983e72a4ada623c7815592e470b449  ergenos-0.1.1-alpha-x86_64.iso" | sha256sum -c -
 ```
 
-The [v0.1.0-alpha GitHub release](https://github.com/ErgenosSW/ErgenOS-Linux/releases/tag/v0.1.0-alpha) also provides the ISO in numbered parts because each release asset must remain below the GitHub size limit. Reassemble and verify it with:
+The [v0.1.1-alpha GitHub release](https://github.com/ErgenosSW/ErgenOS-Linux/releases/tag/v0.1.1-alpha) also provides the ISO in two numbered parts because each release asset must remain below the GitHub size limit. Reassemble and verify it with:
 
 ```bash
-cat ergenos-0.1.0-alpha-x86_64.iso.part-* > ergenos-0.1.0-alpha-x86_64.iso
+cat ergenos-0.1.1-alpha-x86_64.iso.part-* > ergenos-0.1.1-alpha-x86_64.iso
 sha256sum -c SHA256SUMS --ignore-missing
 ```
 
 Expected SHA-256 for the complete image:
 
 ```text
-e19f4098f04b4f5d5fc5ba29ff46014d394c52930aa2d8ef8dd69cef556efad4
+cd287cffbd8594fa0c47841c95e6162aad983e72a4ada623c7815592e470b449
 ```
 
 ## Tested so far
