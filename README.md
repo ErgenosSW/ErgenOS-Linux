@@ -24,6 +24,7 @@ ErgenOS currently includes:
 - a choice of official repositories only, `yay`, `paru` or Chaotic-AUR during installation
 - Zsh with a preconfigured Powerlevel10k profile
 - ErgenOS artwork and GNOME defaults
+- ErgenCTL system diagnostics and snapshot recovery utility
 - ArcMenu, Dash to Dock, Blur My Shell, Caffeine and GTK4 Desktop Icons NG
 
 The live image uses Nouveau. Selection of proprietary NVIDIA drivers in the installer is not implemented yet.
@@ -37,6 +38,34 @@ Btrfs installations configure Snapper for the root filesystem. `snap-pac` create
 A snapshot can be booted as an earlier system state. ErgenOS includes `grub-btrfs-overlayfs`, which adds a temporary writable overlay while the snapshot itself remains read-only. Normal boot entries keep hibernation support, while snapshot entries use `noresume` to avoid resuming into historical system state.
 
 This recovery setup is only enabled for Btrfs installations.
+
+## ErgenCTL
+
+The current development tree includes ErgenCTL 0.1.1-alpha. It is installed as the native `ergenctl` command in both the live environment and the installed system.
+
+Inspect the system:
+
+```bash
+ergenctl status
+sudo ergenctl doctor
+sudo ergenctl resume
+```
+
+Inspect and apply supported repairs:
+
+```bash
+sudo ergenctl fix all --dry-run
+sudo ergenctl fix all --yes
+```
+
+When the normal system cannot boot, start a working snapshot from GRUB and inspect the base installation with `ergenctl`. A selected snapshot can be restored as the new writable root:
+
+```bash
+sudo ergenctl rollback SNAPSHOT_NUMBER --dry-run
+sudo ergenctl rollback SNAPSHOT_NUMBER --yes
+```
+
+ErgenCTL preserves the replaced root subvolume during rollback. Its repository and complete command reference are available at [ErgenosSW/ErgenCTL](https://github.com/ErgenosSW/ErgenCTL).
 
 ## Building the ISO
 
