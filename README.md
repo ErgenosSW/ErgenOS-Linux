@@ -9,7 +9,7 @@
 
 ErgenOS is an independent Arch Linux based distribution built around GNOME, Btrfs recovery and a graphical installer. It uses Arch repositories and the rolling release model while adding its own installation workflow, system defaults and recovery setup.
 
-The current release is **0.1.0 Alpha - "Somehow Booted"**. It is an early development release intended for testing and evaluation, not production use.
+The current release is **0.1.1 Alpha - "Somehow Booted and Fixed"**. It is an early development release intended for testing and evaluation, not production use.
 
 ## Current state
 
@@ -18,13 +18,10 @@ ErgenOS currently includes:
 - an Archiso live environment with GNOME on Wayland
 - the `linux-zen` kernel
 - Calamares with automatic and manual partitioning
-- Btrfs, ext4, XFS and F2FS root filesystem support
-- GRUB with `os-prober`
-- Arch repositories, multilib and Flathub
 - a choice of official repositories only, `yay`, `paru` or Chaotic-AUR during installation
 - Zsh with a preconfigured Powerlevel10k profile
 - ErgenOS artwork and GNOME defaults
-- ErgenCTL system diagnostics and snapshot recovery utility
+- [ErgenCTL](https://github.com/ErgenosSW/ErgenCTL)
 - ArcMenu, Dash to Dock, Blur My Shell, Caffeine and GTK4 Desktop Icons NG
 
 The live image uses Nouveau. Selection of proprietary NVIDIA drivers in the installer is not implemented yet.
@@ -41,31 +38,7 @@ This recovery setup is only enabled for Btrfs installations.
 
 ## ErgenCTL
 
-The current development tree includes ErgenCTL 0.1.1-alpha. It is installed as the native `ergenctl` command in both the live environment and the installed system.
-
-Inspect the system:
-
-```bash
-ergenctl status
-sudo ergenctl doctor
-sudo ergenctl resume
-```
-
-Inspect and apply supported repairs:
-
-```bash
-sudo ergenctl fix all --dry-run
-sudo ergenctl fix all --yes
-```
-
-When the normal system cannot boot, start a working snapshot from GRUB and inspect the base installation with `ergenctl`. A selected snapshot can be restored as the new writable root:
-
-```bash
-sudo ergenctl rollback SNAPSHOT_NUMBER --dry-run
-sudo ergenctl rollback SNAPSHOT_NUMBER --yes
-```
-
-ErgenCTL preserves the replaced root subvolume during rollback. Its repository and complete command reference are available at [ErgenosSW/ErgenCTL](https://github.com/ErgenosSW/ErgenCTL).
+ErgenOS includes [ErgenCTL](https://github.com/ErgenosSW/ErgenCTL), installed as the native `ergenctl` command in both the live environment and the installed system. Documentation and development history are maintained in its separate repository.
 
 ## Building the ISO
 
@@ -114,7 +87,7 @@ e19f4098f04b4f5d5fc5ba29ff46014d394c52930aa2d8ef8dd69cef556efad4
 
 ## Tested so far
 
-Version 0.1.0 Alpha has been tested with:
+Version 0.1.1 Alpha has been tested with:
 
 - UEFI installation under QEMU/KVM
 - installation on a Lenovo ThinkPad E14 Gen 2
@@ -131,7 +104,7 @@ Hardware coverage and long-term upgrade testing are still limited.
 
 ErgenOS is being developed as a gaming focused Arch Linux distribution that keeps the benefits of rolling release while putting more emphasis on practical stability and recovery after a problematic update.
 
-Version 0.1.0 Alpha establishes the installer, desktop and recovery foundation. A broader gaming setup is a development goal and is not part of the current release yet.
+Version 0.1.1 Alpha establishes the installer, desktop and recovery foundation. A broader gaming setup is a development goal and is not part of the current release yet.
 
 ## Known limitations
 

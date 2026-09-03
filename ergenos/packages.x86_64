@@ -12,7 +12,7 @@ bluez
 bluez-utils
 bolt
 brltty
-broadcom-wl
+broadcom-wl-dkms
 btrfs-assistant
 btrfs-progs
 calamares
