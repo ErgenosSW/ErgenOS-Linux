@@ -55,10 +55,14 @@ The finished ISO is written to `out/`. The script builds the required local pack
 Useful options:
 
 ```bash
+./build.sh --validate-only
 ./build.sh --rebuild-packages
+./build.sh --release-parts
 ERGENOS_WORK_DIR=/var/tmp/ergenos-work ./build.sh
 ERGENOS_OUTPUT_DIR=/path/to/output ./build.sh
 ```
+
+Every completed build is checked for the expected kernel, initramfs and primary UEFI entry. The script also writes `SHA256SUMS` to the output directory. The `--release-parts` option creates two numbered ISO parts and their checksums for a GitHub release.
 
 Keep Archiso work directories outside the repository. They contain temporary pseudo-filesystem mounts that should not be scanned by Git, indexers or backup tools.
 

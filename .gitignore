@@ -2,6 +2,7 @@
 /work/
 /out/
 /out-*/
+/release-*/
 /*.iso
 
 # Locally built repository and binary packages
