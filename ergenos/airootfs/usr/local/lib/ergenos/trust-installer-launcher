@@ -4,8 +4,18 @@ set -euo pipefail
 
 launcher="${HOME}/Desktop/Install ErgenOS.desktop"
 
-[[ "${USER:-}" == "ergenos" ]] || exit 0
+[[ "$(id -un)" == "ergenos" ]] || exit 0
 [[ -f "${launcher}" ]] || exit 0
 
 chmod u+x "${launcher}"
-gio set "${launcher}" metadata::trusted true
+
+for attempt in {1..20}; do
+    if gio set "${launcher}" metadata::trusted true 2>/dev/null \
+        && gio info -a metadata::trusted "${launcher}" 2>/dev/null \
+            | grep -Fq 'metadata::trusted: true'; then
+        exit 0
+    fi
+    sleep 0.5
+done
+
+exit 0
