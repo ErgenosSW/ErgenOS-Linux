@@ -2,6 +2,24 @@
 
 All notable ErgenOS changes are documented in this file.
 
+## [0.1.2-alpha] - 2026-09-06
+
+### Added
+
+- ErgenOS Welcome as the first-login application
+- direct access to the ErgenOS installer from Welcome in the live environment
+- an ErgenOS installer shortcut on the live desktop
+
+### Changed
+
+- the Welcome login preference is enabled by default on installed systems
+- the Welcome preferences section is hidden in the live environment
+- the generic Calamares launcher is hidden in favor of Install ErgenOS
+
+### Fixed
+
+- the live desktop installer shortcut is automatically marked as trusted
+
 ## [0.1.1-alpha] - 2026-09-04
 
 ### Added

@@ -4,12 +4,12 @@
   <img src="assets/ergenos-logo.png" alt="ErgenOS logo" width="320">
 </p>
 
-[![Release](https://img.shields.io/badge/release-0.1.1--alpha-orange)](https://github.com/ErgenosSW/ErgenOS-Linux/releases)
+[![Release](https://img.shields.io/badge/release-0.1.2--alpha-orange)](https://github.com/ErgenosSW/ErgenOS-Linux/releases)
 [![License](https://img.shields.io/badge/license-GPL--3.0--or--later-blue)](LICENSE)
 
 ErgenOS is an independent Arch Linux based distribution built around GNOME, Btrfs recovery and a graphical installer. It uses Arch repositories and the rolling release model while adding its own installation workflow, system defaults and recovery setup.
 
-The current release is **0.1.1 Alpha - "Somehow Booted and Fixed"**. It is an early development release intended for testing and evaluation, not production use.
+The current development version is **0.1.2 Alpha - "HowDoesItStillWork"**. It is an early development release intended for testing and evaluation, not production use.
 
 ## Current state
 
@@ -68,7 +68,7 @@ Keep Archiso work directories outside the repository. They contain temporary pse
 
 ## Download
 
-The complete ErgenOS 0.1.1 Alpha ISO is available from [Google Drive](https://drive.google.com/file/d/1pFa6edmkD0YLkyLpWzXjpHCA-onA7QmG/view?usp=sharing).
+The latest published image is ErgenOS 0.1.1 Alpha. The complete ISO is available from [Google Drive](https://drive.google.com/file/d/1pFa6edmkD0YLkyLpWzXjpHCA-onA7QmG/view?usp=sharing).
 
 Verify it after downloading:
 
@@ -91,7 +91,7 @@ cd287cffbd8594fa0c47841c95e6162aad983e72a4ada623c7815592e470b449
 
 ## Tested so far
 
-Version 0.1.1 Alpha has been tested with:
+Version 0.1.2 Alpha has been tested with:
 
 - UEFI installation under QEMU/KVM
 - installation on a Lenovo ThinkPad E14 Gen 2
@@ -108,7 +108,7 @@ Hardware coverage and long-term upgrade testing are still limited.
 
 ErgenOS is being developed as a gaming focused Arch Linux distribution that keeps the benefits of rolling release while putting more emphasis on practical stability and recovery after a problematic update.
 
-Version 0.1.1 Alpha establishes the installer, desktop and recovery foundation. A broader gaming setup is a development goal and is not part of the current release yet.
+Version 0.1.2 Alpha adds the first-login experience and improves access to the installer in the live environment. A broader gaming setup is a development goal and is not part of the current release yet.
 
 ## Known limitations
 
