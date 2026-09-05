@@ -32,4 +32,5 @@ file_permissions=(
   ["/usr/local/lib/ergenos/enable-multilib"]="0:0:755"
   ["/usr/local/lib/ergenos/configure-software-source"]="0:0:755"
   ["/usr/local/lib/ergenos/configure-resume"]="0:0:755"
+  ["/usr/local/lib/ergenos/trust-installer-launcher"]="0:0:755"
 )

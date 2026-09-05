@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+launcher="${HOME}/Desktop/Install ErgenOS.desktop"
+
+[[ "${USER:-}" == "ergenos" ]] || exit 0
+[[ -f "${launcher}" ]] || exit 0
+
+chmod u+x "${launcher}"
+gio set "${launcher}" metadata::trusted true

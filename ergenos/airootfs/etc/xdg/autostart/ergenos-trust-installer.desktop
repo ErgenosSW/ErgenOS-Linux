@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Prepare ErgenOS installer shortcut
+Comment=Mark the live installer shortcut as trusted
+Exec=/usr/local/lib/ergenos/trust-installer-launcher
+Terminal=false
+OnlyShowIn=GNOME;
+NoDisplay=true
+X-GNOME-Autostart-Phase=Initialization
