@@ -1,7 +1,7 @@
 # Maintainer: ErgenOS Project <https://github.com/ErgenosSW>
 
 pkgname=ergenos-welcome
-pkgver=0.1.0.alpha
+pkgver=0.1.1.alpha
 pkgrel=1
 pkgdesc='First-login welcome application for ErgenOS'
 arch=('any')
@@ -14,9 +14,9 @@ depends=(
   'python-gobject'
 )
 makedepends=('meson')
-_upstream_version=0.1.0-alpha
+_upstream_version=0.1.1-alpha
 source=("${pkgname}-${_upstream_version}.tar.gz::${url}/archive/refs/tags/v${_upstream_version}.tar.gz")
-sha256sums=('0adae15408c812854ac9200a35a0494a88226ca0f6d1f233d1cdce0494ef7d3c')
+sha256sums=('ca558af86b126d61c2152081a156696420305ab5f6bb8252df013041e82f781c')
 
 build() {
   arch-meson "ErgenOS-Welcome-${_upstream_version}" build
