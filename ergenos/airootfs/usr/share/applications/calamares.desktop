@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Install System
+Comment=System installer
+Exec=calamares
+Icon=calamares
+Terminal=false
+Categories=System;
+NoDisplay=true
