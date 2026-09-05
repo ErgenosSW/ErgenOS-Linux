@@ -1,7 +1,7 @@
 pkgbase = calamares
 	pkgdesc = Distribution-independent installer framework
 	pkgver = 3.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/Calamares/calamares
 	arch = i686
 	arch = x86_64

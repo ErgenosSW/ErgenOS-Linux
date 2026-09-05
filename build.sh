@@ -167,7 +167,11 @@ build_local_repository() {
 
         if [[ "${needs_build}" == true ]]; then
             printf 'Building %s\n' "${relative_dir}"
-            (cd "${package_dir}" && makepkg -s --needed --noconfirm)
+            makepkg_options=(-s --needed --noconfirm)
+            if [[ "${rebuild_packages}" == true ]]; then
+                makepkg_options+=(--force)
+            fi
+            (cd "${package_dir}" && makepkg "${makepkg_options[@]}")
         else
             printf 'Reusing built package from %s\n' "${relative_dir}"
         fi

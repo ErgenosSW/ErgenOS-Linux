@@ -4,7 +4,7 @@
 _pkgname="calamares"
 pkgname="$_pkgname"
 pkgver=3.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Distribution-independent installer framework"
 url="https://codeberg.org/Calamares/calamares"
 license=("GPL-3.0-or-later")
@@ -83,4 +83,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  printf '\nNoDisplay=true\n' >>"$pkgdir/usr/share/applications/calamares.desktop"
 }
