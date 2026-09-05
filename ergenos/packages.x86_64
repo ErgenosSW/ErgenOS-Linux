@@ -31,6 +31,7 @@ dosfstools
 e2fsprogs
 edk2-shell
 efibootmgr
+ergenctl
 espeakup
 ethtool
 exfatprogs

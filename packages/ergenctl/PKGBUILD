@@ -1,0 +1,45 @@
+# Maintainer: ErgenOS Project <https://github.com/ErgenosSW>
+
+pkgname=ergenctl
+pkgver=0.1.1.alpha
+pkgrel=1
+pkgdesc='Diagnostics and recovery utility for ErgenOS'
+arch=('any')
+url='https://github.com/ErgenosSW/ErgenCTL'
+license=('GPL-3.0-or-later')
+depends=(
+  'arch-install-scripts'
+  'btrfs-progs'
+  'grub'
+  'grub-btrfs'
+  'mkinitcpio'
+  'pacman'
+  'python'
+  'snapper'
+  'systemd'
+)
+optdepends=(
+  'flatpak: Flathub diagnostics'
+  'snap-pac: automatic snapshots around Pacman transactions'
+)
+_upstream_version=0.1.1-alpha
+source=(
+  "${pkgname}-${_upstream_version}.tar.gz::${url}/archive/refs/tags/v${_upstream_version}.tar.gz"
+  'ergenctl-logo.png'
+)
+sha256sums=(
+  '75a8a5cdc02315d59c57df383651650e2cd67040a0c502d2a9b477d37310fba9'
+  '2a15a106824853691a8efcca7e399a3b2e0fec76bbe917797df86914d20887d4'
+)
+
+check() {
+  cd "ErgenCTL-${_upstream_version}"
+  python -m unittest discover -s tests -v
+}
+
+package() {
+  cd "ErgenCTL-${_upstream_version}"
+  install -Dm755 ergenctl.py "${pkgdir}/usr/bin/ergenctl"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/ergenctl-logo.png" "${pkgdir}/usr/share/pixmaps/ergenctl.png"
+}

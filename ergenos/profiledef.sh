@@ -27,7 +27,6 @@ file_permissions=(
   ["/usr/local/bin/Installation_guide"]="0:0:755"
   ["/usr/local/bin/livecd-sound"]="0:0:755"
   ["/usr/local/bin/ergenos-installer"]="0:0:755"
-  ["/usr/bin/ergenctl"]="0:0:755"
   ["/usr/local/lib/ergenos/setup-snapper"]="0:0:755"
   ["/usr/local/lib/ergenos/backup-boot"]="0:0:755"
   ["/usr/local/lib/ergenos/enable-multilib"]="0:0:755"

@@ -119,8 +119,8 @@ validate_profile() {
             || die "${config_file} does not reference ${initramfs_image}"
     done
 
-    [[ -x "${profile_dir}/airootfs/usr/bin/ergenctl" ]] \
-        || die "ErgenCTL is missing or not executable in airootfs"
+    grep -Fxq 'ergenctl' "${packages_file}" \
+        || die "The ErgenCTL package is not listed"
     grep -Fxq 'python' "${packages_file}" \
         || die "The python runtime required by ErgenCTL is not listed"
     grep -Fxq "BUILD_ID=\"${version}\"" "${profile_dir}/airootfs/etc/os-release" \
@@ -136,6 +136,7 @@ validate_profile() {
 
 package_dirs=(
     packages/calamares
+    packages/ergenctl
     packages/gnome-shell-extension-blur-my-shell
     packages/gnome-shell-extension-dash-to-dock
     packages/gnome-shell-extension-gtk4-desktop-icons-ng
