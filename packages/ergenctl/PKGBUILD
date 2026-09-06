@@ -1,7 +1,7 @@
 # Maintainer: ErgenOS Project <https://github.com/ErgenosSW>
 
 pkgname=ergenctl
-pkgver=0.1.2.alpha
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Diagnostics and recovery utility for ErgenOS'
 arch=('any')
@@ -27,9 +27,9 @@ optdepends=(
   'flatpak: Flathub diagnostics'
   'snap-pac: automatic snapshots around Pacman transactions'
 )
-_upstream_version=0.1.2-alpha
+_upstream_version=1.0.0
 source=("${pkgname}-${_upstream_version}.tar.gz::${url}/archive/refs/tags/v${_upstream_version}.tar.gz")
-sha256sums=('2b0672d7c2412dd8a1f9e659db016329027b3f3e29efdbc0036732515a5068c7')
+sha256sums=('3a7ba15d201f66b1b0116ad67bf1f149a7fe315d19f04064342cffb07906a920')
 
 check() {
   cd "ErgenCTL-${_upstream_version}"
