@@ -46,7 +46,15 @@ ErgenOS includes [ErgenCTL](https://github.com/ErgenosSW/ErgenCTL), [ErgenOS Wel
 
 ## Download
 
-Download both numbered ISO parts and `SHA256SUMS` from the [ErgenOS 1.0 release](https://github.com/ErgenosSW/ErgenOS-Linux/releases/tag/v1.0.0). Reassemble and verify the image with:
+Download the complete ErgenOS 1.0 ISO from [Google Drive](https://drive.google.com/file/d/1ulkFifSUPisbFc_xC41_eRFDkI1hzKlG/view?usp=sharing).
+
+Verify the downloaded image with:
+
+```bash
+echo "236e9f6a411915e67a6800cb67cf5939cba6d30d399363c9a250186f32cba754  ergenos-1.0.0-x86_64.iso" | sha256sum -c -
+```
+
+Alternatively, download both numbered ISO parts and `SHA256SUMS` from the [ErgenOS 1.0 GitHub release](https://github.com/ErgenosSW/ErgenOS-Linux/releases/tag/v1.0.0). Reassemble and verify the image with:
 
 ```bash
 cat ergenos-1.0.0-x86_64.iso.part-* > ergenos-1.0.0-x86_64.iso
