@@ -1,7 +1,7 @@
 # Maintainer: ErgenOS Project <https://github.com/ErgenosSW>
 
 pkgname=ergenctl
-pkgver=0.1.1.alpha
+pkgver=0.1.2.alpha
 pkgrel=1
 pkgdesc='Diagnostics and recovery utility for ErgenOS'
 arch=('any')
@@ -12,34 +12,40 @@ depends=(
   'btrfs-progs'
   'grub'
   'grub-btrfs'
+  'gtk4'
+  'libadwaita'
   'mkinitcpio'
   'pacman'
+  'polkit'
   'python'
+  'python-gobject'
   'snapper'
   'systemd'
 )
+makedepends=('desktop-file-utils')
 optdepends=(
   'flatpak: Flathub diagnostics'
   'snap-pac: automatic snapshots around Pacman transactions'
 )
-_upstream_version=0.1.1-alpha
-source=(
-  "${pkgname}-${_upstream_version}.tar.gz::${url}/archive/refs/tags/v${_upstream_version}.tar.gz"
-  'ergenctl-logo.png'
-)
-sha256sums=(
-  '75a8a5cdc02315d59c57df383651650e2cd67040a0c502d2a9b477d37310fba9'
-  '2a15a106824853691a8efcca7e399a3b2e0fec76bbe917797df86914d20887d4'
-)
+_upstream_version=0.1.2-alpha
+source=("${pkgname}-${_upstream_version}.tar.gz::${url}/archive/refs/tags/v${_upstream_version}.tar.gz")
+sha256sums=('2b0672d7c2412dd8a1f9e659db016329027b3f3e29efdbc0036732515a5068c7')
 
 check() {
   cd "ErgenCTL-${_upstream_version}"
-  python -m unittest discover -s tests -v
+  PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -v
+  python -m py_compile ergenctl.py ergenctl-gui.py ergenctl_gui_core.py
+  desktop-file-validate data/io.github.ergenossw.ErgenCTL.desktop
 }
 
 package() {
   cd "ErgenCTL-${_upstream_version}"
   install -Dm755 ergenctl.py "${pkgdir}/usr/bin/ergenctl"
+  install -Dm755 ergenctl-gui.py "${pkgdir}/usr/bin/ergenctl-gui"
+  install -Dm644 ergenctl_gui_core.py \
+    "${pkgdir}/usr/lib/ergenctl/ergenctl_gui_core.py"
+  install -Dm644 data/io.github.ergenossw.ErgenCTL.desktop \
+    "${pkgdir}/usr/share/applications/io.github.ergenossw.ErgenCTL.desktop"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "${srcdir}/ergenctl-logo.png" "${pkgdir}/usr/share/pixmaps/ergenctl.png"
+  install -Dm644 assets/ergenctl-logo.png "${pkgdir}/usr/share/pixmaps/ergenctl.png"
 }
