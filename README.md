@@ -9,7 +9,7 @@
 
 ErgenOS is an independent Arch Linux based distribution built around GNOME, Btrfs recovery and a graphical installer. It uses Arch repositories and the rolling release model while adding its own installation workflow, system defaults and recovery setup.
 
-The current development version is **0.1.2 Alpha - "HowDoesItStillWork"**. It is an early development release intended for testing and evaluation, not production use.
+The current release is **0.1.2 Alpha - "HowDoesItStillWork"**. It is an early development release intended for testing and evaluation, not production use.
 
 ## Current state
 
@@ -22,6 +22,7 @@ ErgenOS currently includes:
 - Zsh with a preconfigured Powerlevel10k profile
 - ErgenOS artwork and GNOME defaults
 - [ErgenCTL](https://github.com/ErgenosSW/ErgenCTL)
+- [ErgenOS Welcome](https://github.com/ErgenosSW/ErgenOS-Welcome)
 - ArcMenu, Dash to Dock, Blur My Shell, Caffeine and GTK4 Desktop Icons NG
 
 The live image uses Nouveau. Selection of proprietary NVIDIA drivers in the installer is not implemented yet.
@@ -68,30 +69,30 @@ Keep Archiso work directories outside the repository. They contain temporary pse
 
 ## Download
 
-The latest published image is ErgenOS 0.1.1 Alpha. The complete ISO is available from [Google Drive](https://drive.google.com/file/d/1pFa6edmkD0YLkyLpWzXjpHCA-onA7QmG/view?usp=sharing).
+The complete ErgenOS 0.1.2 Alpha ISO is available from [Google Drive](https://drive.google.com/file/d/1JOUZ7jPPJkmaH6O6ieSnxJaa9Exwv1tm/view?usp=sharing).
 
 Verify it after downloading:
 
 ```bash
-echo "cd287cffbd8594fa0c47841c95e6162aad983e72a4ada623c7815592e470b449  ergenos-0.1.1-alpha-x86_64.iso" | sha256sum -c -
+echo "6c21105273d782511d804945f522cfd2bb61869090c7f8f02336e16345b79a90  ergenos-0.1.2-alpha-x86_64.iso" | sha256sum -c -
 ```
 
-The [v0.1.1-alpha GitHub release](https://github.com/ErgenosSW/ErgenOS-Linux/releases/tag/v0.1.1-alpha) also provides the ISO in two numbered parts because each release asset must remain below the GitHub size limit. Reassemble and verify it with:
+The [v0.1.2-alpha GitHub release](https://github.com/ErgenosSW/ErgenOS-Linux/releases/tag/v0.1.2-alpha) also provides the ISO in two numbered parts because each release asset must remain below the GitHub size limit. Reassemble and verify it with:
 
 ```bash
-cat ergenos-0.1.1-alpha-x86_64.iso.part-* > ergenos-0.1.1-alpha-x86_64.iso
+cat ergenos-0.1.2-alpha-x86_64.iso.part-* > ergenos-0.1.2-alpha-x86_64.iso
 sha256sum -c SHA256SUMS --ignore-missing
 ```
 
 Expected SHA-256 for the complete image:
 
 ```text
-cd287cffbd8594fa0c47841c95e6162aad983e72a4ada623c7815592e470b449
+6c21105273d782511d804945f522cfd2bb61869090c7f8f02336e16345b79a90
 ```
 
 ## Tested so far
 
-Version 0.1.2 Alpha has been tested with:
+ErgenOS has been tested with:
 
 - UEFI installation under QEMU/KVM
 - installation on a Lenovo ThinkPad E14 Gen 2
