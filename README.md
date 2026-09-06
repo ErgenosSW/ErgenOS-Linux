@@ -4,12 +4,12 @@
   <img src="assets/ergenos-logo.png" alt="ErgenOS logo" width="320">
 </p>
 
-[![Release](https://img.shields.io/badge/release-0.1.2--alpha-orange)](https://github.com/ErgenosSW/ErgenOS-Linux/releases)
+[![Release](https://img.shields.io/badge/release-1.0-blue)](https://github.com/ErgenosSW/ErgenOS-Linux/releases)
 [![License](https://img.shields.io/badge/license-GPL--3.0--or--later-blue)](LICENSE)
 
 ErgenOS is an independent Arch Linux based distribution built around GNOME, Btrfs recovery and a graphical installer. It uses Arch repositories and the rolling release model while adding its own installation workflow, system defaults and recovery setup.
 
-The current release is **0.1.2 Alpha - "HowDoesItStillWork"**. It is an early development release intended for testing and evaluation, not production use.
+The current release is **ErgenOS 1.0**.
 
 ## Current state
 
@@ -23,6 +23,9 @@ ErgenOS currently includes:
 - ErgenOS artwork and GNOME defaults
 - [ErgenCTL](https://github.com/ErgenosSW/ErgenCTL)
 - [ErgenOS Welcome](https://github.com/ErgenosSW/ErgenOS-Welcome)
+- [ErgenPac](https://github.com/ErgenosSW/ErgenPac)
+- the signed ErgenOS package repository and keyring
+- GNOME Tweaks
 - ArcMenu, Dash to Dock, Blur My Shell, Caffeine and GTK4 Desktop Icons NG
 
 The live image uses Nouveau. Selection of proprietary NVIDIA drivers in the installer is not implemented yet.
@@ -39,55 +42,21 @@ This recovery setup is only enabled for Btrfs installations.
 
 ## ErgenCTL
 
-ErgenOS includes [ErgenCTL](https://github.com/ErgenosSW/ErgenCTL), installed as the native `ergenctl` command in both the live environment and the installed system. Documentation and development history are maintained in its separate repository.
-
-## Building the ISO
-
-Build on an up-to-date Arch Linux system with `archiso`, `base-devel` and `git` installed:
-
-```bash
-git clone https://github.com/ErgenosSW/ErgenOS-Linux.git
-cd ErgenOS-Linux
-./build.sh
-```
-
-The finished ISO is written to `out/`. The script builds the required local packages, creates the local package repository and uses an isolated Archiso work directory under `/var/tmp`.
-
-Useful options:
-
-```bash
-./build.sh --validate-only
-./build.sh --rebuild-packages
-./build.sh --release-parts
-ERGENOS_WORK_DIR=/var/tmp/ergenos-work ./build.sh
-ERGENOS_OUTPUT_DIR=/path/to/output ./build.sh
-```
-
-Every completed build is checked for the expected kernel, initramfs and primary UEFI entry. The script also writes `SHA256SUMS` to the output directory. The `--release-parts` option creates two numbered ISO parts and their checksums for a GitHub release.
-
-Keep Archiso work directories outside the repository. They contain temporary pseudo-filesystem mounts that should not be scanned by Git, indexers or backup tools.
+ErgenOS includes [ErgenCTL](https://github.com/ErgenosSW/ErgenCTL), [ErgenOS Welcome](https://github.com/ErgenosSW/ErgenOS-Welcome), and [ErgenPac](https://github.com/ErgenosSW/ErgenPac) in both the live environment and the installed system. ErgenPac uses the signed ErgenOS repository configured in Pacman for system and first-party application updates.
 
 ## Download
 
-The complete ErgenOS 0.1.2 Alpha ISO is available from [Google Drive](https://drive.google.com/file/d/1JOUZ7jPPJkmaH6O6ieSnxJaa9Exwv1tm/view?usp=sharing).
-
-Verify it after downloading:
+Download both numbered ISO parts and `SHA256SUMS` from the [ErgenOS 1.0 release](https://github.com/ErgenosSW/ErgenOS-Linux/releases/tag/v1.0.0). Reassemble and verify the image with:
 
 ```bash
-echo "6c21105273d782511d804945f522cfd2bb61869090c7f8f02336e16345b79a90  ergenos-0.1.2-alpha-x86_64.iso" | sha256sum -c -
-```
-
-The [v0.1.2-alpha GitHub release](https://github.com/ErgenosSW/ErgenOS-Linux/releases/tag/v0.1.2-alpha) also provides the ISO in two numbered parts because each release asset must remain below the GitHub size limit. Reassemble and verify it with:
-
-```bash
-cat ergenos-0.1.2-alpha-x86_64.iso.part-* > ergenos-0.1.2-alpha-x86_64.iso
+cat ergenos-1.0.0-x86_64.iso.part-* > ergenos-1.0.0-x86_64.iso
 sha256sum -c SHA256SUMS --ignore-missing
 ```
 
 Expected SHA-256 for the complete image:
 
 ```text
-6c21105273d782511d804945f522cfd2bb61869090c7f8f02336e16345b79a90
+236e9f6a411915e67a6800cb67cf5939cba6d30d399363c9a250186f32cba754
 ```
 
 ## Tested so far
@@ -109,7 +78,7 @@ Hardware coverage and long-term upgrade testing are still limited.
 
 ErgenOS is being developed as a gaming focused Arch Linux distribution that keeps the benefits of rolling release while putting more emphasis on practical stability and recovery after a problematic update.
 
-Version 0.1.2 Alpha adds the first-login experience and improves access to the installer in the live environment. A broader gaming setup is a development goal and is not part of the current release yet.
+ErgenOS 1.0 adds the first-login experience, graphical package management and system updates, a signed first-party repository, and integrated diagnostics and recovery. A broader gaming setup remains a development goal.
 
 ## Known limitations
 

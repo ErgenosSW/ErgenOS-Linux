@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0] - 2026-09-07
+
+- ErgenCTL 1.0.0, ErgenOS Welcome 1.0.0, and ErgenPac 0.1.1 included by default
+- signed ErgenOS package repository enabled by default for future updates
+- GNOME Tweaks included
+- minimize and maximize window buttons enabled by default
+
 All notable ErgenOS changes are documented in this file.
 
 ## [0.1.2-alpha] - 2026-09-06

@@ -1,34 +1,38 @@
 # Maintainer: ErgenOS Project <https://github.com/ErgenosSW>
 
-pkgname=ergenos-welcome
-pkgver=1.0.0
+pkgname=ergenpac
+pkgver=0.1.1
 pkgrel=1
-pkgdesc='First-login welcome application for ErgenOS'
+pkgdesc='Graphical package manager and system updater for ErgenOS'
 arch=('any')
-url='https://github.com/ErgenosSW/ErgenOS-Welcome'
+url='https://github.com/ErgenosSW/ErgenPac'
 license=('GPL-3.0-or-later')
 depends=(
+  'flatpak'
   'gtk4'
   'libadwaita'
+  'pacman'
+  'pacman-contrib'
+  'polkit'
   'python'
   'python-gobject'
 )
 makedepends=('meson')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7499fbe7c9b3abac53e54ce20847d5cf37867abced97d0a39fffe094d53206c5')
+sha256sums=('24eff7301983a5fb70420badba1b3413d1741ad921de829ea63258d800233137')
 
 build() {
-  arch-meson "ErgenOS-Welcome-${pkgver}" build
+  arch-meson "ErgenPac-${pkgver}" build
   meson compile -C build
 }
 
 check() {
-  cd "ErgenOS-Welcome-${pkgver}"
+  cd "ErgenPac-${pkgver}"
   PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python -m unittest discover -s tests -v
 }
 
 package() {
   meson install -C build --destdir "${pkgdir}"
-  install -Dm644 "ErgenOS-Welcome-${pkgver}/LICENSE" \
+  install -Dm644 "ErgenPac-${pkgver}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
