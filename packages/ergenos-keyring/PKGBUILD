@@ -1,0 +1,25 @@
+# Maintainer: ErgenOS Project <https://github.com/ErgenosSW>
+
+pkgname=ergenos-keyring
+pkgver=20260906
+pkgrel=1
+pkgdesc='ErgenOS package signing keys'
+arch=('any')
+url='https://github.com/ErgenosSW/ErgenOS-Repo'
+license=('CC0-1.0')
+depends=('pacman')
+source=('ergenos.gpg' 'ergenos-trusted' 'ergenos-revoked' 'ergenos-keyring.hook')
+sha256sums=(
+  '5eb28e86ac09c2f85918791344fac47a6adc4c62cadcef30806189195b81dfe4'
+  'ff3cd3caeafe8c046c0cfba273a55cd2e2e4780775d5a3be1064d7a5ec83f7c4'
+  'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+  'ba9dbf0ddfc3b49956481671f2007761a374ce10b687776310bd62b37f77a67c'
+)
+
+package() {
+  install -Dm644 ergenos.gpg "${pkgdir}/usr/share/pacman/keyrings/ergenos.gpg"
+  install -Dm644 ergenos-trusted "${pkgdir}/usr/share/pacman/keyrings/ergenos-trusted"
+  install -Dm644 ergenos-revoked "${pkgdir}/usr/share/pacman/keyrings/ergenos-revoked"
+  install -Dm644 ergenos-keyring.hook \
+    "${pkgdir}/usr/share/libalpm/hooks/ergenos-keyring.hook"
+}

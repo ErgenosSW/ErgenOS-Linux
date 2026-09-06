@@ -121,6 +121,8 @@ validate_profile() {
 
     grep -Fxq 'ergenctl' "${packages_file}" \
         || die "The ErgenCTL package is not listed"
+    grep -Fxq 'ergenos-keyring' "${packages_file}" \
+        || die "The ErgenOS keyring package is not listed"
     grep -Fxq 'ergenos-welcome' "${packages_file}" \
         || die "The ErgenOS Welcome package is not listed"
     grep -Fxq 'python' "${packages_file}" \
@@ -130,8 +132,10 @@ validate_profile() {
     grep -Fq "shortVersion: \"${version}\"" \
         "${profile_dir}/airootfs/etc/calamares/branding/ergenos/branding.desc" \
         || die "Calamares shortVersion does not match VERSION"
-    grep -Fxq 'Server = file:///path/to/ErgenOS-Linux/repo' "${profile_dir}/pacman.conf" \
-        || die "Local repository placeholder is missing from pacman.conf"
+    grep -Fxq 'SigLevel = Required' "${profile_dir}/pacman.conf" \
+        || die "The ErgenOS repository must require signatures"
+    grep -Fxq 'Server = https://ergenossw.github.io/ErgenOS-Repo/$arch' "${profile_dir}/pacman.conf" \
+        || die "The public ErgenOS repository is missing from pacman.conf"
 
     printf 'Profile validation passed. Kernel: %s\n' "${kernel_package}"
 }
@@ -139,6 +143,7 @@ validate_profile() {
 package_dirs=(
     packages/calamares
     packages/ergenctl
+    packages/ergenos-keyring
     packages/ergenos-welcome
     packages/gnome-shell-extension-blur-my-shell
     packages/gnome-shell-extension-dash-to-dock
@@ -186,7 +191,9 @@ build_local_repository() {
 
 create_pacman_config() {
     pacman_config="$(mktemp --tmpdir ergenos-pacman.XXXXXX.conf)"
-    sed "s|^Server = file:///path/to/ErgenOS-Linux/repo$|Server = file://${repo_dir}|" \
+    sed \
+        -e '/^\[ergenos\]$/,/^Server = / s/^SigLevel = Required$/SigLevel = Optional TrustAll/' \
+        -e "s|^Server = https://ergenossw.github.io/ErgenOS-Repo/\$arch$|Server = file://${repo_dir}|" \
         "${profile_dir}/pacman.conf" > "${pacman_config}"
     grep -Fxq "Server = file://${repo_dir}" "${pacman_config}" \
         || die "Failed to configure the local ErgenOS repository"

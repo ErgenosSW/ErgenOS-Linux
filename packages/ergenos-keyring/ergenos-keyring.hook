@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = ergenos-keyring
+
+[Action]
+Description = Updating ErgenOS package signing keys...
+When = PostTransaction
+Exec = /usr/bin/pacman-key --populate ergenos
+Depends = pacman
