@@ -15,20 +15,12 @@ The current release is **ErgenOS 1.0**.
 
 ErgenOS currently includes:
 
-- an Archiso live environment with GNOME on Wayland
 - the `linux-zen` kernel
 - Calamares with automatic and manual partitioning
 - a choice of official repositories only, `yay`, `paru` or Chaotic-AUR during installation
-- Zsh with a preconfigured Powerlevel10k profile
-- ErgenOS artwork and GNOME defaults
 - [ErgenCTL](https://github.com/ErgenosSW/ErgenCTL)
 - [ErgenOS Welcome](https://github.com/ErgenosSW/ErgenOS-Welcome)
 - [ErgenPac](https://github.com/ErgenosSW/ErgenPac)
-- the signed ErgenOS package repository and keyring
-- GNOME Tweaks
-- ArcMenu, Dash to Dock, Blur My Shell, Caffeine and GTK4 Desktop Icons NG
-
-The live image uses Nouveau. Selection of proprietary NVIDIA drivers in the installer is not implemented yet.
 
 ## Installation and recovery
 
@@ -40,7 +32,7 @@ A snapshot can be booted as an earlier system state. ErgenOS includes `grub-btrf
 
 This recovery setup is only enabled for Btrfs installations.
 
-## ErgenCTL
+## ErgenOS applications
 
 ErgenOS includes [ErgenCTL](https://github.com/ErgenosSW/ErgenCTL), [ErgenOS Welcome](https://github.com/ErgenosSW/ErgenOS-Welcome), and [ErgenPac](https://github.com/ErgenosSW/ErgenPac) in both the live environment and the installed system. ErgenPac uses the signed ErgenOS repository configured in Pacman for system and first-party application updates.
 
@@ -84,14 +76,13 @@ Hardware coverage and long-term upgrade testing are still limited.
 
 ## Project direction
 
-ErgenOS is being developed as a gaming focused Arch Linux distribution that keeps the benefits of rolling release while putting more emphasis on practical stability and recovery after a problematic update.
+ErgenOS is currently a general-purpose Arch Linux based desktop distribution focused on approachable system management, practical stability and recovery after a problematic update.
 
-ErgenOS 1.0 adds the first-login experience, graphical package management and system updates, a signed first-party repository, and integrated diagnostics and recovery. A broader gaming setup remains a development goal.
+Gaming-oriented features are part of the long-term direction, but ErgenOS does not yet present itself as a gaming distribution.
 
 ## Known limitations
 
 - Secure Boot is not supported.
-- Proprietary NVIDIA driver selection is not available in the installer.
 - Optional software source setup requires network access during installation.
 - ErgenOS does not maintain a separate binary mirror for Arch packages.
 - Hardware coverage and long-term upgrade testing are limited.
