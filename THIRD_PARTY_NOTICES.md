@@ -29,6 +29,25 @@ Powerlevel10k is vendored under `ergenos/airootfs/usr/share/zsh-theme-powerlevel
 - License: MIT
 - License copy: `ergenos/airootfs/usr/share/zsh-theme-powerlevel10k/LICENSE`
 
+The vendored Powerlevel10k tree also contains the `gitstatus` shell bindings and a
+precompiled `gitstatusd` executable for x86-64 Linux.
+
+- Project: https://github.com/romkatv/gitstatus
+- Bundled version: 1.5.5
+- Source for bundled version: https://github.com/romkatv/gitstatus/tree/v1.5.5
+- License: GNU General Public License v3.0
+- Bundled files: `ergenos/airootfs/usr/share/zsh-theme-powerlevel10k/gitstatus/`
+
+## Meslo Nerd Font
+
+The generated ISO installs the Meslo Nerd Font package for the preconfigured
+Powerlevel10k prompt.
+
+- Project: https://github.com/ryanoasis/nerd-fonts
+- Upstream font: https://github.com/andreberg/Meslo-Font
+- License: Apache License 2.0
+- Distribution package: `ttf-meslo-nerd`
+
 ## GNOME Shell extensions
 
 ErgenOS enables several independently developed GNOME Shell extensions. Packages from the official Arch Linux repositories retain the license metadata and license files supplied by those packages. Locally built extension packages are produced from the recipes stored under `packages/`.
