@@ -5,6 +5,7 @@
 </p>
 
 [![Release](https://img.shields.io/badge/release-1.0-blue)](https://github.com/ErgenosSW/ErgenOS-Linux/releases)
+[![Website](https://img.shields.io/badge/website-ergenossw.github.io-0aa7ff)](https://ergenossw.github.io/ErgenOS-Website/)
 [![License](https://img.shields.io/badge/license-GPL--3.0--or--later-blue)](LICENSE)
 
 ErgenOS is an independent Arch Linux based distribution built around GNOME, Btrfs recovery and a graphical installer. It uses Arch repositories and the rolling release model while adding its own installation workflow, system defaults and recovery setup.
@@ -38,7 +39,7 @@ ErgenOS includes [ErgenCTL](https://github.com/ErgenosSW/ErgenCTL), [ErgenOS Wel
 
 ## Download
 
-Download the complete ErgenOS 1.0 ISO from [Google Drive](https://drive.google.com/file/d/1ulkFifSUPisbFc_xC41_eRFDkI1hzKlG/view?usp=sharing).
+Visit the [official ErgenOS website](https://ergenossw.github.io/ErgenOS-Website/) to download the complete ErgenOS 1.0 ISO and read the installation guide.
 
 Verify the downloaded image with:
 
