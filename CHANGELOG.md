@@ -1,5 +1,26 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+
+- experimental post-install Secure Boot support through the signed
+  `ergenos-secureboot` package
+- Microsoft-signed shim and user-enrolled Machine Owner Key workflow without
+  replacing firmware platform keys or requiring Setup Mode
+- automatic kernel and GRUB signing plus verified signing of installed DKMS
+  modules, including compressed `.ko.zst` modules
+
+### Tested
+
+- complete Secure Boot lifecycle under QEMU/KVM with OVMF
+- Secure Boot activation and boot on a physical Lenovo ThinkPad
+- signed and loaded `broadcom-wl-dkms` with no module verification failure
+
+The ErgenOS 1.0 installation ISO itself still requires Secure Boot to be
+disabled. Support is enabled on the installed system by following the
+[Secure Boot setup guide](https://ergenossw.github.io/ErgenOS-Website/secure-boot.html).
+
 ## [1.0.0] - 2026-09-07
 
 - ErgenCTL 1.0.0, ErgenOS Welcome 1.0.0, and ErgenPac 0.1.1 included by default

@@ -22,6 +22,8 @@ ErgenOS currently includes:
 - [ErgenCTL](https://github.com/ErgenosSW/ErgenCTL)
 - [ErgenOS Welcome](https://github.com/ErgenosSW/ErgenOS-Welcome)
 - [ErgenPac](https://github.com/ErgenosSW/ErgenPac)
+- experimental post-install Secure Boot support through
+  [ErgenOS Secure Boot](https://github.com/ErgenosSW/ErgenOS-SecureBoot)
 
 ## Installation and recovery
 
@@ -40,6 +42,12 @@ ErgenOS includes [ErgenCTL](https://github.com/ErgenosSW/ErgenCTL), [ErgenOS Wel
 ## Download
 
 Visit the [official ErgenOS website](https://ergenossw.github.io/ErgenOS-Website/) to download the complete ErgenOS 1.0 ISO and read the installation guide.
+
+The current ISO must be booted and installed with Secure Boot disabled.
+Experimental post-install support using Microsoft-signed shim and a locally
+enrolled Machine Owner Key is available from the signed ErgenOS repository.
+Follow the [Secure Boot setup guide](https://ergenossw.github.io/ErgenOS-Website/secure-boot.html)
+after installation.
 
 Verify the downloaded image with:
 
@@ -72,6 +80,8 @@ ErgenOS has been tested with:
 - snapshot boot with an overlay root
 - hibernation on a normal boot and disabled resume when booting a snapshot
 - Wi-Fi, Bluetooth, Bluetooth audio, suspend and hardware function keys
+- Secure Boot through shim and MOK under QEMU/OVMF and on a Lenovo ThinkPad
+- signed `linux-zen`, GRUB and `broadcom-wl-dkms` with Secure Boot enabled
 
 Hardware coverage and long-term upgrade testing are still limited.
 
@@ -83,7 +93,8 @@ Gaming-oriented features are part of the long-term direction, but ErgenOS does n
 
 ## Known limitations
 
-- Secure Boot is not supported.
+- The ErgenOS 1.0 ISO is not Secure Boot bootable; experimental support is
+  configured after installation.
 - Optional software source setup requires network access during installation.
 - ErgenOS does not maintain a separate binary mirror for Arch packages.
 - Hardware coverage and long-term upgrade testing are limited.
