@@ -1,8 +1,8 @@
 # Maintainer: ErgenOS Project <https://github.com/ErgenosSW>
 
 pkgname=ergenctl
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.1.0.dev
+pkgrel=4
 pkgdesc='Diagnostics and recovery utility for ErgenOS'
 arch=('any')
 url='https://github.com/ErgenosSW/ErgenCTL'
@@ -24,17 +24,26 @@ depends=(
 )
 makedepends=('desktop-file-utils')
 optdepends=(
+  'ergenos-secureboot>=0.2.0.dev: Secure Boot configuration in the GUI'
+  'ergenpac: install the optional Secure Boot backend graphically'
   'flatpak: Flathub diagnostics'
   'snap-pac: automatic snapshots around Pacman transactions'
 )
-_upstream_version=1.0.0
-source=("${pkgname}-${_upstream_version}.tar.gz::${url}/archive/refs/tags/v${_upstream_version}.tar.gz")
-sha256sums=('3a7ba15d201f66b1b0116ad67bf1f149a7fe315d19f04064342cffb07906a920')
+_upstream_version=1.1.0.dev
+# Local development snapshot shipped alongside this recipe; no unpublished tag URL.
+source=(
+  "${pkgname}-${_upstream_version}.tar.gz"
+  'ergenctl-logo.png'
+)
+sha256sums=(
+  '9921a6e2e41ab72d0aa19a1d4982601f269c75f3a1f059608ce2b2e5bccb3b4f'
+  '275ae119ab874bef2c61540589ed24902a6234d9b3c5f17147a96bfa48d75701'
+)
 
 check() {
   cd "ErgenCTL-${_upstream_version}"
   PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -v
-  python -m py_compile ergenctl.py ergenctl-gui.py ergenctl_gui_core.py
+  python -m py_compile ergenctl.py ergenctl-gui.py ergenctl_gui_core.py ergenctl_secureboot_core.py ergenctl_secureboot_gui.py
   desktop-file-validate data/io.github.ergenossw.ErgenCTL.desktop
 }
 
@@ -44,8 +53,10 @@ package() {
   install -Dm755 ergenctl-gui.py "${pkgdir}/usr/bin/ergenctl-gui"
   install -Dm644 ergenctl_gui_core.py \
     "${pkgdir}/usr/lib/ergenctl/ergenctl_gui_core.py"
+  install -Dm644 ergenctl_secureboot_core.py "${pkgdir}/usr/lib/ergenctl/ergenctl_secureboot_core.py"
+  install -Dm644 ergenctl_secureboot_gui.py "${pkgdir}/usr/lib/ergenctl/ergenctl_secureboot_gui.py"
   install -Dm644 data/io.github.ergenossw.ErgenCTL.desktop \
     "${pkgdir}/usr/share/applications/io.github.ergenossw.ErgenCTL.desktop"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 assets/ergenctl-logo.png "${pkgdir}/usr/share/pixmaps/ergenctl.png"
+  install -Dm644 "${srcdir}/ergenctl-logo.png" "${pkgdir}/usr/share/pixmaps/ergenctl.png"
 }
