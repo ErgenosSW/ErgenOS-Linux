@@ -10,6 +10,17 @@
   replacing firmware platform keys or requiring Setup Mode
 - automatic kernel and GRUB signing plus verified signing of installed DKMS
   modules, including compressed `.ko.zst` modules
+- ErgenPac Driver Manager with hardware detection and guided installation of
+  graphics drivers and supporting Vulkan and multilib packages
+- an optional `Where Bootloader` wallpaper in the GNOME background picker
+
+### Changed
+
+- ErgenCTL updated to `1.1.0.dev-4`
+- ErgenOS Secure Boot updated to `0.2.0.dev-2`
+- ErgenPac updated to `0.2.1`
+- ErgenOS Welcome updated to `1.0.1`, including a shortcut to the official
+  ErgenOS website
 
 ### Tested
 
