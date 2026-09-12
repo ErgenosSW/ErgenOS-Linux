@@ -19,16 +19,32 @@
 ### Changed
 
 - ErgenCTL updated to `1.1.0.dev-4`
-- ErgenOS Secure Boot updated to `0.2.0.dev-2`
+- ErgenOS Secure Boot updated to `0.2.0.dev-5`
 - ErgenPac updated to `0.2.1`
 - ErgenOS Welcome updated to `1.0.1`, including a shortcut to the official
   ErgenOS website
+- `grub-btrfsd` now watches the complete Snapper tree so newly created
+  snapshots reliably appear in the GRUB menu
+
+### Fixed
+
+- the signed Secure Boot GRUB loader now reads the current configuration from
+  the real `/boot` filesystem, preserving the dynamic ErgenOS Snapshots menu
+- required disk, filesystem and menu modules are preloaded before the signed
+  loader searches for the installed system
+- the embedded trusted Unicode font is loaded before switching to the on-disk
+  GRUB configuration, preventing broken menu borders under Secure Boot
 
 ### Tested
 
 - complete Secure Boot lifecycle under QEMU/KVM with OVMF
 - Secure Boot activation and boot on a physical Lenovo ThinkPad
 - signed and loaded `broadcom-wl-dkms` with no module verification failure
+- clean ErgenOS 1.1 installation, MOK enrollment and Secure Boot activation on
+  a physical Lenovo ThinkPad
+- automatic snapshot-menu refresh, booting a snapshot through the signed
+  loader and successful ErgenCTL rollback from an intentionally unbootable
+  normal system
 
 The ErgenOS 1.0 installation ISO itself still requires Secure Boot to be
 disabled. Support is enabled on the installed system by following the

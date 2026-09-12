@@ -29,7 +29,10 @@ ErgenOS currently includes:
 
 Calamares installs the system and applies the software source selected by the user. The optional `yay`, `paru` and Chaotic-AUR paths require an internet connection during installation.
 
-Btrfs installations configure Snapper for the root filesystem. `snap-pac` creates pre and post snapshots during Pacman transactions, and `grub-btrfs` adds those snapshots to the GRUB menu.
+Btrfs installations configure Snapper for the root filesystem. `snap-pac`
+creates pre and post snapshots during Pacman transactions, and `grub-btrfs`
+adds those snapshots to the GRUB menu. Its daemon watches the complete Snapper
+tree so new recovery points are reflected automatically.
 
 A snapshot can be booted as an earlier system state. ErgenOS includes `grub-btrfs-overlayfs`, which adds a temporary writable overlay while the snapshot itself remains read-only. Normal boot entries keep hibernation support, while snapshot entries use `noresume` to avoid resuming into historical system state.
 
@@ -78,6 +81,8 @@ ErgenOS has been tested with:
 - the `yay`, `paru` and Chaotic-AUR installer options
 - automatic Pacman snapshots
 - snapshot boot with an overlay root
+- snapshot discovery and ErgenCTL rollback through the signed Secure Boot GRUB
+  loader after deliberately making the normal system unbootable
 - hibernation on a normal boot and disabled resume when booting a snapshot
 - Wi-Fi, Bluetooth, Bluetooth audio, suspend and hardware function keys
 - Secure Boot through shim and MOK under QEMU/OVMF and on a Lenovo ThinkPad

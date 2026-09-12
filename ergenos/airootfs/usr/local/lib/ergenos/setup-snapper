@@ -77,5 +77,15 @@ else
     printf '%s\n' 'GRUB_BTRFS_SNAPSHOT_KERNEL_PARAMETERS="noresume"' >> "${grub_btrfs_config}"
 fi
 
+# Snapper creates each snapshot below a numbered directory.  The stock daemon
+# only watches the top-level directory, so it can miss those nested changes and
+# leave grub-btrfs.cfg stale.  Watch the snapshot tree recursively.
+install -d -m 0755 /etc/systemd/system/grub-btrfsd.service.d
+cat > /etc/systemd/system/grub-btrfsd.service.d/override.conf <<'EOF'
+[Service]
+ExecStart=
+ExecStart=/usr/bin/grub-btrfsd --syslog --recursive /.snapshots
+EOF
+
 systemctl enable snapper-cleanup.timer
 systemctl enable grub-btrfsd.service
