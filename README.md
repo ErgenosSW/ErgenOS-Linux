@@ -44,7 +44,7 @@ ErgenOS includes [ErgenCTL](https://github.com/ErgenosSW/ErgenCTL), [ErgenOS Wel
 
 ## Download
 
-Visit the [official ErgenOS website](https://ergenossw.github.io/ErgenOS-Website/) to download ErgenOS 1.1 and read the installation guide.
+Visit the [official ErgenOS website](https://ergenossw.github.io/ErgenOS-Website/) or [download the complete ErgenOS 1.1 ISO from MediaFire](https://www.mediafire.com/file/psvdrlrwlsz2c2c/ergenos-1.1.0-x86_64.iso/file).
 
 The current ISO must be booted and installed with Secure Boot disabled.
 Experimental post-install support using Microsoft-signed shim and a locally
@@ -58,7 +58,7 @@ Verify the downloaded image with:
 echo "460c2ab349681cef4922ebba35b180b24f7a17e7182dbf23cc7c99b13b1fdcce  ergenos-1.1.0-x86_64.iso" | sha256sum -c -
 ```
 
-Download both numbered ISO parts and `SHA256SUMS-1.1.0` from the [ErgenOS 1.1 GitHub release](https://github.com/ErgenosSW/ErgenOS-Linux/releases/tag/v1.1.0). Reassemble and verify the image with:
+Alternatively, download both numbered ISO parts and `SHA256SUMS-1.1.0` from the [ErgenOS 1.1 GitHub release](https://github.com/ErgenosSW/ErgenOS-Linux/releases/tag/v1.1.0). Reassemble and verify the image with:
 
 ```bash
 cat ergenos-1.1.0-x86_64.iso.part-* > ergenos-1.1.0-x86_64.iso
