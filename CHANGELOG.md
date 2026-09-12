@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-09-12
+
 ### Added
 
 - experimental post-install Secure Boot support through the signed

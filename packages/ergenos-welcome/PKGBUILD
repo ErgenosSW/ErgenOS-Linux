@@ -16,10 +16,11 @@ depends=(
 makedepends=('meson')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('4486f98cc69ea672c70dee8c5341b07d16fe0029cf8ac7e2172f367390102602')
+_builddir="build-${pkgver}"
 
 build() {
-  arch-meson "ErgenOS-Welcome-${pkgver}" build
-  meson compile -C build
+  arch-meson "ErgenOS-Welcome-${pkgver}" "${_builddir}"
+  meson compile -C "${_builddir}"
 }
 
 check() {
@@ -28,7 +29,7 @@ check() {
 }
 
 package() {
-  meson install -C build --destdir "${pkgdir}"
+  meson install -C "${_builddir}" --destdir "${pkgdir}"
   install -Dm644 "ErgenOS-Welcome-${pkgver}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

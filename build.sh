@@ -83,7 +83,7 @@ done
 validate_profile() {
     printf 'Validating Archiso profile...\n'
 
-    [[ "${version}" =~ ^[0-9]+\.[0-9]+\.[0-9]+-[a-z0-9.-]+$ ]] \
+    [[ "${version}" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[a-z0-9.-]+)?$ ]] \
         || die "Invalid VERSION value: ${version}"
     [[ -s "${packages_file}" ]] || die "Missing or empty package list: ${packages_file}"
 
@@ -125,6 +125,8 @@ validate_profile() {
         || die "The ErgenOS keyring package is not listed"
     grep -Fxq 'ergenos-welcome' "${packages_file}" \
         || die "The ErgenOS Welcome package is not listed"
+    grep -Fxq 'ergenpac' "${packages_file}" \
+        || die "The ErgenPac package is not listed"
     grep -Fxq 'python' "${packages_file}" \
         || die "The python runtime required by ErgenCTL is not listed"
     grep -Fxq "BUILD_ID=\"${version}\"" "${profile_dir}/airootfs/etc/os-release" \
@@ -145,6 +147,7 @@ package_dirs=(
     packages/ergenctl
     packages/ergenos-keyring
     packages/ergenos-welcome
+    packages/ergenpac
     packages/gnome-shell-extension-blur-my-shell
     packages/gnome-shell-extension-dash-to-dock
     packages/gnome-shell-extension-gtk4-desktop-icons-ng
@@ -172,7 +175,11 @@ build_local_repository() {
 
         if [[ "${needs_build}" == true ]]; then
             printf 'Building %s\n' "${relative_dir}"
-            (cd "${package_dir}" && makepkg -s --needed --noconfirm)
+            makepkg_args=(-s --needed --noconfirm)
+            if [[ "${rebuild_packages}" == true ]]; then
+                makepkg_args+=(--force)
+            fi
+            (cd "${package_dir}" && makepkg "${makepkg_args[@]}")
         else
             printf 'Reusing built package from %s\n' "${relative_dir}"
         fi
@@ -187,6 +194,12 @@ build_local_repository() {
     )
     ((${#repo_packages[@]} > 0)) || die "No packages found for the local repository"
     repo-add -R "${repo_dir}/ergenos.db.tar.zst" "${repo_packages[@]}"
+
+    # repo-add -R removes superseded package files. Refresh the list so later
+    # validation never references files that were removed from the repository.
+    mapfile -t repo_packages < <(
+        find "${repo_dir}" -maxdepth 1 -type f -name '*.pkg.tar.*' ! -name '*-debug-*' -print | sort
+    )
 }
 
 create_pacman_config() {
