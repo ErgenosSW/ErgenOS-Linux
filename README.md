@@ -4,13 +4,13 @@
   <img src="assets/ergenos-logo.png" alt="ErgenOS logo" width="320">
 </p>
 
-[![Release](https://img.shields.io/badge/release-1.0-blue)](https://github.com/ErgenosSW/ErgenOS-Linux/releases)
+[![Release](https://img.shields.io/badge/release-1.1-blue)](https://github.com/ErgenosSW/ErgenOS-Linux/releases/tag/v1.1.0)
 [![Website](https://img.shields.io/badge/website-ergenossw.github.io-0aa7ff)](https://ergenossw.github.io/ErgenOS-Website/)
 [![License](https://img.shields.io/badge/license-GPL--3.0--or--later-blue)](LICENSE)
 
 ErgenOS is an independent Arch Linux based distribution built around GNOME, Btrfs recovery and a graphical installer. It uses Arch repositories and the rolling release model while adding its own installation workflow, system defaults and recovery setup.
 
-The current release is **ErgenOS 1.0**.
+The current release is **ErgenOS 1.1**.
 
 ## Current state
 
@@ -44,7 +44,7 @@ ErgenOS includes [ErgenCTL](https://github.com/ErgenosSW/ErgenCTL), [ErgenOS Wel
 
 ## Download
 
-Visit the [official ErgenOS website](https://ergenossw.github.io/ErgenOS-Website/) to download the complete ErgenOS 1.0 ISO and read the installation guide.
+Visit the [official ErgenOS website](https://ergenossw.github.io/ErgenOS-Website/) to download ErgenOS 1.1 and read the installation guide.
 
 The current ISO must be booted and installed with Secure Boot disabled.
 Experimental post-install support using Microsoft-signed shim and a locally
@@ -55,20 +55,20 @@ after installation.
 Verify the downloaded image with:
 
 ```bash
-echo "236e9f6a411915e67a6800cb67cf5939cba6d30d399363c9a250186f32cba754  ergenos-1.0.0-x86_64.iso" | sha256sum -c -
+echo "460c2ab349681cef4922ebba35b180b24f7a17e7182dbf23cc7c99b13b1fdcce  ergenos-1.1.0-x86_64.iso" | sha256sum -c -
 ```
 
-Alternatively, download both numbered ISO parts and `SHA256SUMS` from the [ErgenOS 1.0 GitHub release](https://github.com/ErgenosSW/ErgenOS-Linux/releases/tag/v1.0.0). Reassemble and verify the image with:
+Download both numbered ISO parts and `SHA256SUMS-1.1.0` from the [ErgenOS 1.1 GitHub release](https://github.com/ErgenosSW/ErgenOS-Linux/releases/tag/v1.1.0). Reassemble and verify the image with:
 
 ```bash
-cat ergenos-1.0.0-x86_64.iso.part-* > ergenos-1.0.0-x86_64.iso
-sha256sum -c SHA256SUMS --ignore-missing
+cat ergenos-1.1.0-x86_64.iso.part-* > ergenos-1.1.0-x86_64.iso
+sha256sum -c SHA256SUMS-1.1.0
 ```
 
 Expected SHA-256 for the complete image:
 
 ```text
-236e9f6a411915e67a6800cb67cf5939cba6d30d399363c9a250186f32cba754
+460c2ab349681cef4922ebba35b180b24f7a17e7182dbf23cc7c99b13b1fdcce
 ```
 
 ## Tested so far
@@ -98,7 +98,7 @@ Gaming-oriented features are part of the long-term direction, but ErgenOS does n
 
 ## Known limitations
 
-- The ErgenOS 1.0 ISO is not Secure Boot bootable; experimental support is
+- The ErgenOS 1.1 ISO is not Secure Boot bootable; experimental support is
   configured after installation.
 - Optional software source setup requires network access during installation.
 - ErgenOS does not maintain a separate binary mirror for Arch packages.

@@ -46,7 +46,7 @@
   loader and successful ErgenCTL rollback from an intentionally unbootable
   normal system
 
-The ErgenOS 1.0 installation ISO itself still requires Secure Boot to be
+The ErgenOS 1.1 installation ISO itself still requires Secure Boot to be
 disabled. Support is enabled on the installed system by following the
 [Secure Boot setup guide](https://ergenossw.github.io/ErgenOS-Website/secure-boot.html).
 
