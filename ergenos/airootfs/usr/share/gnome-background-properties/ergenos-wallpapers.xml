@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
+<wallpapers>
+  <wallpaper deleted="false">
+    <name>ErgenOS</name>
+    <filename>/usr/share/backgrounds/ergenos/ergenos-wallpaper.png</filename>
+    <options>zoom</options>
+    <shade_type>solid</shade_type>
+    <pcolor>#020c18</pcolor>
+    <scolor>#020c18</scolor>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>ErgenOS — Where Bootloader</name>
+    <filename>/usr/share/backgrounds/ergenos/ergenos-users-where-bootloader.png</filename>
+    <options>zoom</options>
+    <shade_type>solid</shade_type>
+    <pcolor>#020c18</pcolor>
+    <scolor>#020c18</scolor>
+  </wallpaper>
+</wallpapers>
