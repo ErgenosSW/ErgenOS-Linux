@@ -2,7 +2,7 @@
 
 pkgname=ergenctl
 pkgver=1.1.0.dev
-pkgrel=4
+pkgrel=5
 pkgdesc='Diagnostics and recovery utility for ErgenOS'
 arch=('any')
 url='https://github.com/ErgenosSW/ErgenCTL'
@@ -36,7 +36,7 @@ source=(
   'ergenctl-logo.png'
 )
 sha256sums=(
-  '9921a6e2e41ab72d0aa19a1d4982601f269c75f3a1f059608ce2b2e5bccb3b4f'
+  '45657595b1878d8b83f22d09b71102402f5ccda1472d2eb1ca9474836c20eeac'
   '275ae119ab874bef2c61540589ed24902a6234d9b3c5f17147a96bfa48d75701'
 )
 
