@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+- name: ErgenOS Wiki (English)
+  url: https://ergenossw.github.io/ErgenOS-Wiki/
+  about: Installation, recovery and troubleshooting guides.
+- name: ErgenOS Wiki (Polski)
+  url: https://ergenossw.github.io/ErgenOS-Wiki/pl/
+  about: Instalacja, odzyskiwanie i rozwiązywanie problemów.

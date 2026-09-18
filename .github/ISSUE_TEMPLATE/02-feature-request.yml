@@ -1,0 +1,43 @@
+name: Feature request / Propozycja funkcji
+description: Describe a need and proposed improvement / Opisz potrzebę i proponowaną zmianę.
+title: '[Feature]: '
+body:
+- type: markdown
+  attributes:
+    value: 'You can write in English or Polish. Możesz pisać po polsku lub angielsku.
+
+
+      Search existing issues first. Najpierw sprawdź istniejące zgłoszenia.
+
+
+      Do not include passwords, tokens, private keys or recovery keys. Nie dołączaj haseł, tokenów ani kluczy prywatnych
+      i odzyskiwania.'
+- type: textarea
+  id: problem
+  attributes:
+    label: Problem or need / Problem lub potrzeba
+    description: Who needs this and what is difficult today? / Kto tego potrzebuje i co obecnie sprawia trudność?
+  validations:
+    required: true
+- type: textarea
+  id: proposal
+  attributes:
+    label: Proposed behavior / Proponowane działanie
+    description: Describe the user-visible result. / Opisz rezultat widoczny dla użytkownika.
+  validations:
+    required: true
+- type: textarea
+  id: alternatives
+  attributes:
+    label: Alternatives / Alternatywy
+    description: Existing tools or workarounds you considered. / Istniejące narzędzia lub rozważone obejścia.
+  validations:
+    required: false
+- type: textarea
+  id: context
+  attributes:
+    label: Context / Kontekst
+    description: Relevant hardware, applications, examples or mockups. / Istotny sprzęt, aplikacje, przykłady lub
+      makiety.
+  validations:
+    required: false

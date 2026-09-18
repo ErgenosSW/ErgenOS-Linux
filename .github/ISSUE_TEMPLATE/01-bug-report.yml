@@ -1,0 +1,146 @@
+name: Bug report / Zgłoszenie błędu
+description: Report a reproducible ErgenOS problem / Zgłoś problem z ErgenOS.
+title: '[Bug]: '
+body:
+- type: markdown
+  attributes:
+    value: 'You can write in English or Polish. Możesz pisać po polsku lub angielsku.
+
+
+      Search existing issues first. Najpierw sprawdź istniejące zgłoszenia.
+
+
+      Do not include passwords, tokens, private keys or recovery keys. Nie dołączaj haseł, tokenów ani kluczy prywatnych
+      i odzyskiwania.'
+- type: input
+  id: version
+  attributes:
+    label: ErgenOS version / Wersja ErgenOS
+    description: Include the ISO filename for live/installer issues and the application version if relevant. / Podaj
+      nazwę ISO dla błędów live/instalatora i wersję aplikacji, jeśli jej dotyczy problem.
+    placeholder: ErgenOS 1.1.0; ergenos-1.1.0-x86_64.iso
+  validations:
+    required: true
+- type: dropdown
+  id: area
+  attributes:
+    label: Affected area / Obszar
+    options:
+    - Installation / Instalacja
+    - Boot / Rozruch
+    - Updates and packages / Aktualizacje i pakiety
+    - Recovery and snapshots / Odzyskiwanie i migawki
+    - Secure Boot
+    - Hardware and drivers / Sprzęt i sterowniki
+    - ErgenCTL
+    - ErgenPac
+    - ErgenOS Welcome
+    - Other or unsure / Inny lub nie wiem
+  validations:
+    required: true
+- type: dropdown
+  id: environment
+  attributes:
+    label: Environment / Środowisko
+    options:
+    - Live ISO / Środowisko live
+    - Installed system / Zainstalowany system
+    - Both / Oba
+    - Other or unsure / Inne lub nie wiem
+  validations:
+    required: true
+- type: textarea
+  id: hardware
+  attributes:
+    label: Hardware or virtual machine / Sprzęt lub maszyna wirtualna
+    description: Computer model, CPU, GPU, relevant network device; for a VM include hypervisor and virtual firmware.
+      Unknown is an acceptable answer. / Model komputera, CPU, GPU i istotne urządzenie sieciowe; dla VM podaj hypervisor
+      i firmware. Możesz wpisać „nie wiem”.
+  validations:
+    required: true
+- type: dropdown
+  id: firmware
+  attributes:
+    label: Firmware mode / Tryb firmware
+    options:
+    - UEFI
+    - Legacy BIOS
+    - Unknown / Nie wiem
+  validations:
+    required: true
+- type: dropdown
+  id: secure-boot
+  attributes:
+    label: Secure Boot state / Stan Secure Boot
+    options:
+    - Enabled / Włączony
+    - Disabled / Wyłączony
+    - Unknown or not applicable / Nie wiem lub nie dotyczy
+  validations:
+    required: true
+- type: dropdown
+  id: filesystem
+  attributes:
+    label: Root filesystem / Główny system plików
+    options:
+    - Btrfs
+    - ext4
+    - Other / Inny
+    - Unknown or live session / Nie wiem lub sesja live
+  validations:
+    required: true
+- type: dropdown
+  id: software-source
+  attributes:
+    label: Installer software source / Źródło wybrane w instalatorze
+    options:
+    - Official repositories only / Tylko oficjalne repozytoria
+    - yay
+    - paru
+    - Chaotic-AUR
+    - Other or unknown / Inne lub nie wiem
+  validations:
+    required: true
+- type: textarea
+  id: steps
+  attributes:
+    label: Steps to reproduce / Kroki odtworzenia
+    description: Describe what you did and how often it happens. / Opisz wykonane czynności i częstotliwość problemu.
+    placeholder: '1. ...
+
+      2. ...
+
+      3. ...'
+  validations:
+    required: true
+- type: textarea
+  id: expected
+  attributes:
+    label: Expected result / Oczekiwany rezultat
+  validations:
+    required: true
+- type: textarea
+  id: actual
+  attributes:
+    label: Actual result / Rzeczywisty rezultat
+    description: Include the exact error message. / Podaj dokładny komunikat błędu.
+  validations:
+    required: true
+- type: textarea
+  id: logs
+  attributes:
+    label: Relevant logs / Istotne logi
+    description: Paste only relevant Calamares, application or journal output after removing private data. If unavailable,
+      explain below. / Wklej istotny fragment logów po usunięciu prywatnych danych. Jeśli logi są niedostępne, wyjaśnij
+      to poniżej.
+    render: text
+  validations:
+    required: false
+- type: textarea
+  id: context
+  attributes:
+    label: Additional context / Dodatkowe informacje
+    description: Recent changes, workarounds, screenshots or links to related issues. / Ostatnie zmiany, obejścia,
+      zrzuty ekranu i powiązane zgłoszenia.
+  validations:
+    required: false
