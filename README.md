@@ -12,6 +12,10 @@ ErgenOS is an independent Arch Linux based distribution built around GNOME, Btrf
 
 The current release is **ErgenOS 1.1**.
 
+## Documentation
+
+Visit the [ErgenOS Wiki](https://ergenossw.github.io/ErgenOS-Wiki/) for installation, system administration, security, recovery, hardware and troubleshooting guides. Available in [English](https://ergenossw.github.io/ErgenOS-Wiki/) and [Polish](https://ergenossw.github.io/ErgenOS-Wiki/pl/).
+
 ## Current state
 
 ErgenOS currently includes:
