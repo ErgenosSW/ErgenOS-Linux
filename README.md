@@ -76,8 +76,6 @@ See [known limitations](https://ergenossw.github.io/ErgenOS-Wiki/getting-started
 
 Use the [bug report form](https://github.com/ErgenosSW/ErgenOS-Linux/issues/new?template=01-bug-report.yml) or [feature request form](https://github.com/ErgenosSW/ErgenOS-Linux/issues/new?template=02-feature-request.yml). Reports can be written in English or Polish.
 
-Before publishing an ISO, complete the [release checklist](https://ergenossw.github.io/ErgenOS-Wiki/project/release-checklist.html).
-
 For bug reports, follow the [reporting guide](https://ergenossw.github.io/ErgenOS-Wiki/troubleshooting/reporting-issues.html). Issues and pull requests are welcome.
 
 ErgenOS is not affiliated with or endorsed by Arch Linux. Arch Linux and related marks belong to their respective owners.
