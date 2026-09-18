@@ -31,16 +31,7 @@ ErgenOS currently includes:
 
 ## Installation and recovery
 
-Calamares installs the system and applies the software source selected by the user. The optional `yay`, `paru` and Chaotic-AUR paths require an internet connection during installation.
-
-Btrfs installations configure Snapper for the root filesystem. `snap-pac`
-creates pre and post snapshots during Pacman transactions, and `grub-btrfs`
-adds those snapshots to the GRUB menu. Its daemon watches the complete Snapper
-tree so new recovery points are reflected automatically.
-
-A snapshot can be booted as an earlier system state. ErgenOS includes `grub-btrfs-overlayfs`, which adds a temporary writable overlay while the snapshot itself remains read-only. Normal boot entries keep hibernation support, while snapshot entries use `noresume` to avoid resuming into historical system state.
-
-This recovery setup is only enabled for Btrfs installations.
+See the [installation guide](https://ergenossw.github.io/ErgenOS-Wiki/getting-started/installation.html) and [recovery documentation](https://ergenossw.github.io/ErgenOS-Wiki/recovery/).
 
 ## ErgenOS applications
 
@@ -50,30 +41,7 @@ ErgenOS includes [ErgenCTL](https://github.com/ErgenosSW/ErgenCTL), [ErgenOS Wel
 
 Visit the [official ErgenOS website](https://ergenossw.github.io/ErgenOS-Website/) or [download the complete ErgenOS 1.1 ISO from MediaFire](https://www.mediafire.com/file/psvdrlrwlsz2c2c/ergenos-1.1.0-x86_64.iso/file).
 
-The current ISO must be booted and installed with Secure Boot disabled.
-Experimental post-install support using Microsoft-signed shim and a locally
-enrolled Machine Owner Key is available from the signed ErgenOS repository.
-Follow the [Secure Boot setup guide](https://ergenossw.github.io/ErgenOS-Website/secure-boot.html)
-after installation.
-
-Verify the downloaded image with:
-
-```bash
-echo "460c2ab349681cef4922ebba35b180b24f7a17e7182dbf23cc7c99b13b1fdcce  ergenos-1.1.0-x86_64.iso" | sha256sum -c -
-```
-
-Alternatively, download both numbered ISO parts and `SHA256SUMS-1.1.0` from the [ErgenOS 1.1 GitHub release](https://github.com/ErgenosSW/ErgenOS-Linux/releases/tag/v1.1.0). Reassemble and verify the image with:
-
-```bash
-cat ergenos-1.1.0-x86_64.iso.part-* > ergenos-1.1.0-x86_64.iso
-sha256sum -c SHA256SUMS-1.1.0
-```
-
-Expected SHA-256 for the complete image:
-
-```text
-460c2ab349681cef4922ebba35b180b24f7a17e7182dbf23cc7c99b13b1fdcce
-```
+For image verification and installation steps, follow the [installation guide](https://ergenossw.github.io/ErgenOS-Wiki/getting-started/installation.html). Experimental post-install support is documented in the [Secure Boot guide](https://ergenossw.github.io/ErgenOS-Wiki/security/secure-boot.html).
 
 ## Tested so far
 
@@ -102,17 +70,11 @@ Gaming-oriented features are part of the long-term direction, but ErgenOS does n
 
 ## Known limitations
 
-- The ErgenOS 1.1 ISO is not Secure Boot bootable; experimental support is
-  configured after installation.
-- Optional software source setup requires network access during installation.
-- ErgenOS does not maintain a separate binary mirror for Arch packages.
-- Hardware coverage and long-term upgrade testing are limited.
-
-See [CHANGELOG.md](CHANGELOG.md) for release-specific changes.
+See [known limitations](https://ergenossw.github.io/ErgenOS-Wiki/getting-started/known-limitations.html) and [hardware compatibility](https://ergenossw.github.io/ErgenOS-Wiki/hardware/) in the wiki. See [CHANGELOG.md](CHANGELOG.md) for release-specific changes.
 
 ## Contributing and licensing
 
-Bug reports should include the ErgenOS version, firmware mode, root filesystem, selected software source and relevant Calamares or system journal output. Issues and pull requests are welcome.
+For bug reports, follow the [reporting guide](https://ergenossw.github.io/ErgenOS-Wiki/troubleshooting/reporting-issues.html). Issues and pull requests are welcome.
 
 ErgenOS is not affiliated with or endorsed by Arch Linux. Arch Linux and related marks belong to their respective owners.
 
