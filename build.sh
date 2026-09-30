@@ -129,6 +129,13 @@ validate_profile() {
         || die "The ErgenPac package is not listed"
     grep -Fxq 'python' "${packages_file}" \
         || die "The python runtime required by ErgenCTL is not listed"
+    grep -Fxq 'pciutils' "${packages_file}" \
+        || die "pciutils required for graphics hardware detection is not listed"
+    grep -Fxq 'switcheroo-control' "${packages_file}" \
+        || die "switcheroo-control required for hybrid graphics is not listed"
+    grep -Fq 'name: "switcheroo-control.service"' \
+        "${profile_dir}/airootfs/etc/calamares/modules/services-systemd.conf" \
+        || die "switcheroo-control.service is not enabled by Calamares"
     grep -Fxq "BUILD_ID=\"${version}\"" "${profile_dir}/airootfs/etc/os-release" \
         || die "os-release BUILD_ID does not match VERSION"
     grep -Fq "shortVersion: \"${version}\"" \

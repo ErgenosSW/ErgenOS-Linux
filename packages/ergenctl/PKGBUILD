@@ -2,7 +2,7 @@
 
 pkgname=ergenctl
 pkgver=1.1.0.dev
-pkgrel=5
+pkgrel=6
 pkgdesc='Diagnostics and recovery utility for ErgenOS'
 arch=('any')
 url='https://github.com/ErgenosSW/ErgenCTL'
@@ -16,11 +16,13 @@ depends=(
   'libadwaita'
   'mkinitcpio'
   'pacman'
+  'pciutils'
   'polkit'
   'python'
   'python-gobject'
   'snapper'
   'systemd'
+  'switcheroo-control'
 )
 makedepends=('desktop-file-utils')
 optdepends=(
@@ -35,10 +37,8 @@ source=(
   "${pkgname}-${_upstream_version}.tar.gz"
   'ergenctl-logo.png'
 )
-sha256sums=(
-  '45657595b1878d8b83f22d09b71102402f5ccda1472d2eb1ca9474836c20eeac'
-  '275ae119ab874bef2c61540589ed24902a6234d9b3c5f17147a96bfa48d75701'
-)
+sha256sums=('af7808ca014c2b952b4aa09d182f16b7cebd20c6d556a96c182e6b6f2dfd282a'
+            '275ae119ab874bef2c61540589ed24902a6234d9b3c5f17147a96bfa48d75701')
 
 check() {
   cd "ErgenCTL-${_upstream_version}"

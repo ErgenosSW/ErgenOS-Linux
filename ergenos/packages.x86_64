@@ -119,6 +119,7 @@ os-prober
 partclone
 parted
 partimage
+pciutils
 pcsclite
 pipewire
 pipewire-alsa
@@ -142,6 +143,7 @@ snapper
 sof-firmware
 squashfs-tools
 sudo
+switcheroo-control
 syslinux
 systemd-resolvconf
 tcpdump
