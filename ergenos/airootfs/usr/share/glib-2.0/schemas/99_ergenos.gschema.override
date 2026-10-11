@@ -13,8 +13,15 @@ picture-options='zoom'
 [org.gnome.desktop.wm.preferences]
 button-layout='appmenu:minimize,maximize,close'
 
+[org.gnome.desktop.interface]
+color-scheme='prefer-dark'
+gtk-theme='ErgenOS'
+
 [org.gnome.shell]
-enabled-extensions=['dash-to-dock@micxgx.gmail.com', 'blur-my-shell@aunetx', 'arcmenu@arcmenu.com', 'caffeine@patapon.info', 'gtk4-ding@smedius.gitlab.com']
+enabled-extensions=['dash-to-dock@micxgx.gmail.com', 'blur-my-shell@aunetx', 'arcmenu@arcmenu.com', 'caffeine@patapon.info', 'gtk4-ding@smedius.gitlab.com', 'user-theme@gnome-shell-extensions.gcampax.github.com']
+
+[org.gnome.shell.extensions.user-theme]
+name='ErgenOS'
 
 [org.gnome.shell.extensions.arcmenu]
 menu-button-icon='/usr/share/pixmaps/ergenos-logo.png'

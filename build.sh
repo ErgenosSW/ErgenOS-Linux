@@ -125,6 +125,8 @@ validate_profile() {
         || die "The ErgenOS keyring package is not listed"
     grep -Fxq 'ergenos-welcome' "${packages_file}" \
         || die "The ErgenOS Welcome package is not listed"
+    grep -Fxq 'ergenos-theme' "${packages_file}" \
+        || die "The ErgenOS desktop theme package is not listed"
     grep -Fxq 'ergenpac' "${packages_file}" \
         || die "The ErgenPac package is not listed"
     grep -Fxq 'python' "${packages_file}" \
@@ -153,6 +155,7 @@ package_dirs=(
     packages/calamares
     packages/ergenctl
     packages/ergenos-keyring
+    packages/ergenos-theme
     packages/ergenos-welcome
     packages/ergenpac
     packages/gnome-shell-extension-blur-my-shell

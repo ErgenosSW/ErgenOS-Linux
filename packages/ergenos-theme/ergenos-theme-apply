@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# First-login initialization only. GNOME defaults come from the ISO profile.
+set -euo pipefail
+state_dir="${XDG_STATE_HOME:-$HOME/.local/state}/ergenos"
+marker="$state_dir/theme-defaults-1.2"
+[[ -e "$marker" ]] && exit 0
+config="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-4.0"
+stylesheet=/usr/share/themes/ErgenOS/gtk-4.0/libadwaita.css
+[[ -r "$stylesheet" ]] || exit 1
+mkdir -p "$config" "$state_dir"
+# Never overwrite an existing user's custom stylesheet, including a symlink.
+if [[ ! -e "$config/gtk.css" && ! -L "$config/gtk.css" ]]; then
+    ln -s "$stylesheet" "$config/gtk.css"
+fi
+# Raw dconf also works with the older ISO extension (v72 has no popup schema).
+# Seed once for future versions, without overriding an explicit user preference.
+key=/org/gnome/shell/extensions/blur-my-shell/popup/blur
+current=$(dconf read "$key")
+if [[ -z "$current" ]]; then
+    dconf write "$key" false
+fi
+touch "$marker"

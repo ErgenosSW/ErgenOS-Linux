@@ -1,0 +1,49 @@
+@import url("resource:///org/gtk/libgtk/theme/Adwaita/gtk-contained-dark.css");
+@define-color theme_bg_color #030a14;
+@define-color theme_fg_color #eaf3ff;
+@define-color theme_base_color #07111f;
+@define-color theme_text_color #eaf3ff;
+@define-color theme_selected_bg_color #087fd1;
+@define-color theme_selected_fg_color #ffffff;
+@define-color theme_unfocused_bg_color #081424;
+@define-color borders alpha(#8fbeeb, 0.18);
+
+* { outline-color: alpha(#31b6ff, .45); }
+.background { background-color: #030a14; color: #eaf3ff; }
+headerbar, .titlebar {
+  background: #050e1a;
+  color: #f4f9ff;
+  border-bottom: 1px solid alpha(#8fbeeb, .16);
+  box-shadow: none;
+}
+button {
+  border-radius: 10px;
+  border: 1px solid alpha(#8fbeeb, .16);
+  background: #0b2035;
+  color: #eaf3ff;
+}
+button:hover { border-color: alpha(#31b6ff, .50); background: #0d2c49; }
+button:active, button:checked { background: #10446e; }
+entry, spinbutton {
+  border-radius: 11px;
+  border: 1px solid alpha(#8fbeeb, .18);
+  background: #071525;
+  color: #eaf3ff;
+}
+menu, popover, popover.background { background: #081424; color: #eaf3ff; border: 1px solid alpha(#8fbeeb, .16); }
+menuitem:hover, row:hover { background: alpha(#1d537c, .28); }
+treeview.view { background: #07111f; color: #eaf3ff; }
+treeview.view:selected { background: #087fd1; color: white; }
+scrollbar slider { min-width: 6px; min-height: 6px; border-radius: 99px; background: alpha(#8fbeeb, .35); }
+scrollbar slider:hover { background: alpha(#54c3ff, .62); }
+tooltip { background: #0b2035; color: #eaf3ff; border: 1px solid alpha(#31b6ff, .25); }
+
+button:disabled, entry:disabled { color: #73889f; background: #081424; border-color: alpha(#8fbeeb,.08); }
+button.destructive-action { background: #a51d38; color: white; }
+button.suggested-action { background: linear-gradient(135deg, #087fd1, #0068dd); color: white; }
+.sidebar { background: linear-gradient(155deg, #0a2744, #07111f); }
+.sidebar row:selected { background: #10446e; color: white; }
+selection { background: #10446e; color: white; }
+
+/* Popup windows must not paint a rectangular backing behind their menu. */
+.background.popup { background-color: transparent; }

@@ -1,0 +1,88 @@
+/* ErgenOS 1.1 — GNOME Shell 51; default widget geometry comes from Shell.
+   Keep BoxPointer transparent. Only its rounded contents paint the surface. */
+stage { color: #eaf3ff; }
+#panel { background-color: #030a14; border-bottom: 1px solid rgba(84,195,255,.16); font-weight: 600; }
+#panel .panel-button { color: #d7e7f8; border-radius: 10px; }
+#panel .panel-button:hover, #panel .panel-button:active, #panel .panel-button:checked { background-color: #0b3152; color: #ffffff; }
+#panel .clock-display .clock { background-color: transparent; box-shadow: none; border-radius: 10px; }
+.popup-menu-boxpointer, .candidate-popup-boxpointer {
+ -arrow-background-color: transparent; -arrow-border-color: transparent;
+ -arrow-border-width: 0px; -arrow-border-radius: 24px; -arrow-base: 0px; -arrow-rise: 8px;
+ background-color: transparent; background-image: none; border: none; box-shadow: none;
+}
+.popup-menu { background-color: transparent; color: #eaf3ff; }
+.popup-menu-content, .candidate-popup-content, .quick-settings, .datemenu-popover {
+ background-color: #081424; background-image: none; color: #eaf3ff;
+ border: 1px solid rgba(84,195,255,.24); border-radius: 24px;
+ box-shadow: 0 12px 32px 0 rgba(0,0,0,.40);
+}
+.popup-menu-content { padding: 8px; }
+.quick-settings { padding: 18px; }
+.popup-menu-item { border-radius: 10px; color: #d7e7f8; }
+.popup-menu-item:hover, .popup-menu-item:focus, .popup-menu-item:selected { background-color: #10446e; color: white; }
+.popup-sub-menu, .quick-toggle-menu { background-color: #0b2035; color: #eaf3ff; }
+.popup-separator-menu-item .popup-separator-menu-item-separator { background-color: rgba(143,190,235,.16); }
+#calendarArea, .datemenu-calendar-column, .datemenu-displays-box,
+.message-list, .message-view, .message-list-sections, .message-list-section,
+.message-list-controls, .message-notification-group {
+ background-color: transparent; background-image: none; border: none; box-shadow: none;
+}
+#calendarArea { padding: 6px; }
+.message-list { border-radius: 0; }
+.datemenu-calendar-column { spacing: 10px; }
+.datemenu-today-button { background-color: transparent; border: 1px solid transparent; border-radius: 14px; box-shadow: none; color: #eaf3ff; }
+.datemenu-today-button:hover, .datemenu-today-button:focus { background-color: #0b2035; border-color: rgba(84,195,255,.24); }
+.datemenu-today-button .day-label { color: #54c3ff; }
+.datemenu-today-button .date-label { color: #f4f9ff; }
+.calendar, .events-button, .world-clocks-button, .weather-button {
+ background-color: #0b2035; background-image: none; color: #eaf3ff;
+ border: 1px solid rgba(143,190,235,.14); border-radius: 16px; box-shadow: none;
+}
+.events-button:hover, .events-button:focus, .world-clocks-button:hover,
+.world-clocks-button:focus, .weather-button:hover, .weather-button:focus {
+ background-color: #0d2c49; border-color: rgba(49,182,255,.42);
+}
+.calendar .calendar-month-header .calendar-month-label { color: #f4f9ff !important; }
+.calendar .calendar-day, .calendar .calendar-day-heading { color: #d7e7f8; }
+.calendar .calendar-day:hover, .calendar .calendar-day:focus,
+.calendar .pager-button:hover, .calendar .pager-button:focus { background-color: #10446e; color: white; }
+.calendar .calendar-day.calendar-weekend { color: #9db0c8; }
+.calendar .calendar-day.calendar-other-month { color: #73889f; }
+.calendar .calendar-day.calendar-today, .calendar .calendar-day:selected {
+ background-color: #087fd1; color: white !important; box-shadow: inset 0 0 0 1px rgba(84,195,255,.55);
+}
+.events-button .events-title, .events-button .event-time, .events-button .event-placeholder,
+.world-clocks-button .world-clocks-header, .world-clocks-button .world-clocks-timezone,
+.weather-button .weather-header, .weather-button .weather-forecast-time { color: #9db0c8; }
+.message, .message-view .message, .notification-banner {
+ background-color: #0b2138; background-image: none; color: #eaf3ff;
+ border: 1px solid rgba(143,190,235,.16); border-radius: 18px; box-shadow: none;
+}
+.message:hover, .message:focus { background-color: #0d2c49; border-color: rgba(49,182,255,.32); }
+.message:second-in-stack { background-color: #0a1c30; border-color: transparent; box-shadow: none; }
+.message:lower-in-stack { background-color: #08182b; border-color: transparent; box-shadow: none; }
+.message .message-header, .message .message-header .event-time { color: #9db0c8; }
+.message .message-title, .message .message-source-title { color: #f4f9ff; }
+.message-list .message-list-placeholder { color: #9db0c8; }
+/* Preserve GNOME 51 split-toggle radii instead of rounding both halves. */
+.quick-settings .button, .quick-settings .icon-button, .message-list-clear-button,
+.message .message-close-button, .message .message-expand-button, .message-collapse-button {
+ background-color: #0b2035; color: #eaf3ff; box-shadow: none; border-color: rgba(143,190,235,.16);
+}
+.quick-settings .button:hover, .quick-settings .icon-button:hover,
+.message-list-clear-button:hover, .message .message-close-button:hover,
+.message .message-expand-button:hover, .message-collapse-button:hover { background-color: #10446e; color: white; }
+.quick-toggle, .quick-toggle-has-menu .quick-toggle-menu-button { background-color: #0b2035; color: #eaf3ff; }
+.quick-toggle:hover, .quick-toggle-has-menu .quick-toggle-menu-button:hover { background-color: #10446e; }
+.quick-settings .quick-toggle:checked, .quick-toggle-has-menu .quick-toggle-menu-button:checked { background-color: #087fd1; color: white; }
+.quick-settings .quick-toggle:checked:hover, .quick-toggle-has-menu .quick-toggle-menu-button:checked:hover { background-color: #096ead; }
+.quick-toggle-has-menu .quick-toggle-separator { background-color: rgba(143,190,235,.18); }
+.slider { color: #54c3ff; -barlevel-background-color: #142d46; -barlevel-active-background-color: #0aa7ff; -barlevel-overdrive-color: #ff657a; }
+.search-entry { background-color: #081424; color: #eaf3ff; border-radius: 16px; border: 1px solid rgba(143,190,235,.22); }
+.search-entry:focus { border-color: #31b6ff; box-shadow: inset 0 0 0 1px rgba(49,182,255,.25); }
+#dash .dash-background { background-color: #081424; border-radius: 22px; border: 1px solid rgba(143,190,235,.18); box-shadow: 0 8px 24px 0 rgba(0,0,0,.32); }
+.app-well-app-running-dot { background-color: #54c3ff; }
+.app-folder-dialog, .modal-dialog, .switcher-list, .osd-window { background-color: #081424; color: #eaf3ff; border: 1px solid rgba(84,195,255,.22); border-radius: 22px; }
+.modal-dialog-linked-button { background-color: #0b2035; color: #eaf3ff; }
+.modal-dialog-linked-button:hover { background-color: #10446e; }
+.dash-label { background-color: #0b2035; color: #eaf3ff; border-radius: 10px; }

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Apply ErgenOS Theme
+Comment=Apply the current ErgenOS desktop appearance
+Exec=/usr/bin/ergenos-theme-apply
+OnlyShowIn=GNOME;
+NoDisplay=true
+X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-Delay=3

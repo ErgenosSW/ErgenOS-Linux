@@ -1,0 +1,133 @@
+/* ErgenOS / ErgenCTL palette. Modern libadwaita variables AND legacy names. */
+@define-color accent_bg_color #087fd1;
+@define-color accent_fg_color #ffffff;
+@define-color accent_color #54c3ff;
+@define-color window_bg_color #030a14;
+@define-color window_fg_color #eaf3ff;
+@define-color view_bg_color #07111f;
+@define-color view_fg_color #eaf3ff;
+@define-color headerbar_bg_color #050e1a;
+@define-color headerbar_fg_color #f4f9ff;
+@define-color headerbar_backdrop_color #050e1a;
+@define-color headerbar_border_color #8fbeeb;
+@define-color headerbar_shade_color rgba(0,0,0,0.24);
+@define-color headerbar_darker_shade_color rgba(0,0,0,0.36);
+@define-color sidebar_bg_color #08182b;
+@define-color sidebar_fg_color #d7e7f8;
+@define-color sidebar_backdrop_color #08182b;
+@define-color sidebar_border_color rgba(143,190,235,0.16);
+@define-color sidebar_shade_color rgba(0,0,0,0.20);
+@define-color secondary_sidebar_bg_color #081424;
+@define-color secondary_sidebar_fg_color #d7e7f8;
+@define-color secondary_sidebar_backdrop_color #081424;
+@define-color secondary_sidebar_border_color rgba(143,190,235,0.16);
+@define-color secondary_sidebar_shade_color rgba(0,0,0,0.20);
+@define-color card_bg_color #0b2035;
+@define-color card_fg_color #eaf3ff;
+@define-color card_shade_color rgba(143,190,235,0.12);
+@define-color dialog_bg_color #081424;
+@define-color dialog_fg_color #eaf3ff;
+@define-color popover_bg_color #081424;
+@define-color popover_fg_color #eaf3ff;
+@define-color popover_shade_color rgba(0,0,0,0.24);
+@define-color overview_bg_color #030a14;
+@define-color overview_fg_color #eaf3ff;
+@define-color thumbnail_bg_color #0b2035;
+@define-color thumbnail_fg_color #eaf3ff;
+@define-color active_toggle_bg_color #10446e;
+@define-color active_toggle_fg_color #ffffff;
+@define-color shade_color rgba(0,0,0,0.28);
+@define-color scrollbar_outline_color rgba(0,0,0,0.35);
+@define-color success_color #3ddc97;
+@define-color warning_color #ffbd5a;
+@define-color error_color #ff657a;
+@define-color destructive_color #ff657a;
+@define-color destructive_bg_color #a51d38;
+@define-color destructive_fg_color #ffffff;
+:root {
+  --accent-bg-color: #087fd1;
+  --accent-fg-color: #ffffff;
+  --accent-color: #54c3ff;
+  --window-bg-color: #030a14;
+  --window-fg-color: #eaf3ff;
+  --view-bg-color: #07111f;
+  --view-fg-color: #eaf3ff;
+  --headerbar-bg-color: #050e1a;
+  --headerbar-fg-color: #f4f9ff;
+  --headerbar-backdrop-color: #050e1a;
+  --headerbar-border-color: #8fbeeb;
+  --headerbar-shade-color: rgba(0,0,0,0.24);
+  --headerbar-darker-shade-color: rgba(0,0,0,0.36);
+  --sidebar-bg-color: #08182b;
+  --sidebar-fg-color: #d7e7f8;
+  --sidebar-backdrop-color: #08182b;
+  --sidebar-border-color: rgba(143,190,235,0.16);
+  --sidebar-shade-color: rgba(0,0,0,0.20);
+  --secondary-sidebar-bg-color: #081424;
+  --secondary-sidebar-fg-color: #d7e7f8;
+  --secondary-sidebar-backdrop-color: #081424;
+  --secondary-sidebar-border-color: rgba(143,190,235,0.16);
+  --secondary-sidebar-shade-color: rgba(0,0,0,0.20);
+  --card-bg-color: #0b2035;
+  --card-fg-color: #eaf3ff;
+  --card-shade-color: rgba(143,190,235,0.12);
+  --dialog-bg-color: #081424;
+  --dialog-fg-color: #eaf3ff;
+  --popover-bg-color: #081424;
+  --popover-fg-color: #eaf3ff;
+  --popover-shade-color: rgba(0,0,0,0.24);
+  --overview-bg-color: #030a14;
+  --overview-fg-color: #eaf3ff;
+  --thumbnail-bg-color: #0b2035;
+  --thumbnail-fg-color: #eaf3ff;
+  --active-toggle-bg-color: #10446e;
+  --active-toggle-fg-color: #ffffff;
+  --shade-color: rgba(0,0,0,0.28);
+  --scrollbar-outline-color: rgba(0,0,0,0.35);
+  --success-color: #3ddc97;
+  --warning-color: #ffbd5a;
+  --error-color: #ff657a;
+  --destructive-color: #ff657a;
+  --destructive-bg-color: #a51d38;
+  --destructive-fg-color: #ffffff;
+}
+
+/* Avoid blanket button/window overrides: keep Adwaita geometry, window clipping,
+   destructive actions, link buttons, selection and disabled-state semantics. */
+/* Window surfaces use --window-bg-color, preserving toolkit clipping. */
+headerbar { background-color: #050e1a; color: #f4f9ff; box-shadow: none; }
+.navigation-sidebar, .sidebar-pane { background-image: linear-gradient(155deg, #0a2744, #07111f); }
+.navigation-sidebar > row { border-radius: 10px; }
+.navigation-sidebar > row:selected { background: linear-gradient(135deg, #10446e, #0b3152); color: #ffffff; }
+.navigation-sidebar > row:hover:not(:selected) { background-color: rgba(29,83,124,.28); }
+.navigation-sidebar > row:selected image { color: #54c3ff; }
+.card, .boxed-list { border: 1px solid rgba(143,190,235,.16); border-radius: 16px; }
+button.suggested-action {
+ background-image: linear-gradient(135deg, #087fd1, #0068dd);
+ color: #ffffff; border-color: rgba(84,195,255,.45);
+}
+button.suggested-action:hover { background-image: linear-gradient(135deg, #096ead, #0059bd); }
+button.suggested-action:disabled { background-image: none; opacity: .5; }
+entry:focus-within, searchentry:focus-within { outline-color: #31b6ff; }
+popover > contents { border: 1px solid rgba(84,195,255,.22); }
+.dim-label { color: #9db0c8; }
+/* Nautilus-specific content, no blanket restyling of every application row. */
+.nautilus-window .view { background-color: #07111f; color: #eaf3ff; }
+.nautilus-window .nautilus-grid-view, .nautilus-window .nautilus-list-view {
+ background-color: #07111f; color: #eaf3ff;
+}
+.nautilus-window .nautilus-grid-view child:selected,
+.nautilus-window .nautilus-list-view row:selected { background-color: #10446e; color: #ffffff; }
+.nautilus-window .path-bar button:checked { background-color: #0b3152; color: #eaf3ff; }
+
+/* ErgenCTL surface treatment for file-browser navigation and toolbars. */
+.nautilus-window headerbar {
+  background-image: linear-gradient(120deg, #08182b, #050e1a);
+}
+.nautilus-window .navigation-sidebar row:selected {
+  background-image: linear-gradient(135deg, #10446e, #0b3152);
+  color: #ffffff;
+}
+.nautilus-window .navigation-sidebar row:selected image { color: #54c3ff; }
+.nautilus-window .view:selected { background-color: #10446e; color: #ffffff; }
+.nautilus-window .path-bar button:hover { background-color: #0b2035; }

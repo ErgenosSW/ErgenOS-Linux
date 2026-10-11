@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=ErgenOS
+Comment=Dark navy ErgenOS desktop theme
+
+[X-GNOME-Metatheme]
+GtkTheme=ErgenOS
+MetacityTheme=ErgenOS
+IconTheme=Adwaita
+CursorTheme=Adwaita
+ButtonLayout=appmenu:minimize,maximize,close

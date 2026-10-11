@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = grub
+
+[Action]
+Description = Keep the ErgenOS GRUB menu free of firmware entries
+When = PostTransaction
+Depends = coreutils
+Exec = /usr/bin/chmod 0644 /etc/grub.d/30_uefi-firmware

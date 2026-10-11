@@ -1,0 +1,29 @@
+# Maintainer: ErgenOS Project <https://github.com/ErgenosSW>
+pkgname=ergenos-theme
+pkgver=1.2.0
+pkgrel=2
+pkgdesc='Default ErgenOS desktop theme: GNOME Shell, GTK3 and GTK4/libadwaita'
+arch=('any')
+url='https://github.com/ErgenosSW/ErgenOS-Linux'
+license=('GPL-3.0-or-later')
+depends=('gnome-shell' 'gnome-shell-extensions' 'gtk3' 'gtk4' 'dconf')
+source=('gtk3.css' 'gtk4.css' 'libadwaita.css' 'gnome-shell.css' 'index.theme'
+        'ergenos-theme-apply' 'ergenos-theme-setup.desktop')
+sha256sums=('ac6998210e9fbbd5612ef33f583cebc740a91990656e32bba774c760d36c4388'
+'90c8084208453bc40914d32478ec5efe57d01a02fe06601cca24505f6d04fe56'
+'db60c62ec1aaeffa6c5dfa6d3d0cc20bd633743741e1044fe69c73428367fc87'
+'dd30a30a34500a95b76ab57bf74f434292a876e1005fda6e7f31e911ab744444'
+'89b2dfe172466082bb76b25e189540440ab4cacefc7352f0fa03c4797b2c1bcc'
+'b5bf471b55fbb1f3129fc5656e383dc26d7f1c246f5760257116766c36e03782'
+'abf87ed9d2bd038e8ecc0cea3550752555abd1abf5c8c7f589510c26b41564b2')
+package() {
+  install -Dm644 gtk3.css "$pkgdir/usr/share/themes/ErgenOS/gtk-3.0/gtk.css"
+  install -Dm644 gtk4.css "$pkgdir/usr/share/themes/ErgenOS/gtk-4.0/gtk.css"
+  install -Dm644 libadwaita.css "$pkgdir/usr/share/themes/ErgenOS/gtk-4.0/libadwaita.css"
+  install -Dm644 gnome-shell.css "$pkgdir/usr/share/themes/ErgenOS/gnome-shell/gnome-shell.css"
+  install -Dm644 index.theme "$pkgdir/usr/share/themes/ErgenOS/index.theme"
+  install -Dm755 ergenos-theme-apply "$pkgdir/usr/bin/ergenos-theme-apply"
+  install -Dm644 ergenos-theme-setup.desktop "$pkgdir/etc/xdg/autostart/ergenos-theme-setup.desktop"
+  install -d "$pkgdir/etc/skel/.config/gtk-4.0"
+  ln -s /usr/share/themes/ErgenOS/gtk-4.0/libadwaita.css "$pkgdir/etc/skel/.config/gtk-4.0/gtk.css"
+}

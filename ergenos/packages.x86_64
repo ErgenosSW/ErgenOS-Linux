@@ -33,6 +33,7 @@ edk2-shell
 efibootmgr
 ergenctl
 ergenos-keyring
+ergenos-theme
 ergenos-welcome
 ergenpac
 espeakup
@@ -55,6 +56,7 @@ gnome-shell-extension-blur-my-shell
 gnome-shell-extension-caffeine
 gnome-shell-extension-dash-to-dock
 gnome-shell-extension-gtk4-desktop-icons-ng
+gnome-shell-extensions
 gnome-software
 gnome-tweaks
 gpart
