@@ -1,6 +1,6 @@
 pkgbase = ergenos-welcome
 	pkgdesc = First-login welcome application for ErgenOS
-	pkgver = 1.0.0
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/ErgenosSW/ErgenOS-Welcome
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = ergenos-welcome
 	depends = libadwaita
 	depends = python
 	depends = python-gobject
-	source = ergenos-welcome-1.0.0.tar.gz::https://github.com/ErgenosSW/ErgenOS-Welcome/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 7499fbe7c9b3abac53e54ce20847d5cf37867abced97d0a39fffe094d53206c5
+	source = ergenos-welcome-1.0.3.tar.gz::https://github.com/ErgenosSW/ErgenOS-Welcome/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = f7ba2b1e9541201a247d439aee1a1abf380d9b93d2f09040952d7516905a3842
 
 pkgname = ergenos-welcome

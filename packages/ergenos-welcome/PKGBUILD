@@ -1,7 +1,7 @@
 # Maintainer: ErgenOS Project <https://github.com/ErgenosSW>
 
 pkgname=ergenos-welcome
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='First-login welcome application for ErgenOS'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=('meson')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9223cda37534d11950f8d6e888281f3768c82132d0adfa5985e52e6814228235')
+sha256sums=('f7ba2b1e9541201a247d439aee1a1abf380d9b93d2f09040952d7516905a3842')
 _builddir="build-${pkgver}"
 
 build() {

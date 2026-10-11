@@ -1,14 +1,14 @@
 # Maintainer: ErgenOS Project <https://github.com/ErgenosSW>
 
 pkgname=ergenpac
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='Graphical package manager and system updater for ErgenOS'
 arch=('any')
 url='https://github.com/ErgenosSW/ErgenPac'
 license=('GPL-3.0-or-later')
 depends=(
-  'ergenctl>=1.1.0.dev-8'
+  'ergenctl>=1.1.0.dev-9'
   'flatpak'
   'gtk4'
   'libadwaita'
@@ -21,7 +21,7 @@ depends=(
 )
 makedepends=('meson')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0ecdd6a0deb373cb905f155c1d26d933805fdccc25f219d6c49cb195c1a181f0')
+sha256sums=('e86bbbaf61cd318470efa74cb6a1a31a59acd9db90fb6c70c295bf5a51525b3d')
 _builddir="build-${pkgver}"
 
 build() {
