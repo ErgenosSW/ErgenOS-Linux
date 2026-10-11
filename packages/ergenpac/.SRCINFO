@@ -1,6 +1,6 @@
 pkgbase = ergenpac
 	pkgdesc = Graphical package manager and system updater for ErgenOS
-	pkgver = 0.1.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/ErgenosSW/ErgenPac
 	arch = any
@@ -11,10 +11,11 @@ pkgbase = ergenpac
 	depends = libadwaita
 	depends = pacman
 	depends = pacman-contrib
+	depends = pciutils
 	depends = polkit
 	depends = python
 	depends = python-gobject
-	source = ergenpac-0.1.1.tar.gz::https://github.com/ErgenosSW/ErgenPac/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 24eff7301983a5fb70420badba1b3413d1741ad921de829ea63258d800233137
+	source = ergenpac-0.2.2.tar.gz::https://github.com/ErgenosSW/ErgenPac/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = 96e74e112433355fcfc17afe0bbf72cbacaf1e07c754aa65664780f327287a94
 
 pkgname = ergenpac
