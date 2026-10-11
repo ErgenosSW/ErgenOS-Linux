@@ -2,6 +2,55 @@
 
 ## [Unreleased]
 
+## [1.2.0] - ISO validated locally; publication pending
+
+### Added
+
+- `ergenos-theme` 1.2.0-2 as the default GNOME Shell, GTK3 and GTK4/libadwaita
+  appearance; User Themes is enabled in the ISO defaults
+- optional Gaming catalog in ErgenPac: Steam, Lutris, Heroic, Faugus, GameMode,
+  MangoHud, GOverlay and Gamescope, with per-tool confirmation and usage hints
+- combined AMD/Intel + NVIDIA driver profiles, 32-bit libraries and
+  switcheroo-control integration; expanded laptop GPU diagnostics in ErgenCTL
+- `ergenctl verify-update --json`, invoked by ErgenPac after updates and native
+  Gaming installations to report boot, snapshot, module and service problems
+
+### Changed
+
+- ErgenPac 1.0.1-1, ErgenCTL 1.1.0.dev-9 and Welcome 1.0.3-1 with redesigned GUIs
+- ISO, os-release and Calamares branding updated to 1.2.0
+- installed GRUB menu hides firmware BootNext targets, firmware settings and
+  OS-prober entries; system, advanced options and configured snapshots remain
+- an installation step and package hook keep firmware entries disabled after
+  installation and subsequent GRUB package updates
+
+### Fixed
+
+- rectangular popup backgrounds in the tested Blur My Shell configuration by
+  disabling popup blur only; panel and dock blur remain separately configurable
+- libadwaita styling through a dedicated GTK4 overlay and a first-login helper
+  that preserves existing custom GTK CSS
+- Gaming package availability refresh in an isolated checkupdates database;
+  offline fallback is explicit and fakeroot is now a required ErgenPac dependency
+
+### Validation
+
+- ErgenPac 1.0.1: 44 tests passed; signed package and repository databases verified
+- rebuilt ISO accepted by the maintainer in a VM; Gaming and the intended GRUB
+  menu confirmed; theme and hybrid GPU usage confirmed on the existing laptop
+- direct mkarchiso build succeeded on ErgenLab (Debian 13, Arch Docker container)
+- six ErgenCTL repair tests failed in the container source-build path and remain
+  unresolved; the ISO used the previously published signed ErgenCTL package
+- historical Secure Boot coverage below remains valid historical evidence, not
+  a claim that the complete lifecycle was repeated for 1.2
+
+### Deferred to 1.3
+
+Gaming Check, guided gaming onboarding, per-game launch profiles, expanded
+battery/power diagnostics and automatic discovery of installed systems from
+Live recovery. ErgenProton-WoW integration into the Gaming catalog is not shipped.
+
+
 ## [1.1.0] - 2026-09-12
 
 ### Added

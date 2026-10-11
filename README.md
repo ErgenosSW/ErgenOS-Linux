@@ -10,7 +10,28 @@
 
 ErgenOS is an independent Arch Linux based distribution built around GNOME, Btrfs recovery and a graphical installer. It uses Arch repositories and the rolling release model while adding its own installation workflow, system defaults and recovery setup.
 
-The current release is **ErgenOS 1.1**.
+The current ISO source version is **ErgenOS 1.2.0**. The rebuilt 1.2 image has
+passed the maintainer's VM acceptance test. Public ISO publication is pending;
+the download links below still point to the previously published 1.1 image.
+
+## What's new in 1.2
+
+- Default ErgenOS theme for GNOME Shell, GTK3 and GTK4/libadwaita, including Nautilus.
+- Redesigned ErgenCTL, ErgenPac and Welcome interfaces with a shared visual style.
+- ErgenPac 1.0.1: optional gaming launchers and tools, with automatic catalog refresh.
+- AMD/Intel + NVIDIA hybrid graphics profiles and expanded ErgenCTL GPU diagnostics.
+- ErgenCTL verification after ErgenPac system updates and native Gaming installations.
+- A focused installed-system GRUB menu: ErgenOS Linux, Advanced options and
+  ErgenOS Snapshots when Snapper/Btrfs recovery is configured.
+
+| Component | Version used for 1.2 |
+| --- | --- |
+| ErgenPac | 1.0.1-1 |
+| ErgenCTL | 1.1.0.dev-9 |
+| ErgenOS Welcome | 1.0.3-1 |
+| ErgenOS theme | 1.2.0-2 |
+
+See [CHANGELOG.md](CHANGELOG.md) for details and test scope.
 
 ## Documentation
 
@@ -60,13 +81,30 @@ ErgenOS has been tested with:
 - Secure Boot through shim and MOK under QEMU/OVMF and on a Lenovo ThinkPad
 - signed `linux-zen`, GRUB and `broadcom-wl-dkms` with Secure Boot enabled
 
+For 1.2, the maintainer confirmed the rebuilt ISO in a VM, including the desktop,
+ErgenPac Gaming and the three-entry GRUB menu. The theme and hybrid GPU workflow
+were also accepted on the existing Acer laptop installation. This does not
+constitute a new NVIDIA Secure Boot validation on that laptop.
+
 Hardware coverage and long-term upgrade testing are still limited.
+
+## Build validation note
+
+The 1.2 acceptance image was built directly with `mkarchiso` in an Arch container
+on Debian 13. It used signed published application packages and a local theme
+repository. Six ErgenCTL repair tests failed during the earlier container source
+build; their cause remains unresolved. Do not interpret the successful ISO build
+as a successful run of that source-build test suite.
 
 ## Project direction
 
-ErgenOS is currently a general-purpose Arch Linux based desktop distribution focused on approachable system management, practical stability and recovery after a problematic update.
+ErgenOS is moving toward an approachable gaming desktop built on system
+management and recovery. Version 1.2 adds optional gaming setup through ErgenPac;
+launchers and performance tools are not installed or enabled indiscriminately.
 
-Gaming-oriented features are part of the long-term direction, but ErgenOS does not yet present itself as a gaming distribution.
+Gaming Check, a guided gaming onboarding flow, per-game launch profiles, deeper
+laptop power diagnostics and expanded automatic Live recovery are deferred to
+the 1.3 roadmap. They are not shipped as completed 1.2 features.
 
 ## Known limitations
 
