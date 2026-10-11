@@ -4,15 +4,15 @@
   <img src="assets/ergenos-logo.png" alt="ErgenOS logo" width="320">
 </p>
 
-[![Release](https://img.shields.io/badge/release-1.1-blue)](https://github.com/ErgenosSW/ErgenOS-Linux/releases/tag/v1.1.0)
+[![Release](https://img.shields.io/badge/release-1.2-blue)](https://www.mediafire.com/file/5pflsx05qjzptld/ergenos-1.2.0-x86_64.iso/file)
 [![Website](https://img.shields.io/badge/website-ergenossw.github.io-0aa7ff)](https://ergenossw.github.io/ErgenOS-Website/)
 [![License](https://img.shields.io/badge/license-GPL--3.0--or--later-blue)](LICENSE)
 
 ErgenOS is an independent Arch Linux based distribution built around GNOME, Btrfs recovery and a graphical installer. It uses Arch repositories and the rolling release model while adding its own installation workflow, system defaults and recovery setup.
 
 The current ISO source version is **ErgenOS 1.2.0**. The rebuilt 1.2 image has
-passed the maintainer's VM acceptance test. Public ISO publication is pending;
-the download links below still point to the previously published 1.1 image.
+passed the maintainer's VM acceptance test. The complete image is available on
+MediaFire; GitHub release assets are being prepared.
 
 ## What's new in 1.2
 
@@ -60,7 +60,7 @@ ErgenOS includes [ErgenCTL](https://github.com/ErgenosSW/ErgenCTL), [ErgenOS Wel
 
 ## Download
 
-Visit the [official ErgenOS website](https://ergenossw.github.io/ErgenOS-Website/) or [download the complete ErgenOS 1.1 ISO from MediaFire](https://www.mediafire.com/file/psvdrlrwlsz2c2c/ergenos-1.1.0-x86_64.iso/file).
+Visit the [official ErgenOS website](https://ergenossw.github.io/ErgenOS-Website/) or [download the complete ErgenOS 1.2 ISO from MediaFire](https://www.mediafire.com/file/5pflsx05qjzptld/ergenos-1.2.0-x86_64.iso/file).
 
 For image verification and installation steps, follow the [installation guide](https://ergenossw.github.io/ErgenOS-Wiki/getting-started/installation.html). Experimental post-install support is documented in the [Secure Boot guide](https://ergenossw.github.io/ErgenOS-Wiki/security/secure-boot.html).
 
@@ -119,3 +119,11 @@ For bug reports, follow the [reporting guide](https://ergenossw.github.io/ErgenO
 ErgenOS is not affiliated with or endorsed by Arch Linux. Arch Linux and related marks belong to their respective owners.
 
 Original ErgenOS work is licensed under GPL-3.0-or-later. Bundled and adapted third-party components keep their respective licenses and copyright notices. See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+## ISO 1.2 integrity
+
+File: `ergenos-1.2.0-x86_64.iso` — 2,751,954,944 bytes (2.56 GiB).
+
+```text
+c152f4881a2bd0c3a8921f2139a2e3a538cd6cd49160e90cac6650df2a47599b  ergenos-1.2.0-x86_64.iso
+```

@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 
-## [1.2.0] - ISO validated locally; publication pending
+## [1.2.0] - ISO available on MediaFire; GitHub assets pending
 
 ### Added
 
