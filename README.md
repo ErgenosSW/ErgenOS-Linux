@@ -12,7 +12,7 @@ ErgenOS is an independent Arch Linux based distribution built around GNOME, Btrf
 
 The current ISO source version is **ErgenOS 1.2.0**. The rebuilt 1.2 image has
 passed the maintainer's VM acceptance test. The complete image is available on
-MediaFire; GitHub release assets are being prepared.
+MediaFire and as two verified parts in the [GitHub release](https://github.com/ErgenosSW/ErgenOS-Linux/releases/tag/v1.2.0).
 
 ## What's new in 1.2
 

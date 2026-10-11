@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 
-## [1.2.0] - ISO available on MediaFire; GitHub assets pending
+## [1.2.0] - 2026-10-12
 
 ### Added
 
