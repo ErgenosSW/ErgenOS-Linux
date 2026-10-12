@@ -18,7 +18,7 @@ body:
     label: ErgenOS version / Wersja ErgenOS
     description: Include the ISO filename for live/installer issues and the application version if relevant. / Podaj
       nazwę ISO dla błędów live/instalatora i wersję aplikacji, jeśli jej dotyczy problem.
-    placeholder: ErgenOS 1.1.0; ergenos-1.1.0-x86_64.iso
+    placeholder: ErgenOS 1.2.0; ergenos-1.2.0-x86_64.iso
   validations:
     required: true
 - type: dropdown
