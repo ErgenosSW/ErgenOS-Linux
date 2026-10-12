@@ -1,4 +1,4 @@
-/* ErgenOS 1.1 — GNOME Shell 51; default widget geometry comes from Shell.
+/* ErgenOS 1.2 — GNOME Shell 51; default widget geometry comes from Shell.
    Keep BoxPointer transparent. Only its rounded contents paint the surface. */
 stage { color: #eaf3ff; }
 #panel { background-color: #030a14; border-bottom: 1px solid rgba(84,195,255,.16); font-weight: 600; }
