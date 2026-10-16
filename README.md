@@ -122,7 +122,9 @@ Original ErgenOS work is licensed under GPL-3.0-or-later. Bundled and adapted th
 
 ## ISO 1.2 integrity
 
-File: `ergenos-1.2.0-x86_64.iso` — 2,751,954,944 bytes (2.56 GiB).
+File: `ergenos-1.2.0-x86_64.iso` - 2,751,954,944 bytes (2.56 GiB).
+
+SHA-256 checksum for the complete ISO:
 
 ```text
 c152f4881a2bd0c3a8921f2139a2e3a538cd6cd49160e90cac6650df2a47599b  ergenos-1.2.0-x86_64.iso
