@@ -1,0 +1,10 @@
+[Unit]
+Description=Check Snapper metadata for GRUB updates
+
+[Timer]
+OnBootSec=30s
+OnUnitInactiveSec=30s
+AccuracySec=5s
+
+[Install]
+WantedBy=timers.target

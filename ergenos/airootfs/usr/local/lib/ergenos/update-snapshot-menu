@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+shopt -s nullglob
+
+[[ "$(findmnt -n -o FSTYPE /)" == btrfs ]] || exit 0
+mountpoint -q /.snapshots || exit 0
+install -d -m 0700 /run/ergenos-snapshot-menu
+exec 9>/run/ergenos-snapshot-menu/lock
+flock -n 9 || exit 0
+
+# Inspect only the numbered directories and info.xml, never snapshot contents.
+metadata=(/.snapshots/[0-9]*/info.xml)
+signature="$(
+    for file in "${metadata[@]}"; do
+        [[ -d "${file%/info.xml}/snapshot" ]] || continue
+        stat --printf='%n %s %y %z\n' -- "$file"
+    done | sha256sum
+)"
+state=/run/ergenos-snapshot-menu/signature
+[[ -f "$state" && "$(cat "$state")" == "$signature" ]] && exit 0
+# Save the signature only after successful generation so failures are retried.
+grub-mkconfig -o /boot/grub/grub.cfg
+printf '%s\n' "$signature" > "$state"

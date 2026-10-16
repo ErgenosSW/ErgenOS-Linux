@@ -1,0 +1,8 @@
+[Unit]
+Description=Refresh GRUB when Snapper metadata changes
+RequiresMountsFor=/boot /.snapshots
+ConditionPathExists=/etc/snapper/configs/root
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/lib/ergenos/update-snapshot-menu
