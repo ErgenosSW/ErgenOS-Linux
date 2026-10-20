@@ -31,7 +31,10 @@ jobs:
               useradd -m -u 1001 builder
               printf "builder ALL=(ALL:ALL) NOPASSWD: ALL\n" > /etc/sudoers.d/builder
               chown -R builder:builder /work
-              sudo -u builder ERGENOS_SKIP_PACKAGE_CHECKS=true ./build.sh --rebuild-packages --release-parts
+              sudo -u builder \
+                ERGENOS_SKIP_PACKAGE_CHECKS=true \
+                ERGENOS_INSTALL_CI_BUILD_DEPS=true \
+                ./build.sh --rebuild-packages --release-parts
             '
       - uses: actions/upload-artifact@v6
         with:

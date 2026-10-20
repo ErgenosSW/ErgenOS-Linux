@@ -17,6 +17,7 @@ rebuild_packages=false
 validate_only=false
 create_release_parts=false
 skip_package_checks="${ERGENOS_SKIP_PACKAGE_CHECKS:-false}"
+install_ci_build_dependencies="${ERGENOS_INSTALL_CI_BUILD_DEPS:-false}"
 pacman_config=""
 postcheck_dir=""
 
@@ -36,6 +37,8 @@ Environment variables:
   ERGENOS_RELEASE_DIR Release asset directory (default: ./release-VERSION)
   ERGENOS_SKIP_PACKAGE_CHECKS
                        Skip package check() functions (default: false)
+  ERGENOS_INSTALL_CI_BUILD_DEPS
+                       Install selected local dependencies in a disposable CI container
 EOF
 }
 
@@ -85,6 +88,8 @@ done
 
 [[ "${skip_package_checks}" == true || "${skip_package_checks}" == false ]] \
     || die "ERGENOS_SKIP_PACKAGE_CHECKS must be true or false"
+[[ "${install_ci_build_dependencies}" == true || "${install_ci_build_dependencies}" == false ]] \
+    || die "ERGENOS_INSTALL_CI_BUILD_DEPS must be true or false"
 
 validate_profile() {
     printf 'Validating Archiso profile...\n'
@@ -206,6 +211,11 @@ build_local_repository() {
         for package_file in "${package_files[@]}"; do
             cp -f -- "${package_file}" "${repo_dir}/"
         done
+
+        if [[ "${install_ci_build_dependencies}" == true && "${relative_dir}" == packages/ergenctl ]]; then
+            printf 'Installing ErgenCTL as a build dependency in the disposable CI environment\n'
+            sudo pacman -U --needed --noconfirm -- "${package_files[@]}"
+        fi
     done
 
     mapfile -t repo_packages < <(
