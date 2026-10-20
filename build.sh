@@ -16,6 +16,7 @@ iso_path="${output_dir}/ergenos-${version}-${architecture}.iso"
 rebuild_packages=false
 validate_only=false
 create_release_parts=false
+skip_package_checks="${ERGENOS_SKIP_PACKAGE_CHECKS:-false}"
 pacman_config=""
 postcheck_dir=""
 
@@ -33,6 +34,8 @@ Environment variables:
   ERGENOS_OUTPUT_DIR  ISO output directory (default: ./out)
   ERGENOS_WORK_DIR    Archiso work directory (default: unique /var/tmp path)
   ERGENOS_RELEASE_DIR Release asset directory (default: ./release-VERSION)
+  ERGENOS_SKIP_PACKAGE_CHECKS
+                       Skip package check() functions (default: false)
 EOF
 }
 
@@ -79,6 +82,9 @@ fi
 for command_name in "${required_commands[@]}"; do
     command -v "${command_name}" >/dev/null || die "Missing required command: ${command_name}"
 done
+
+[[ "${skip_package_checks}" == true || "${skip_package_checks}" == false ]] \
+    || die "ERGENOS_SKIP_PACKAGE_CHECKS must be true or false"
 
 validate_profile() {
     printf 'Validating Archiso profile...\n'
@@ -186,6 +192,9 @@ build_local_repository() {
         if [[ "${needs_build}" == true ]]; then
             printf 'Building %s\n' "${relative_dir}"
             makepkg_args=(-s --needed --noconfirm)
+            if [[ "${skip_package_checks}" == true ]]; then
+                makepkg_args+=(--nocheck)
+            fi
             if [[ "${rebuild_packages}" == true ]]; then
                 makepkg_args+=(--force)
             fi

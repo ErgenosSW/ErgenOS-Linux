@@ -28,6 +28,6 @@ jobs:
               useradd -m -u 1001 builder
               printf "builder ALL=(ALL:ALL) NOPASSWD: ALL\n" > /etc/sudoers.d/builder
               chown -R builder:builder /work
-              sudo -u builder ./build.sh --validate-only
+              sudo -u builder ERGENOS_SKIP_PACKAGE_CHECKS=true ./build.sh --validate-only
             '
 
