@@ -2,7 +2,7 @@
 
 pkgname=ergenctl
 pkgver=1.1.0.dev
-pkgrel=9
+pkgrel=11
 pkgdesc='Diagnostics and recovery utility for ErgenOS'
 arch=('any')
 url='https://github.com/ErgenosSW/ErgenCTL'
@@ -31,13 +31,12 @@ optdepends=(
   'flatpak: Flathub diagnostics'
   'snap-pac: automatic snapshots around Pacman transactions'
 )
-_upstream_version=1.1.0.dev
-# Local development snapshot shipped alongside this recipe; no unpublished tag URL.
+_upstream_version="${pkgver}-${pkgrel}"
 source=(
-  "${pkgname}-${_upstream_version}.tar.gz"
+  "${pkgname}-${_upstream_version}.tar.gz::${url}/archive/refs/tags/v${_upstream_version}.tar.gz"
   'ergenctl-logo.png'
 )
-sha256sums=('18fd819697aa11d86a2c23aa820053da4cb6824ed695964a03d194c8e10f5f63'
+sha256sums=('6376fcf98a7ec7da537cc3226b1a4194e334f1e7e50962de0a9a5ac8125a7bae'
             '275ae119ab874bef2c61540589ed24902a6234d9b3c5f17147a96bfa48d75701')
 
 check() {

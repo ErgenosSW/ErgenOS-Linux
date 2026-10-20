@@ -1,7 +1,7 @@
 pkgbase = ergenctl
 	pkgdesc = Diagnostics and recovery utility for ErgenOS
 	pkgver = 1.1.0.dev
-	pkgrel = 9
+	pkgrel = 11
 	url = https://github.com/ErgenosSW/ErgenCTL
 	arch = any
 	license = GPL-3.0-or-later
@@ -25,9 +25,9 @@ pkgbase = ergenctl
 	optdepends = ergenpac: install the optional Secure Boot backend graphically
 	optdepends = flatpak: Flathub diagnostics
 	optdepends = snap-pac: automatic snapshots around Pacman transactions
-	source = ergenctl-1.1.0.dev.tar.gz
+	source = ergenctl-1.1.0.dev-11.tar.gz::https://github.com/ErgenosSW/ErgenCTL/archive/refs/tags/v1.1.0.dev-11.tar.gz
 	source = ergenctl-logo.png
-	sha256sums = 18fd819697aa11d86a2c23aa820053da4cb6824ed695964a03d194c8e10f5f63
+	sha256sums = 6376fcf98a7ec7da537cc3226b1a4194e334f1e7e50962de0a9a5ac8125a7bae
 	sha256sums = 275ae119ab874bef2c61540589ed24902a6234d9b3c5f17147a96bfa48d75701
 
 pkgname = ergenctl
