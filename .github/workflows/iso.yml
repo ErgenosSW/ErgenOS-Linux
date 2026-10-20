@@ -1,0 +1,52 @@
+name: Release ISO
+
+on:
+  push:
+    tags:
+      - "v[0-9]*.[0-9]*.[0-9]*"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Validate and build ISO
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Validate release tag
+        shell: bash
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          test "$version" = "$(cat VERSION)"
+      - name: Build and validate ISO
+        run: |
+          docker run --rm --privileged \
+            -v "$GITHUB_WORKSPACE:/work" \
+            -w /work \
+            archlinux:base-devel \
+            bash -euxo pipefail -c '
+              pacman -Syu --noconfirm archiso git pacman-contrib sudo xorriso
+              useradd -m -u 1001 builder
+              printf "builder ALL=(ALL:ALL) NOPASSWD: ALL\n" > /etc/sudoers.d/builder
+              chown -R builder:builder /work
+              sudo -u builder ./build.sh --rebuild-packages --release-parts
+            '
+      - uses: actions/upload-artifact@v6
+        with:
+          name: ergenos-${{ github.ref_name }}-iso-part-00
+          path: release-*/ergenos-*.iso.part-00
+          if-no-files-found: error
+          compression-level: 0
+      - uses: actions/upload-artifact@v6
+        with:
+          name: ergenos-${{ github.ref_name }}-iso-part-01
+          path: release-*/ergenos-*.iso.part-01
+          if-no-files-found: error
+          compression-level: 0
+      - uses: actions/upload-artifact@v6
+        with:
+          name: ergenos-${{ github.ref_name }}-checksums
+          path: release-*/SHA256SUMS
+          if-no-files-found: error
