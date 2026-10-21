@@ -4,6 +4,7 @@
   <img src="assets/ergenos-logo.png" alt="ErgenOS logo" width="320">
 </p>
 
+[![Tests](https://github.com/ErgenosSW/ErgenOS-Linux/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/ErgenosSW/ErgenOS-Linux/actions/workflows/tests.yml)
 [![Release](https://img.shields.io/badge/release-1.2-blue)](https://www.mediafire.com/file/5pflsx05qjzptld/ergenos-1.2.0-x86_64.iso/file)
 [![Website](https://img.shields.io/badge/website-ergenossw.github.io-0aa7ff)](https://ergenossw.github.io/ErgenOS-Website/)
 [![License](https://img.shields.io/badge/license-GPL--3.0--or--later-blue)](LICENSE)
