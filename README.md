@@ -111,6 +111,12 @@ the 1.3 roadmap. They are not shipped as completed 1.2 features.
 
 See [known limitations](https://ergenossw.github.io/ErgenOS-Wiki/getting-started/known-limitations.html) and [hardware compatibility](https://ergenossw.github.io/ErgenOS-Wiki/hardware/) in the wiki. See [CHANGELOG.md](CHANGELOG.md) for release-specific changes.
 
+## Support and contact
+
+Use GitHub Issues for bug reports and feature requests. For private project,
+collaboration or professional inquiries, contact
+**[szymon.pilip@ergenos.dev](mailto:szymon.pilip@ergenos.dev)**.
+
 ## Contributing and licensing
 
 Use the [bug report form](https://github.com/ErgenosSW/ErgenOS-Linux/issues/new?template=01-bug-report.yml) or [feature request form](https://github.com/ErgenosSW/ErgenOS-Linux/issues/new?template=02-feature-request.yml). Reports can be written in English or Polish.
