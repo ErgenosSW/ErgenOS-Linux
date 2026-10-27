@@ -13,7 +13,7 @@ jobs:
     name: Validate and build ISO
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
       - name: Validate release tag
         shell: bash
         run: |
@@ -36,19 +36,19 @@ jobs:
                 ERGENOS_INSTALL_CI_BUILD_DEPS=true \
                 ./build.sh --rebuild-packages --release-parts
             '
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
           name: ergenos-${{ github.ref_name }}-iso-part-00
           path: release-*/ergenos-*.iso.part-00
           if-no-files-found: error
           compression-level: 0
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
           name: ergenos-${{ github.ref_name }}-iso-part-01
           path: release-*/ergenos-*.iso.part-01
           if-no-files-found: error
           compression-level: 0
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
           name: ergenos-${{ github.ref_name }}-checksums
           path: release-*/SHA256SUMS
