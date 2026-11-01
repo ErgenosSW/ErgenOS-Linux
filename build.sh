@@ -345,6 +345,24 @@ if required not in supported:
     printf 'GNOME extension compatibility validation passed.\n'
 }
 
+validate_calamares_package() {
+    local package_file=""
+    local candidate
+
+    printf 'Validating Calamares runtime dependencies...\n'
+    for candidate in "${repo_packages[@]}"; do
+        if [[ "$(pacman -Qp -- "${candidate}" | awk '{print $1}')" == "calamares" ]]; then
+            package_file="${candidate}"
+            break
+        fi
+    done
+    [[ -n "${package_file}" ]] || die "Missing local Calamares package"
+
+    bsdtar -xOf "${package_file}" .PKGINFO | grep -Fxq 'depend = kcrash' \
+        || die "Calamares package does not declare the kcrash runtime dependency"
+    printf 'Calamares runtime dependency validation passed.\n'
+}
+
 validate_iso() {
     [[ -s "${iso_path}" ]] || die "Expected ISO was not created: ${iso_path}"
     iso_size="$(stat -c '%s' "${iso_path}")"
@@ -399,6 +417,7 @@ build_local_repository
 create_pacman_config
 validate_package_resolution
 validate_gnome_extensions
+validate_calamares_package
 
 if [[ "${validate_only}" == true ]]; then
     printf 'Validation completed successfully. No ISO was built.\n'

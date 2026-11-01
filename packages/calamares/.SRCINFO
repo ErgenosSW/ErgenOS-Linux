@@ -1,7 +1,7 @@
 pkgbase = calamares
 	pkgdesc = Distribution-independent installer framework
 	pkgver = 3.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/Calamares/calamares
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = calamares
 	makedepends = qt6-tools
 	makedepends = qt6-translations
 	depends = kcoreaddons
+	depends = kcrash
 	depends = kpmcore
 	depends = libpwquality
 	depends = qt6-declarative
