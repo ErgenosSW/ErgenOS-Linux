@@ -147,9 +147,14 @@ validate_profile() {
         || die "pciutils required for graphics hardware detection is not listed"
     grep -Fxq 'switcheroo-control' "${packages_file}" \
         || die "switcheroo-control required for hybrid graphics is not listed"
+    grep -Fxq 'power-profiles-daemon' "${packages_file}" \
+        || die "power-profiles-daemon required for shared GNOME and Hyprland power profiles is not listed"
     grep -Fq 'name: "switcheroo-control.service"' \
         "${profile_dir}/airootfs/etc/calamares/modules/services-systemd.conf" \
         || die "switcheroo-control.service is not enabled by Calamares"
+    grep -Fq 'name: "power-profiles-daemon.service"' \
+        "${profile_dir}/airootfs/etc/calamares/modules/services-systemd.conf" \
+        || die "power-profiles-daemon.service is not enabled by Calamares"
     grep -Fxq "BUILD_ID=\"${version}\"" "${profile_dir}/airootfs/etc/os-release" \
         || die "os-release BUILD_ID does not match VERSION"
     grep -Fq "shortVersion: \"${version}\"" \

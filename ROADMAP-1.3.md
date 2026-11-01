@@ -17,6 +17,8 @@ the others.
 - [x] Optional ErgenOS Hyprland preview 0.1.0-33 in the package repository.
 - [x] Hyprland Power UI with shared power-profiles-daemon profiles, battery
       details, independent AC/battery idle timers and lid-action settings.
+- [x] Install and enable power-profiles-daemon explicitly in the default GNOME
+      image so profile selection remains shared with the Hyprland preview.
 - [x] ErgenPac consumes the read-only ErgenCTL Gaming Check report.
 - [x] Optional signed ErgenProton-WoW 0.2.0-1 package in the repository; it is
       intentionally not promoted or installed automatically by ErgenPac.
@@ -54,6 +56,8 @@ features:
 - [ ] Live recovery remains manually targeted and successfully repairs the intended
       installation; automatic disk discovery is not part of 1.3.
 - [ ] ErgenPac Gaming and Gaming Check pass on the Acer Nitro hybrid-GPU system.
+- [ ] Power Saver, Balanced and Performance selection is visible in GNOME and
+      remains synchronized after switching between GNOME and Hyprland.
 - [ ] GNOME remains the supported default; Hyprland preview remains optional unless
       a separate scope decision promotes it.
 - [ ] Dash to Dock, Blur My Shell and GTK4 Desktop Icons NG load in a clean live

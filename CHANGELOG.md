@@ -11,6 +11,8 @@
   installation or launcher configuration
 - optional Hyprland Power UI using the same power-profiles-daemon profiles as
   GNOME, with battery details and separate AC/battery idle and lid settings
+- power-profiles-daemon installed and enabled explicitly for GNOME, keeping the
+  Power Saver, Balanced and Performance selection shared between sessions
 - serialized GRUB snapshot-menu refresh with a dedicated service and timer,
   avoiding concurrent regeneration and excessive memory use
 - automated Archiso profile validation and release-tag ISO artifact builds
