@@ -2,7 +2,9 @@
 
 ## [Unreleased]
 
-### Completed for 1.3 development
+## [1.3.0] - 2026-11-01
+
+### Added
 
 - offline, read-only Gaming Check in ErgenCTL, covering host graphics,
   hybrid-GPU state, gaming launchers and custom Proton runners
@@ -20,18 +22,24 @@
   GTK4 Desktop Icons NG 100.30, with build-time compatibility validation
 - prepared package recipes for ErgenCTL 1.1.0.dev-13 and ErgenPac 1.0.1-3,
   based on pinned published source commits
-- signed repository updates through ErgenCTL 1.1.0.dev-12, ErgenPac 1.0.1-2,
+- signed repository updates through ErgenCTL 1.1.0.dev-13, ErgenPac 1.0.1-3,
   ErgenOS theme 1.2.0-3 and the optional Hyprland preview 0.1.0-33
 
-### Release work still required
+### Changed
 
-- build, sign and publish ErgenCTL 1.1.0.dev-13 and ErgenPac 1.0.1-3
-- refresh and validate the signed package repository
-- build the 1.3.0 ISO and complete installation, upgrade, recovery and Secure
-  Boot acceptance tests
-- confirm all default GNOME extensions load in a clean live session and after
-  installation
-- record and publish the final ISO checksum and download URLs
+- ErgenCTL updated to 1.1.0.dev-13 and ErgenPac to 1.0.1-3
+- default GNOME extensions refreshed for GNOME Shell 51
+
+### Fixed
+
+- added the missing KCrash runtime dependency required by Calamares
+
+### Validation
+
+- clean UEFI installation and first boot passed in QEMU/KVM
+- default GNOME extensions and power profiles loaded in live and installed sessions
+- MOK enrollment, Secure Boot and snapshot boot passed in QEMU/OVMF
+- final ISO SHA-256 verified
 
 ### Deferred beyond 1.3
 
