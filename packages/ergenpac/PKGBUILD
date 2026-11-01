@@ -2,7 +2,7 @@
 
 pkgname=ergenpac
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical package manager and system updater for ErgenOS'
 arch=('any')
 url='https://github.com/ErgenosSW/ErgenPac'
@@ -21,22 +21,24 @@ depends=(
   'python-gobject'
 )
 makedepends=('meson')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c30b16e1b4c1a36a2bf6fac719a29c8f4004be0c8e276cc3b54f7d7fbbb8a2e7')
+_source_commit=89eb66b6a66a7c824dedf921ef10fd2b73d541a9
+_source_dir="ErgenPac-${_source_commit}"
+source=("${pkgname}-${_source_commit}.tar.gz::${url}/archive/${_source_commit}.tar.gz")
+sha256sums=('323cacf8ea29c56c3081b4f73f5f78385da5c6035821842eb6f46f93e5e53398')
 _builddir="build-${pkgver}"
 
 build() {
-  arch-meson "ErgenPac-${pkgver}" "${_builddir}"
+  arch-meson "${_source_dir}" "${_builddir}"
   meson compile -C "${_builddir}"
 }
 
 check() {
-  cd "ErgenPac-${pkgver}"
+  cd "${_source_dir}"
   PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python -m unittest discover -s tests -v
 }
 
 package() {
   meson install -C "${_builddir}" --destdir "${pkgdir}"
-  install -Dm644 "ErgenPac-${pkgver}/LICENSE" \
+  install -Dm644 "${_source_dir}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
