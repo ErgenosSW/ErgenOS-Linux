@@ -4,7 +4,7 @@
 _pkgname="calamares"
 pkgname="$_pkgname"
 pkgver=3.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Distribution-independent installer framework"
 url="https://codeberg.org/Calamares/calamares"
 license=("GPL-3.0-or-later")
@@ -12,6 +12,7 @@ arch=('i686' 'x86_64')
 
 depends=(
   'kcoreaddons'
+  'kcrash'
   'kpmcore'
   'libpwquality'
   'qt6-declarative'
