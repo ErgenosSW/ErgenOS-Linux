@@ -112,6 +112,27 @@ the 1.3 roadmap. They are not shipped as completed 1.2 features.
 Current implementation and release gates are tracked in
 [ROADMAP-1.3.md](ROADMAP-1.3.md).
 
+## ErgenOS 1.3 release candidate scope
+
+The 1.3 source profile is frozen around offline Gaming Check, its ErgenPac
+integration, safer serialized GRUB snapshot-menu refreshes, current hybrid-GPU
+support and the optional Hyprland preview. ErgenProton-WoW 0.2.0-1 is available
+as an optional signed repository package and is not installed or configured
+automatically.
+
+| Component | Planned version for 1.3 |
+| --- | --- |
+| ErgenCTL | 1.1.0.dev-13 |
+| ErgenPac | 1.0.1-3 |
+| ErgenOS Welcome | 1.0.3-1 |
+| ErgenOS theme | 1.2.0-3 |
+| ErgenOS Secure Boot | 0.2.0.dev-6 |
+| ErgenOS Hyprland preview | 0.1.0-33 |
+| ErgenProton-WoW, optional | 0.2.0-1 |
+
+The published download remains ErgenOS 1.2 until the 1.3 ISO passes the release
+gates and its public checksum and URLs are verified.
+
 ## Known limitations
 
 See [known limitations](https://ergenossw.github.io/ErgenOS-Wiki/getting-started/known-limitations.html) and [hardware compatibility](https://ergenossw.github.io/ErgenOS-Wiki/hardware/) in the wiki. See [CHANGELOG.md](CHANGELOG.md) for release-specific changes.
