@@ -1,10 +1,7 @@
 # ErgenOS 1.3 roadmap
 
-This is the canonical release checklist for ErgenOS 1.3. The feature scope is
-frozen. The published system remains ErgenOS 1.2 until all acceptance and
-publication gates below are completed. A merged implementation, built package
-and accepted target-system behavior are recorded separately; one does not imply
-the others.
+This is the release checklist for ErgenOS 1.3. ErgenOS 1.3 was published on
+2026-11-01. Historical unchecked acceptance items remain recorded below.
 
 ## Completed foundation
 
@@ -68,15 +65,15 @@ features:
 
 ## Publication gates
 
-- [ ] Create the reviewed v1.3.0 tag and verify the GitHub Actions build.
-- [ ] Publish the complete ISO and checksum plus any split GitHub assets.
-- [ ] Verify the public download by downloading and checking its SHA-256.
+- [x] Create the reviewed v1.3.0 tag.
+- [x] Publish the complete ISO and checksum plus split GitHub assets.
+- [ ] Verify the complete public ISO download against its SHA-256.
 - [ ] Update README, Website and both Wiki languages with final URLs and evidence.
 - [ ] Keep historical 1.2 documentation available and clearly versioned.
 
 ## Explicitly not claimed yet
 
-- ErgenOS 1.3 is not released.
+- ErgenOS 1.3 was released on 2026-11-01.
 - Guided Gaming Setup, per-game profiles and automatic Live discovery are not
   part of the frozen 1.3 scope.
 - ErgenProton-WoW is an optional repository package and is not automatically

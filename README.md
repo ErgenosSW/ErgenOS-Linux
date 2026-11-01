@@ -20,8 +20,6 @@ clean VM installation, Secure Boot and snapshot boot testing.
 - Shared power profiles in GNOME and the optional Hyprland preview.
 - Updated GNOME 51 extensions, including Dash to Dock.
 - Safer GRUB snapshot-menu refreshes.
-- Optional ErgenProton-WoW package in the ErgenOS repository.
-- Fixed Calamares startup by adding the missing KCrash dependency.
 
 | Component | Version used for 1.3 |
 | --- | --- |
@@ -31,7 +29,6 @@ clean VM installation, Secure Boot and snapshot boot testing.
 | ErgenOS theme | 1.2.0-3 |
 | ErgenOS Secure Boot | 0.2.0.dev-6 |
 | ErgenOS Hyprland preview | 0.1.0-33 |
-| ErgenProton-WoW, optional | 0.2.0-1 |
 
 See [CHANGELOG.md](CHANGELOG.md) for details and test scope.
 
