@@ -126,6 +126,7 @@ pcsclite
 pipewire
 pipewire-alsa
 pipewire-pulse
+power-profiles-daemon
 ppp
 pptpclient
 pv
