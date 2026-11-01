@@ -93,9 +93,11 @@ Hardware coverage and long-term upgrade testing are still limited.
 
 The 1.2 acceptance image was built directly with `mkarchiso` in an Arch container
 on Debian 13. It used signed published application packages and a local theme
-repository. Six ErgenCTL repair tests failed during the earlier container source
-build; their cause remains unresolved. Do not interpret the successful ISO build
-as a successful run of that source-build test suite.
+repository. Six ErgenCTL repair tests failed during the earlier 1.2 container
+source build. The runner-specific preflight test was subsequently corrected and
+the dedicated ErgenCTL regression workflow passed 126 tests. The original 1.2
+ISO acceptance still remains a separate result and must not be treated as a
+fresh complete 1.3 regression run.
 
 ## Project direction
 
@@ -106,6 +108,9 @@ launchers and performance tools are not installed or enabled indiscriminately.
 Gaming Check, a guided gaming onboarding flow, per-game launch profiles, deeper
 laptop power diagnostics and expanded automatic Live recovery are deferred to
 the 1.3 roadmap. They are not shipped as completed 1.2 features.
+
+Current implementation and release gates are tracked in
+[ROADMAP-1.3.md](ROADMAP-1.3.md).
 
 ## Known limitations
 

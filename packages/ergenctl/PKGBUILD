@@ -2,7 +2,7 @@
 
 pkgname=ergenctl
 pkgver=1.1.0.dev
-pkgrel=11
+pkgrel=12
 pkgdesc='Diagnostics and recovery utility for ErgenOS'
 arch=('any')
 url='https://github.com/ErgenosSW/ErgenCTL'
@@ -31,23 +31,32 @@ optdepends=(
   'flatpak: Flathub diagnostics'
   'snap-pac: automatic snapshots around Pacman transactions'
 )
-_upstream_version="${pkgver}-${pkgrel}"
+_source_commit=158f0058307ce813d538266af5f5958d4b567f7d
+_source_dir="ErgenCTL-${_source_commit}"
+# Pinned published source revision used by the signed ErgenOS package.
 source=(
-  "${pkgname}-${_upstream_version}.tar.gz::${url}/archive/refs/tags/v${_upstream_version}.tar.gz"
+  "${pkgname}-${_source_commit}.tar.gz::${url}/archive/${_source_commit}.tar.gz"
   'ergenctl-logo.png'
+  'fix-repair-tests-non-root.patch'
 )
-sha256sums=('6376fcf98a7ec7da537cc3226b1a4194e334f1e7e50962de0a9a5ac8125a7bae'
-            '275ae119ab874bef2c61540589ed24902a6234d9b3c5f17147a96bfa48d75701')
+sha256sums=('c8923a503fe3f40600374afe4cb40414821f598eeda8f0a0875d27703f21092e'
+            '275ae119ab874bef2c61540589ed24902a6234d9b3c5f17147a96bfa48d75701'
+            '50fd9363664a1d44bfc723fc578b6265e01dbeaf8c42c29a1b67ff0c9b1eb008')
+
+prepare() {
+  cd "${_source_dir}"
+  patch -Np1 -i "${srcdir}/fix-repair-tests-non-root.patch"
+}
 
 check() {
-  cd "ErgenCTL-${_upstream_version}"
+  cd "${_source_dir}"
   PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -v
   python -m py_compile ergenctl.py ergenctl-gui.py ergenctl_gui_core.py ergenctl_secureboot_core.py ergenctl_secureboot_gui.py
   desktop-file-validate data/io.github.ergenossw.ErgenCTL.desktop
 }
 
 package() {
-  cd "ErgenCTL-${_upstream_version}"
+  cd "${_source_dir}"
   install -Dm755 ergenctl.py "${pkgdir}/usr/bin/ergenctl"
   install -Dm755 ergenctl-gui.py "${pkgdir}/usr/bin/ergenctl-gui"
   install -Dm644 ergenctl_gui_core.py \
