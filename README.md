@@ -116,9 +116,10 @@ Current implementation and release gates are tracked in
 
 The 1.3 source profile is frozen around offline Gaming Check, its ErgenPac
 integration, safer serialized GRUB snapshot-menu refreshes, current hybrid-GPU
-support and the optional Hyprland preview. ErgenProton-WoW 0.2.0-1 is available
-as an optional signed repository package and is not installed or configured
-automatically.
+support and the optional Hyprland preview. The preview includes a Power UI with
+shared power-profiles-daemon profiles, battery information and session-specific
+idle and lid controls. ErgenProton-WoW 0.2.0-1 is available as an optional
+signed repository package and is not installed or configured automatically.
 
 | Component | Planned version for 1.3 |
 | --- | --- |

@@ -11,6 +11,7 @@ work_dir="${ERGENOS_WORK_DIR:-/var/tmp/ergenos-work-${USER:-builder}-$$}"
 version="$(<"${project_root}/VERSION")"
 release_dir="${ERGENOS_RELEASE_DIR:-${project_root}/release-${version}}"
 architecture="x86_64"
+gnome_shell_major="51"
 installation_dir="ergenos"
 iso_path="${output_dir}/ergenos-${version}-${architecture}.iso"
 rebuild_packages=false
@@ -77,7 +78,7 @@ while (($#)); do
     shift
 done
 
-required_commands=(makepkg repo-add pacman mkarchiso pacman-conf sudo sed grep sort find awk sha256sum xorriso)
+required_commands=(makepkg repo-add pacman mkarchiso pacman-conf sudo sed grep sort find awk sha256sum xorriso bsdtar python3)
 if [[ "${create_release_parts}" == true ]]; then
     required_commands+=(split)
 fi
@@ -273,6 +274,52 @@ validate_package_resolution() {
     printf 'Package validation passed: %d packages requested.\n' "${#requested_packages[@]}"
 }
 
+validate_gnome_extensions() {
+    local extension_spec package_name extension_uuid package_file metadata_json
+    local extension_specs=(
+        'gnome-shell-extension-blur-my-shell:blur-my-shell@aunetx'
+        'gnome-shell-extension-dash-to-dock:dash-to-dock@micxgx.gmail.com'
+        'gnome-shell-extension-gtk4-desktop-icons-ng:gtk4-ding@smedius.gitlab.com'
+    )
+
+    printf 'Validating bundled GNOME extensions for GNOME Shell %s...\n' "${gnome_shell_major}"
+    for extension_spec in "${extension_specs[@]}"; do
+        package_name="${extension_spec%%:*}"
+        extension_uuid="${extension_spec#*:}"
+        package_file=""
+
+        for candidate in "${repo_packages[@]}"; do
+            if [[ "$(pacman -Qp -- "${candidate}" | awk '{print $1}')" == "${package_name}" ]]; then
+                package_file="${candidate}"
+                break
+            fi
+        done
+        [[ -n "${package_file}" ]] || die "Missing local GNOME extension package: ${package_name}"
+
+        metadata_json="$(
+            bsdtar -xOf "${package_file}" \
+                "usr/share/gnome-shell/extensions/${extension_uuid}/metadata.json"
+        )" || die "Cannot read metadata.json from ${package_name}"
+
+        python3 -c '
+import json
+import sys
+
+required = sys.argv[1]
+package_name = sys.argv[2]
+metadata = json.load(sys.stdin)
+supported = [str(version) for version in metadata.get("shell-version", [])]
+if required not in supported:
+    raise SystemExit(
+        f"{package_name} does not support GNOME Shell {required}; "
+        f"declared versions: {supported}"
+    )
+' "${gnome_shell_major}" "${package_name}" <<<"${metadata_json}" \
+            || die "Incompatible GNOME extension package: ${package_name}"
+    done
+    printf 'GNOME extension compatibility validation passed.\n'
+}
+
 validate_iso() {
     [[ -s "${iso_path}" ]] || die "Expected ISO was not created: ${iso_path}"
     iso_size="$(stat -c '%s' "${iso_path}")"
@@ -326,6 +373,7 @@ validate_profile
 build_local_repository
 create_pacman_config
 validate_package_resolution
+validate_gnome_extensions
 
 if [[ "${validate_only}" == true ]]; then
     printf 'Validation completed successfully. No ISO was built.\n'
