@@ -6,23 +6,33 @@
 
 - offline, read-only Gaming Check in ErgenCTL, covering host graphics,
   hybrid-GPU state, gaming launchers and custom Proton runners
+- ErgenPac integration with the read-only Gaming Check report
+- optional signed ErgenProton-WoW 0.2.0-1 repository package without automatic
+  installation or launcher configuration
 - serialized GRUB snapshot-menu refresh with a dedicated service and timer,
   avoiding concurrent regeneration and excessive memory use
 - automated Archiso profile validation and release-tag ISO artifact builds
+- prepared package recipes for ErgenCTL 1.1.0.dev-13 and ErgenPac 1.0.1-3,
+  based on pinned published source commits
 - signed repository updates through ErgenCTL 1.1.0.dev-12, ErgenPac 1.0.1-2,
   ErgenOS theme 1.2.0-3 and the optional Hyprland preview 0.1.0-33
 
-### Still required for 1.3
+### Release work still required
 
-- guided gaming onboarding and per-game launch profiles in ErgenPac
-- optional ErgenProton-WoW integration in the Gaming catalog
-- expanded battery and power diagnostics in ErgenCTL
-- safe automatic discovery of installed ErgenOS systems from live media
-- version/branding update, fresh ISO validation and release acceptance
+- build, sign and publish ErgenCTL 1.1.0.dev-13 and ErgenPac 1.0.1-3
+- refresh and validate the signed package repository
+- build the 1.3.0 ISO and complete installation, upgrade, recovery and Secure
+  Boot acceptance tests
+- record and publish the final ISO checksum and download URLs
 
-See [ROADMAP-1.3.md](ROADMAP-1.3.md) for the release gates. Items listed as
-required are not shipped features until their implementation and validation are
-complete.
+### Deferred beyond 1.3
+
+- guided Gaming Setup beyond the existing explicit catalog
+- persistent per-game launch profiles
+- automatic launcher configuration for ErgenProton-WoW
+- expanded battery/power tuning and automatic Live installation discovery
+
+See [ROADMAP-1.3.md](ROADMAP-1.3.md) for the remaining release gates.
 
 ## [1.2.0] - 2026-10-12
 

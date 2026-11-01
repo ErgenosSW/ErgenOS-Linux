@@ -1,9 +1,10 @@
 # ErgenOS 1.3 roadmap
 
-This is the canonical checklist for ErgenOS 1.3 development. The published
-system remains ErgenOS 1.2 until all release gates below are completed. A merged
-implementation, built package and accepted target-system behavior are recorded
-separately; one does not imply the others.
+This is the canonical release checklist for ErgenOS 1.3. The feature scope is
+frozen. The published system remains ErgenOS 1.2 until all acceptance and
+publication gates below are completed. A merged implementation, built package
+and accepted target-system behavior are recorded separately; one does not imply
+the others.
 
 ## Completed foundation
 
@@ -14,26 +15,29 @@ separately; one does not imply the others.
 - [x] Automated Archiso profile tests and release-tag ISO artifact workflow.
 - [x] Signed package repository validation.
 - [x] Optional ErgenOS Hyprland preview 0.1.0-33 in the package repository.
+- [x] ErgenPac consumes the read-only ErgenCTL Gaming Check report.
+- [x] Optional signed ErgenProton-WoW 0.2.0-1 package in the repository; it is
+      intentionally not promoted or installed automatically by ErgenPac.
 
-## Required product work
+## Deferred beyond 1.3
 
-- [ ] Add a guided Gaming Setup flow to ErgenPac that consumes Gaming Check
-      results and never installs or enables optional tools without confirmation.
-- [ ] Add persistent, reviewable per-game launch profiles with a safe reset path.
-- [ ] Add optional ErgenProton-WoW discovery/installation to the Gaming catalog.
-- [ ] Expand ErgenCTL battery and power diagnostics for the default GNOME system;
-      optional Hyprland controls do not satisfy this requirement.
-- [ ] Discover installed ErgenOS systems from live media without mounting or
-      modifying ambiguous targets automatically.
-- [ ] Add tests for every new detection, profile and privileged-operation path.
+The following ideas are not release blockers and are not claimed as 1.3
+features:
+
+- guided Gaming Setup beyond the existing explicit per-tool ErgenPac catalog
+- persistent per-game launch-profile management
+- ErgenProton-WoW promotion or automatic installation in ErgenPac
+- expanded battery and power tuning beyond existing diagnostics
+- automatic installed-system discovery from live media
 
 ## Package and ISO integration
 
-- [x] Align ISO recipes with signed ErgenCTL 1.1.0.dev-12 and ErgenPac 1.0.1-2.
-- [ ] Release and sign any newer application packages required by the product work.
+- [x] Prepare ISO recipes for ErgenCTL 1.1.0.dev-13 and ErgenPac 1.0.1-3 from
+      pinned published source commits.
+- [ ] Build, sign and publish ErgenCTL 1.1.0.dev-13 and ErgenPac 1.0.1-3.
 - [ ] Update the signed Pacman repository and validate both databases/signatures.
-- [ ] Set VERSION, os-release and Calamares branding to 1.3.0 only after scope freeze.
-- [ ] Complete the 1.3 changelog and component-version table.
+- [x] Set VERSION, os-release and Calamares branding to 1.3.0 after scope freeze.
+- [x] Complete the pre-release 1.3 changelog and component-version table.
 - [ ] Build the ISO from reviewed, published and reproducible package sources.
 
 ## Acceptance gates
@@ -42,8 +46,9 @@ separately; one does not imply the others.
 - [ ] Clean UEFI installation and first boot pass in a fresh VM.
 - [ ] Upgrade from ErgenOS 1.2 succeeds without dependency downgrades or conflicts.
 - [ ] Snapshot creation, GRUB snapshot menu, snapshot boot and rollback pass.
-- [ ] Live recovery detects the intended installation and refuses ambiguous disks.
-- [ ] Gaming Setup and Gaming Check pass on the Acer Nitro hybrid-GPU system.
+- [ ] Live recovery remains manually targeted and successfully repairs the intended
+      installation; automatic disk discovery is not part of 1.3.
+- [ ] ErgenPac Gaming and Gaming Check pass on the Acer Nitro hybrid-GPU system.
 - [ ] GNOME remains the supported default; Hyprland preview remains optional unless
       a separate scope decision promotes it.
 - [ ] Secure Boot/MOK, signed kernel/GRUB and snapshot-menu behavior pass in QEMU.
@@ -61,7 +66,9 @@ separately; one does not imply the others.
 
 - ErgenOS 1.3 is not released.
 - Guided Gaming Setup, per-game profiles and automatic Live discovery are not
-  implemented merely because Gaming Check exists.
+  part of the frozen 1.3 scope.
+- ErgenProton-WoW is an optional repository package and is not automatically
+  configured by ErgenPac or third-party launchers.
 - The Hyprland preview is not part of the default GNOME installation image.
 - Green unit tests do not replace installation, upgrade, recovery or hardware
   acceptance testing.

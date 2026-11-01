@@ -2,7 +2,7 @@
 
 pkgname=ergenctl
 pkgver=1.1.0.dev
-pkgrel=12
+pkgrel=13
 pkgdesc='Diagnostics and recovery utility for ErgenOS'
 arch=('any')
 url='https://github.com/ErgenosSW/ErgenCTL'
@@ -31,22 +31,15 @@ optdepends=(
   'flatpak: Flathub diagnostics'
   'snap-pac: automatic snapshots around Pacman transactions'
 )
-_source_commit=158f0058307ce813d538266af5f5958d4b567f7d
+_source_commit=a63a4f59b5202327db693617585379aba1372f15
 _source_dir="ErgenCTL-${_source_commit}"
 # Pinned published source revision used by the signed ErgenOS package.
 source=(
   "${pkgname}-${_source_commit}.tar.gz::${url}/archive/${_source_commit}.tar.gz"
   'ergenctl-logo.png'
-  'fix-repair-tests-non-root.patch'
 )
-sha256sums=('c8923a503fe3f40600374afe4cb40414821f598eeda8f0a0875d27703f21092e'
-            '275ae119ab874bef2c61540589ed24902a6234d9b3c5f17147a96bfa48d75701'
-            '50fd9363664a1d44bfc723fc578b6265e01dbeaf8c42c29a1b67ff0c9b1eb008')
-
-prepare() {
-  cd "${_source_dir}"
-  patch -Np1 -i "${srcdir}/fix-repair-tests-non-root.patch"
-}
+sha256sums=('7f32c93700af7a88337219224b76b9639ff0849b1823e044ba089965f09684f2'
+            '275ae119ab874bef2c61540589ed24902a6234d9b3c5f17147a96bfa48d75701')
 
 check() {
   cd "${_source_dir}"
