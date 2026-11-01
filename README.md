@@ -62,8 +62,10 @@ ErgenOS includes [ErgenCTL](https://github.com/ErgenosSW/ErgenCTL), [ErgenOS Wel
 
 ## Download
 
-Visit the [official ErgenOS website](https://ergenos.dev/) or the
-[ErgenOS 1.3 GitHub release](https://github.com/ErgenosSW/ErgenOS-Linux/releases/tag/v1.3.0).
+Visit the [official ErgenOS website](https://ergenos.dev/), download the
+[complete ErgenOS 1.3 ISO from MediaFire](https://www.mediafire.com/file/jylb20nu3sh3sjq/ergenos-1.3.0-x86_64.iso/file),
+or use the split files from the
+[GitHub release](https://github.com/ErgenosSW/ErgenOS-Linux/releases/tag/v1.3.0).
 
 For image verification and installation steps, follow the [installation guide](https://ergenossw.github.io/ErgenOS-Wiki/getting-started/installation.html). Experimental post-install support is documented in the [Secure Boot guide](https://ergenossw.github.io/ErgenOS-Wiki/security/secure-boot.html).
 
