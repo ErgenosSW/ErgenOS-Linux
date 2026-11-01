@@ -15,6 +15,8 @@ the others.
 - [x] Automated Archiso profile tests and release-tag ISO artifact workflow.
 - [x] Signed package repository validation.
 - [x] Optional ErgenOS Hyprland preview 0.1.0-33 in the package repository.
+- [x] Hyprland Power UI with shared power-profiles-daemon profiles, battery
+      details, independent AC/battery idle timers and lid-action settings.
 - [x] ErgenPac consumes the read-only ErgenCTL Gaming Check report.
 - [x] Optional signed ErgenProton-WoW 0.2.0-1 package in the repository; it is
       intentionally not promoted or installed automatically by ErgenPac.
@@ -27,7 +29,8 @@ features:
 - guided Gaming Setup beyond the existing explicit per-tool ErgenPac catalog
 - persistent per-game launch-profile management
 - ErgenProton-WoW promotion or automatic installation in ErgenPac
-- expanded battery and power tuning beyond existing diagnostics
+- expanded default-GNOME battery diagnostics beyond the existing GNOME and
+  Hyprland power-profile controls
 - automatic installed-system discovery from live media
 
 ## Package and ISO integration
@@ -38,6 +41,8 @@ features:
 - [ ] Update the signed Pacman repository and validate both databases/signatures.
 - [x] Set VERSION, os-release and Calamares branding to 1.3.0 after scope freeze.
 - [x] Complete the pre-release 1.3 changelog and component-version table.
+- [x] Refresh the three locally packaged GNOME extensions for GNOME Shell 51
+      and reject incompatible extension metadata during profile validation.
 - [ ] Build the ISO from reviewed, published and reproducible package sources.
 
 ## Acceptance gates
@@ -51,6 +56,8 @@ features:
 - [ ] ErgenPac Gaming and Gaming Check pass on the Acer Nitro hybrid-GPU system.
 - [ ] GNOME remains the supported default; Hyprland preview remains optional unless
       a separate scope decision promotes it.
+- [ ] Dash to Dock, Blur My Shell and GTK4 Desktop Icons NG load in a clean live
+      GNOME session and remain enabled after installation.
 - [ ] Secure Boot/MOK, signed kernel/GRUB and snapshot-menu behavior pass in QEMU.
 - [ ] Final ISO size, contents and SHA-256 are recorded and independently checked.
 

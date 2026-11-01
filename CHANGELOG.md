@@ -9,9 +9,13 @@
 - ErgenPac integration with the read-only Gaming Check report
 - optional signed ErgenProton-WoW 0.2.0-1 repository package without automatic
   installation or launcher configuration
+- optional Hyprland Power UI using the same power-profiles-daemon profiles as
+  GNOME, with battery details and separate AC/battery idle and lid settings
 - serialized GRUB snapshot-menu refresh with a dedicated service and timer,
   avoiding concurrent regeneration and excessive memory use
 - automated Archiso profile validation and release-tag ISO artifact builds
+- refreshed GNOME 51 extension set: Blur My Shell 77, Dash to Dock 110 and
+  GTK4 Desktop Icons NG 100.30, with build-time compatibility validation
 - prepared package recipes for ErgenCTL 1.1.0.dev-13 and ErgenPac 1.0.1-3,
   based on pinned published source commits
 - signed repository updates through ErgenCTL 1.1.0.dev-12, ErgenPac 1.0.1-2,
@@ -23,6 +27,8 @@
 - refresh and validate the signed package repository
 - build the 1.3.0 ISO and complete installation, upgrade, recovery and Secure
   Boot acceptance tests
+- confirm all default GNOME extensions load in a clean live session and after
+  installation
 - record and publish the final ISO checksum and download URLs
 
 ### Deferred beyond 1.3
@@ -30,7 +36,8 @@
 - guided Gaming Setup beyond the existing explicit catalog
 - persistent per-game launch profiles
 - automatic launcher configuration for ErgenProton-WoW
-- expanded battery/power tuning and automatic Live installation discovery
+- deeper default-GNOME battery diagnostics and automatic Live installation
+  discovery
 
 See [ROADMAP-1.3.md](ROADMAP-1.3.md) for the remaining release gates.
 
