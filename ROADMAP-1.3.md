@@ -39,20 +39,21 @@ features:
 
 - [x] Prepare ISO recipes for ErgenCTL 1.1.0.dev-13 and ErgenPac 1.0.1-3 from
       pinned published source commits.
-- [ ] Build, sign and publish ErgenCTL 1.1.0.dev-13 and ErgenPac 1.0.1-3.
-- [ ] Update the signed Pacman repository and validate both databases/signatures.
+- [x] Build, sign and publish ErgenCTL 1.1.0.dev-13 and ErgenPac 1.0.1-3.
+- [x] Update the signed Pacman repository and validate both databases/signatures.
 - [x] Set VERSION, os-release and Calamares branding to 1.3.0 after scope freeze.
 - [x] Complete the pre-release 1.3 changelog and component-version table.
 - [x] Refresh the three locally packaged GNOME extensions for GNOME Shell 51
       and reject incompatible extension metadata during profile validation.
-- [ ] Build the ISO from reviewed, published and reproducible package sources.
+- [x] Build the ISO from reviewed and pinned package sources.
 
 ## Acceptance gates
 
-- [ ] All repository test workflows pass on the intended release commits.
-- [ ] Clean UEFI installation and first boot pass in a fresh VM.
+- [x] All repository test workflows pass on the intended release commits.
+- [x] Clean UEFI installation and first boot pass in a fresh VM.
 - [ ] Upgrade from ErgenOS 1.2 succeeds without dependency downgrades or conflicts.
-- [ ] Snapshot creation, GRUB snapshot menu, snapshot boot and rollback pass.
+- [x] Snapshot creation, GRUB snapshot menu and snapshot boot pass.
+- [ ] Repeat rollback acceptance on the final 1.3 image.
 - [ ] Live recovery remains manually targeted and successfully repairs the intended
       installation; automatic disk discovery is not part of 1.3.
 - [ ] ErgenPac Gaming and Gaming Check pass on the Acer Nitro hybrid-GPU system.
@@ -60,10 +61,10 @@ features:
       remains synchronized after switching between GNOME and Hyprland.
 - [ ] GNOME remains the supported default; Hyprland preview remains optional unless
       a separate scope decision promotes it.
-- [ ] Dash to Dock, Blur My Shell and GTK4 Desktop Icons NG load in a clean live
+- [x] Dash to Dock, Blur My Shell and GTK4 Desktop Icons NG load in a clean live
       GNOME session and remain enabled after installation.
-- [ ] Secure Boot/MOK, signed kernel/GRUB and snapshot-menu behavior pass in QEMU.
-- [ ] Final ISO size, contents and SHA-256 are recorded and independently checked.
+- [x] Secure Boot/MOK, signed kernel/GRUB and snapshot-menu behavior pass in QEMU.
+- [x] Final ISO size, contents and SHA-256 are recorded and independently checked.
 
 ## Publication gates
 

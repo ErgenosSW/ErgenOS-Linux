@@ -5,32 +5,33 @@
 </p>
 
 [![Tests](https://github.com/ErgenosSW/ErgenOS-Linux/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/ErgenosSW/ErgenOS-Linux/actions/workflows/tests.yml)
-[![Release](https://img.shields.io/badge/release-1.2-blue)](https://www.mediafire.com/file/5pflsx05qjzptld/ergenos-1.2.0-x86_64.iso/file)
+[![Release](https://img.shields.io/badge/release-1.3-blue)](https://github.com/ErgenosSW/ErgenOS-Linux/releases/tag/v1.3.0)
 [![Website](https://img.shields.io/badge/website-ergenossw.github.io-0aa7ff)](https://ergenossw.github.io/ErgenOS-Website/)
 [![License](https://img.shields.io/badge/license-GPL--3.0--or--later-blue)](LICENSE)
 
 ErgenOS is an independent Arch Linux based distribution built around GNOME, Btrfs recovery and a graphical installer. It uses Arch repositories and the rolling release model while adding its own installation workflow, system defaults and recovery setup.
 
-The current ISO source version is **ErgenOS 1.2.0**. The rebuilt 1.2 image has
-passed the maintainer's VM acceptance test. The complete image is available on
-MediaFire and as two verified parts in the [GitHub release](https://github.com/ErgenosSW/ErgenOS-Linux/releases/tag/v1.2.0).
+The current ISO source version is **ErgenOS 1.3.0**. The final image passed a
+clean VM installation, Secure Boot and snapshot boot testing.
 
-## What's new in 1.2
+## What's new in 1.3
 
-- Default ErgenOS theme for GNOME Shell, GTK3 and GTK4/libadwaita, including Nautilus.
-- Redesigned ErgenCTL, ErgenPac and Welcome interfaces with a shared visual style.
-- ErgenPac 1.0.1: optional gaming launchers and tools, with automatic catalog refresh.
-- AMD/Intel + NVIDIA hybrid graphics profiles and expanded ErgenCTL GPU diagnostics.
-- ErgenCTL verification after ErgenPac system updates and native Gaming installations.
-- A focused installed-system GRUB menu: ErgenOS Linux, Advanced options and
-  ErgenOS Snapshots when Snapper/Btrfs recovery is configured.
+- Gaming Check in ErgenCTL and ErgenPac.
+- Shared power profiles in GNOME and the optional Hyprland preview.
+- Updated GNOME 51 extensions, including Dash to Dock.
+- Safer GRUB snapshot-menu refreshes.
+- Optional ErgenProton-WoW package in the ErgenOS repository.
+- Fixed Calamares startup by adding the missing KCrash dependency.
 
-| Component | Version used for 1.2 |
+| Component | Version used for 1.3 |
 | --- | --- |
-| ErgenPac | 1.0.1-1 |
-| ErgenCTL | 1.1.0.dev-9 |
+| ErgenPac | 1.0.1-3 |
+| ErgenCTL | 1.1.0.dev-13 |
 | ErgenOS Welcome | 1.0.3-1 |
-| ErgenOS theme | 1.2.0-2 |
+| ErgenOS theme | 1.2.0-3 |
+| ErgenOS Secure Boot | 0.2.0.dev-6 |
+| ErgenOS Hyprland preview | 0.1.0-33 |
+| ErgenProton-WoW, optional | 0.2.0-1 |
 
 See [CHANGELOG.md](CHANGELOG.md) for details and test scope.
 
@@ -61,7 +62,8 @@ ErgenOS includes [ErgenCTL](https://github.com/ErgenosSW/ErgenCTL), [ErgenOS Wel
 
 ## Download
 
-Visit the [official ErgenOS website](https://ergenossw.github.io/ErgenOS-Website/) or [download the complete ErgenOS 1.2 ISO from MediaFire](https://www.mediafire.com/file/5pflsx05qjzptld/ergenos-1.2.0-x86_64.iso/file).
+Visit the [official ErgenOS website](https://ergenos.dev/) or the
+[ErgenOS 1.3 GitHub release](https://github.com/ErgenosSW/ErgenOS-Linux/releases/tag/v1.3.0).
 
 For image verification and installation steps, follow the [installation guide](https://ergenossw.github.io/ErgenOS-Wiki/getting-started/installation.html). Experimental post-install support is documented in the [Secure Boot guide](https://ergenossw.github.io/ErgenOS-Wiki/security/secure-boot.html).
 
@@ -82,57 +84,18 @@ ErgenOS has been tested with:
 - Secure Boot through shim and MOK under QEMU/OVMF and on a Lenovo ThinkPad
 - signed `linux-zen`, GRUB and `broadcom-wl-dkms` with Secure Boot enabled
 
-For 1.2, the maintainer confirmed the rebuilt ISO in a VM, including the desktop,
-ErgenPac Gaming and the three-entry GRUB menu. The theme and hybrid GPU workflow
-were also accepted on the existing Acer laptop installation. This does not
-constitute a new NVIDIA Secure Boot validation on that laptop.
+For 1.3, the maintainer confirmed the live session, clean VM installation,
+default GNOME extensions, power profiles, MOK enrollment, Secure Boot and booting
+a Btrfs snapshot with Secure Boot enabled.
 
 Hardware coverage and long-term upgrade testing are still limited.
 
-## Build validation note
-
-The 1.2 acceptance image was built directly with `mkarchiso` in an Arch container
-on Debian 13. It used signed published application packages and a local theme
-repository. Six ErgenCTL repair tests failed during the earlier 1.2 container
-source build. The runner-specific preflight test was subsequently corrected and
-the dedicated ErgenCTL regression workflow passed 126 tests. The original 1.2
-ISO acceptance still remains a separate result and must not be treated as a
-fresh complete 1.3 regression run.
-
 ## Project direction
 
-ErgenOS is moving toward an approachable gaming desktop built on system
-management and recovery. Version 1.2 adds optional gaming setup through ErgenPac;
-launchers and performance tools are not installed or enabled indiscriminately.
+ErgenOS is an approachable gaming desktop built around system management and
+recovery. Gaming tools remain optional and are not installed automatically.
 
-Gaming Check, a guided gaming onboarding flow, per-game launch profiles, deeper
-laptop power diagnostics and expanded automatic Live recovery are deferred to
-the 1.3 roadmap. They are not shipped as completed 1.2 features.
-
-Current implementation and release gates are tracked in
-[ROADMAP-1.3.md](ROADMAP-1.3.md).
-
-## ErgenOS 1.3 release candidate scope
-
-The 1.3 source profile is frozen around offline Gaming Check, its ErgenPac
-integration, safer serialized GRUB snapshot-menu refreshes, current hybrid-GPU
-support and the optional Hyprland preview. The preview includes a Power UI with
-shared power-profiles-daemon profiles, battery information and session-specific
-idle and lid controls. ErgenProton-WoW 0.2.0-1 is available as an optional
-signed repository package and is not installed or configured automatically.
-
-| Component | Planned version for 1.3 |
-| --- | --- |
-| ErgenCTL | 1.1.0.dev-13 |
-| ErgenPac | 1.0.1-3 |
-| ErgenOS Welcome | 1.0.3-1 |
-| ErgenOS theme | 1.2.0-3 |
-| ErgenOS Secure Boot | 0.2.0.dev-6 |
-| ErgenOS Hyprland preview | 0.1.0-33 |
-| ErgenProton-WoW, optional | 0.2.0-1 |
-
-The published download remains ErgenOS 1.2 until the 1.3 ISO passes the release
-gates and its public checksum and URLs are verified.
+The remaining release checks are tracked in [ROADMAP-1.3.md](ROADMAP-1.3.md).
 
 ## Known limitations
 
@@ -154,12 +117,12 @@ ErgenOS is not affiliated with or endorsed by Arch Linux. Arch Linux and related
 
 Original ErgenOS work is licensed under GPL-3.0-or-later. Bundled and adapted third-party components keep their respective licenses and copyright notices. See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-## ISO 1.2 integrity
+## ISO 1.3 integrity
 
-File: `ergenos-1.2.0-x86_64.iso` - 2,751,954,944 bytes (2.56 GiB).
+File: `ergenos-1.3.0-x86_64.iso` - 2,759,229,440 bytes (2.57 GiB).
 
 SHA-256 checksum for the complete ISO:
 
 ```text
-c152f4881a2bd0c3a8921f2139a2e3a538cd6cd49160e90cac6650df2a47599b  ergenos-1.2.0-x86_64.iso
+e954449d5dd7ad5d73a4cba63d913d5624e8ca6cc450e59b0a39904b6124772b  ergenos-1.3.0-x86_64.iso
 ```
