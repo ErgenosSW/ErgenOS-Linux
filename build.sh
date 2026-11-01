@@ -7,6 +7,7 @@ profile_dir="${project_root}/ergenos"
 packages_file="${profile_dir}/packages.x86_64"
 repo_dir="${project_root}/repo"
 output_dir="${ERGENOS_OUTPUT_DIR:-${project_root}/out}"
+pacman_cache_dir="${ERGENOS_PACMAN_CACHE_DIR:-${output_dir}/pacman-cache}"
 work_dir="${ERGENOS_WORK_DIR:-/var/tmp/ergenos-work-${USER:-builder}-$$}"
 version="$(<"${project_root}/VERSION")"
 release_dir="${ERGENOS_RELEASE_DIR:-${project_root}/release-${version}}"
@@ -34,6 +35,8 @@ Options:
 
 Environment variables:
   ERGENOS_OUTPUT_DIR  ISO output directory (default: ./out)
+  ERGENOS_PACMAN_CACHE_DIR
+                       Dedicated package cache (default: OUTPUT_DIR/pacman-cache)
   ERGENOS_WORK_DIR    Archiso work directory (default: unique /var/tmp path)
   ERGENOS_RELEASE_DIR Release asset directory (default: ./release-VERSION)
   ERGENOS_SKIP_PACKAGE_CHECKS
@@ -183,6 +186,18 @@ package_dirs=(
 build_local_repository() {
     mkdir -p "${repo_dir}"
 
+    # The repository directory is a reusable package cache, but its indexes are
+    # build output. Recreate them on every run so an interrupted older build
+    # cannot leave database entries pointing at packages repo-add already
+    # removed while replacing superseded versions.
+    rm -f -- \
+        "${repo_dir}/ergenos.db" \
+        "${repo_dir}/ergenos.db.tar.zst" \
+        "${repo_dir}/ergenos.db.tar.zst.old" \
+        "${repo_dir}/ergenos.files" \
+        "${repo_dir}/ergenos.files.tar.zst" \
+        "${repo_dir}/ergenos.files.tar.zst.old"
+
     for relative_dir in "${package_dirs[@]}"; do
         package_dir="${project_root}/${relative_dir}"
         [[ -d "${package_dir}" ]] || die "Missing local package directory: ${relative_dir}"
@@ -238,13 +253,18 @@ build_local_repository() {
 }
 
 create_pacman_config() {
+    mkdir -p "${pacman_cache_dir}"
+    chmod 1777 "${pacman_cache_dir}"
     pacman_config="$(mktemp --tmpdir ergenos-pacman.XXXXXX.conf)"
     sed \
         -e '/^\[ergenos\]$/,/^Server = / s/^SigLevel = Required$/SigLevel = Optional TrustAll/' \
         -e "s|^Server = https://ergenossw.github.io/ErgenOS-Repo/\$arch$|Server = file://${repo_dir}|" \
+        -e "s|^#CacheDir[[:space:]]*=.*$|CacheDir = ${pacman_cache_dir}|" \
         "${profile_dir}/pacman.conf" > "${pacman_config}"
     grep -Fxq "Server = file://${repo_dir}" "${pacman_config}" \
         || die "Failed to configure the local ErgenOS repository"
+    grep -Fxq "CacheDir = ${pacman_cache_dir}" "${pacman_config}" \
+        || die "Failed to configure the isolated Pacman cache"
 }
 
 validate_package_resolution() {
