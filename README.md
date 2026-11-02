@@ -83,7 +83,7 @@ ErgenOS has been tested with:
 - Secure Boot through shim and MOK under QEMU/OVMF and on a Lenovo ThinkPad
 - signed `linux-zen`, GRUB and `broadcom-wl-dkms` with Secure Boot enabled
 
-For 1.3, the maintainer confirmed the live session, clean VM installation,
+For 1.3, the tests confirmed the live session, clean VM installation,
 default GNOME extensions, power profiles, MOK enrollment, Secure Boot and booting
 a Btrfs snapshot with Secure Boot enabled.
 
